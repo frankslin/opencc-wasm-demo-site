@@ -1,6 +1,7 @@
 {
   "name": "opencc-wasm-demo-site",
   "version": "0.0.1",
+  "description": "Demo website for NPM package opencc-wasm",
   "private": true,
   "type": "module",
   "dependencies": {
@@ -10,5 +11,15 @@
   "scripts": {
     "prepare:assets": "node scripts/prepare.js",
     "build": "npm run prepare:assets && node build.js"
+  },
+  "main": "worker.js",
+  "keywords": [
+    "opencc",
+    "wasm",
+    "cloudflare-worker"
+  ],
+  "author": "Frank Lin",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
   }
 }

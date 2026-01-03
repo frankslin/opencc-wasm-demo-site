@@ -1,3 +1,18 @@
-dist
-node_modules
-vendor
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+vendor/
+
+# Wrangler
+.wrangler/
+.dev.vars
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
