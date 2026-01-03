@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="zh">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -17,7 +18,11 @@
       --success: #4ec9b0;
       --error: #f44747;
     }
-    * { box-sizing: border-box; }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 20px 14px 60px;
@@ -27,6 +32,7 @@
       line-height: 1.6;
       font-size: 18px;
     }
+
     header {
       max-width: 980px;
       margin: 0 auto 18px;
@@ -37,6 +43,7 @@
       padding-bottom: 8px;
       border-bottom: 1px solid var(--border);
     }
+
     header .logo {
       width: 64px;
       height: 64px;
@@ -48,63 +55,75 @@
       align-items: center;
       justify-content: center;
     }
+
     header .logo svg path {
       fill: var(--text);
     }
+
     h1 {
       margin: 0;
       font-size: 26px;
       font-weight: 800;
       letter-spacing: 0.2px;
     }
+
     h1 span {
       display: block;
       font-size: 16px;
       color: var(--muted);
       font-weight: 500;
     }
+
     .container {
       max-width: 980px;
       margin: 0 auto;
     }
+
     .two-col {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+
     .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 16px 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
     }
+
     .card h2 {
       margin-top: 0;
       margin-bottom: 8px;
       font-size: 20px;
     }
+
     .section {
       margin-top: 10px;
     }
+
     .options {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 8px;
       margin-top: 8px;
     }
+
     .option {
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 10px 12px;
       background: #2d2d2d;
     }
+
     .option legend {
       font-size: 16px;
       color: var(--muted);
       margin-bottom: 6px;
       padding: 0;
     }
+
     .option label {
       display: block;
       margin-bottom: 6px;
@@ -112,6 +131,7 @@
       cursor: pointer;
       font-size: 16px;
     }
+
     textarea {
       width: 100%;
       min-height: 180px;
@@ -123,6 +143,7 @@
       font-size: 17px;
       resize: vertical;
     }
+
     .output-box {
       min-height: 140px;
       white-space: pre-wrap;
@@ -133,12 +154,30 @@
       padding: 12px;
       font-size: 16px;
     }
+
     .toolbar {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 12px;
     }
+
+    .footer {
+      max-width: 980px;
+      margin: 26px auto 8px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer a {
+      color: var(--accent);
+    }
+
+    a:visited {
+      color: var(--accent);
+    }
+
     button {
       border: none;
       cursor: pointer;
@@ -148,28 +187,35 @@
       font-weight: 700;
       color: #ffffff;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
       transition: transform 0.12s ease, box-shadow 0.2s ease;
     }
-    button:active { transform: translateY(1px); }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
     button.secondary {
       background: #1d283a;
       color: var(--text);
       box-shadow: none;
       border: 1px solid var(--border);
     }
+
     button:disabled {
       opacity: 0.55;
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
     }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-top: 8px;
     }
+
     #activePipeline {
       display: flex;
       flex: 1 1 auto;
@@ -179,6 +225,7 @@
       gap: 8px;
       margin-top: 4px;
     }
+
     .chip {
       background: #2d2d2d;
       border: 1px solid var(--border);
@@ -190,35 +237,61 @@
       display: inline-flex;
       align-items: center;
     }
-    .muted { color: var(--muted); }
+
+    .muted {
+      color: var(--muted);
+    }
+
     .status {
       margin-top: 8px;
       font-size: 16px;
       color: var(--muted);
       white-space: pre-wrap;
     }
+
     .card.stretch {
       display: flex;
       flex-direction: column;
       height: 100%;
     }
+
     .card.stretch textarea,
     .card.stretch .output-box {
       flex: 0 1 auto;
       min-height: 220px;
     }
+
     @media (max-width: 900px) {
-      .two-col { grid-template-columns: 1fr; }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
     }
+
     @media (max-width: 640px) {
-      h1 { font-size: 22px; }
-      .card { padding: 14px; }
-      .toolbar { flex-direction: column; }
-      button { width: 100%; }
-      textarea, .output-box { font-size: 15px; }
+      h1 {
+        font-size: 22px;
+      }
+
+      .card {
+        padding: 14px;
+      }
+
+      .toolbar {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      textarea,
+      .output-box {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="logo" aria-label="OpenCC logo">
@@ -251,12 +324,12 @@
         <label><input type="radio" name="tar" value="trad" checked> 繁體中文</label>
         <label><input type="radio" name="tar" value="jpshinjitai"> 日文新字體</label>
       </fieldset>
-        <fieldset class="option" id="variantType">
-          <legend>異體字轉換</legend>
-          <label><input type="radio" name="variant" value="taiwan" checked> 台灣標準</label>
-          <label><input type="radio" name="variant" value="hongkong"> 香港標準</label>
-          <label><input type="radio" name="variant" value="opencc"> OpenCC 標準</label>
-        </fieldset>
+      <fieldset class="option" id="variantType">
+        <legend>異體字轉換</legend>
+        <label><input type="radio" name="variant" value="taiwan" checked> 台灣標準</label>
+        <label><input type="radio" name="variant" value="hongkong"> 香港標準</label>
+        <label><input type="radio" name="variant" value="opencc"> OpenCC 標準</label>
+      </fieldset>
       <fieldset class="option" id="idiomType">
         <legend>地域用詞轉換</legend>
         <label><input type="radio" name="idiom" value="disabled" checked> 不轉換</label>
@@ -290,6 +363,7 @@
     let Module = null;
     let Api = null;
     let vendorBase = null;
+    let locateFile = null;
 
     const handles = new Map();
     const loadedDicts = new Set();
@@ -300,9 +374,14 @@
     async function loadWasmFactory() {
       if (cachedFactory) return cachedFactory;
       const baseUrl = new URL("./vendor/opencc-wasm/", window.location.href).href;
-      const url = new URL("opencc-wasm.js", baseUrl).href;
+      const url = new URL("esm/opencc-wasm.js", baseUrl).href;
+      const wasmUrl = new URL("opencc-wasm.wasm", baseUrl).href;
       const mod = await import(url);
       vendorBase = baseUrl;
+      locateFile = (path) => {
+        if (path.endsWith(".wasm")) return wasmUrl;
+        return new URL(path, baseUrl).href;
+      };
       cachedFactory = mod.default;
       return cachedFactory;
     }
@@ -310,7 +389,7 @@
     async function initModule() {
       if (!Module) {
         const createOpenCCWasm = await loadWasmFactory();
-        Module = await createOpenCCWasm();
+        Module = await createOpenCCWasm({ locateFile });
       }
       if (!Api) {
         Api = {
@@ -336,9 +415,9 @@
       const out = document.getElementById("status");
       try {
         out.textContent = `拉取設定 ${cfgName}...`;
-        try { mod.FS.mkdir("/data"); } catch (e) {}
-        try { mod.FS.mkdir("/data/config"); } catch (e) {}
-        try { mod.FS.mkdir("/data/dict"); } catch (e) {}
+        try { mod.FS.mkdir("/data"); } catch (e) { }
+        try { mod.FS.mkdir("/data/config"); } catch (e) { }
+        try { mod.FS.mkdir("/data/dict"); } catch (e) { }
 
         const base = vendorBase || new URL("./vendor/opencc-wasm/", window.location.href).href;
         const cfgUrl = `${base}data/config/${cfgName}`;
@@ -598,15 +677,24 @@
     updateOptionAvailability();
     preloadCurrentPipeline();
   </script>
-    <div class="container" style="margin-top: 22px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.5;">
-      <div id="status" class="status" style="margin-top: 0; color: var(--muted);"></div>
+  <div class="container"
+    style="margin-top: 22px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.5;">
+    <div id="status" class="status" style="margin-top: 0; color: var(--muted);"></div>
     <div id="filesLoaded" class="muted" style="margin-top: 4px;"></div>
-      <div style="margin-top: 8px;">
-        本頁面中的轉換全部在瀏覽器內完成，不會上傳文字，保障您的隱私。 |
-        <a href="https://github.com/BYVoid/OpenCC" target="_blank" style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">OpenCC GitHub</a> |
-        <a href="https://t.me/+TVq4LmPRlN9hZjE0" target="_blank" style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">Telegram 討論組</a>
-      <div style="margin-top: 4px; color: var(--muted); font-size: 15px;">Copyright 2026 OpenCC Authors</div>
-      </div>
+    <div style="margin-top: 8px;">
+      本頁面中的轉換全部在瀏覽器內完成，不會上傳文字，保障您的隱私。 <br>
+      本頁使用的是原生 WASM API 示例；若要看 opencc-js 兼容 API 示例，請前往 <a href="./public-api.html"
+        style="color: var(--accent); border-bottom: 1px dashed var(--border); text-decoration: none;">public-api.html</a>。<br>
+      基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a>
     </div>
+    <div style="margin-top: 4px; color: var(--muted); font-size: 15px;">Copyright 2026 OpenCC Authors</div>
+    <div style="margin-top: 8px; color: var(--muted); font-size: 14px;">
+      <a href="https://github.com/BYVoid/OpenCC" target="_blank"
+        style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">OpenCC GitHub</a> |
+      <a href="https://t.me/+TVq4LmPRlN9hZjE0" target="_blank"
+        style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">Telegram 討論組</a>
+    </div>
+  </div>
 </body>
+
 </html>

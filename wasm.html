@@ -34,6 +34,9 @@
       border-bottom: 1px dashed rgba(56,189,248,0.6);
       padding-bottom: 1px;
     }
+    a:visited {
+      color: var(--accent);
+    }
     a:hover {
       color: #67e8f9;
       border-bottom-color: #67e8f9;
@@ -109,6 +112,13 @@
       min-width: 64px;
       width: auto;
     }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      margin: 28px 0 10px;
+      font-size: 14px;
+    }
+    .footer a { color: var(--accent); }
   </style>
 </head>
 <body>
@@ -143,17 +153,27 @@
     <pre id="logOutput"></pre>
   </div>
 
+  <div class="footer">
+    本頁基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a>
+  </div>
+
   <script type="module">
     let cachedFactory = null;
     let vendorBase = null; // 解析后的绝对 base
+    let locateFile = null;
     async function loadWasmFactory() {
       if (cachedFactory) return cachedFactory;
       let lastErr = null;
       try {
         const baseUrl = new URL("./vendor/opencc-wasm/", window.location.href).href;
-        const url = new URL("opencc-wasm.js", baseUrl).href;
+        const url = new URL("esm/opencc-wasm.js", baseUrl).href;
+        const wasmUrl = new URL("opencc-wasm.wasm", baseUrl).href;
         const mod = await import(url);
         vendorBase = baseUrl;
+        locateFile = (path) => {
+          if (path.endsWith(".wasm")) return wasmUrl;
+          return new URL(path, baseUrl).href;
+        };
         cachedFactory = mod.default;
         return cachedFactory;
       } catch (e) {
@@ -171,7 +191,7 @@
     const initModule = async () => {
       if (!Module) {
         const createOpenCCWasm = await loadWasmFactory();
-        Module = await createOpenCCWasm();
+        Module = await createOpenCCWasm({ locateFile });
       }
       if (!Api) {
         Api = {
@@ -334,35 +354,44 @@
       try {
         const resp = await fetch("./testcases.json");
         if (!resp.ok) throw new Error(`testcases.json HTTP ${resp.status}`);
-        const cases = await resp.json();
-        if (!Array.isArray(cases) || cases.length === 0) {
+        const parsed = await resp.json();
+        const cases = Array.isArray(parsed?.cases) ? parsed.cases : [];
+        if (cases.length === 0) {
           out.textContent = "No testcases found.";
           return;
         }
-        // 预加载所需配置/词典
-        const cfgSet = [...new Set(cases.map(c => c.config))];
+        // Collect every config referenced in expected objects
+        const cfgSet = new Set();
+        cases.forEach(tc => {
+          if (tc.expected && typeof tc.expected === "object") {
+            Object.keys(tc.expected).forEach(cfg => cfgSet.add(`${cfg}.json`));
+          }
+        });
         for (const cfg of cfgSet) {
           await loadConfigAndDicts(cfg);
         }
         let passed = 0;
-        const failed = [];
+        let total = 0;
         const lines = [];
-        cases.forEach((tc, idx) => {
-          const handle = handles.get(tc.config);
-          if (!handle) throw new Error(`missing handle for ${tc.config}`);
-          const actual = Api.convert(handle, tc.input);
-          const ok = actual === tc.expected;
-          if (ok) {
-            passed++;
-            lines.push(`✔ [${tc.config}] ${tc.input} -> ${actual}`);
-          } else {
-            failed.push({ idx, config: tc.config, input: tc.input, expected: tc.expected, actual });
-            lines.push(
-              `✘ [${tc.config}] ${tc.input}\n  expected: ${tc.expected}\n  actual:   ${actual}`
-            );
-          }
+        cases.forEach((tc) => {
+          if (!tc.expected || typeof tc.expected !== "object") return;
+          Object.entries(tc.expected).forEach(([cfg, expected]) => {
+            total++;
+            const cfgName = `${cfg}.json`;
+            const handle = handles.get(cfgName);
+            if (!handle) throw new Error(`missing handle for ${cfgName}`);
+            const actual = Api.convert(handle, tc.input);
+            const ok = actual === expected;
+            if (ok) {
+              passed++;
+              lines.push(`✔ [${cfgName}] ${tc.input} -> ${actual}`);
+            } else {
+              lines.push(`✘ [${cfgName}] ${tc.input}\n  expected: ${expected}\n  actual:   ${actual}`);
+            }
+          });
         });
-        let msg = `Total: ${cases.length}, Passed: ${passed}, Failed: ${failed.length}`;
+        const failed = total - passed;
+        let msg = `Total assertions: ${total}, Passed: ${passed}, Failed: ${failed}`;
         msg += `\n\nDetails:\n${lines.join("\n")}`;
         out.textContent = msg;
       } catch (err) {

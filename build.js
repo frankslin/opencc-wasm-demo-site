@@ -26,6 +26,15 @@ function getBuildDate() {
   return `${year}-${month}-${day}`;
 }
 
+function getWasmVersion() {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(demoRoot, "node_modules", "opencc-wasm", "package.json"), "utf8"));
+    return pkg.version || "dev";
+  } catch {
+    return "dev";
+  }
+}
+
 if (!fs.existsSync(pkgRoot)) {
   console.error("opencc-wasm not found. Run `npm install` in wasm-demo first.");
   process.exit(1);
@@ -44,9 +53,10 @@ if (fs.existsSync(ocjsSrc)) {
   fs.cpSync(ocjsSrc, vendorJsOut, { recursive: true });
 }
 
-// copy demo assets with build date injection
+// copy demo assets with build date + version injection
 const buildDate = getBuildDate();
-const filesToCopy = ["index.html", "public-api.html", "classic.html", "benchmark.html", "testcases.json"];
+const wasmVersion = getWasmVersion();
+const filesToCopy = ["index.html", "public-api.html", "classic.html", "benchmark.html", "wasm.html", "testcases.json"];
 for (const file of filesToCopy) {
   const src = path.join(demoRoot, file);
   if (fs.existsSync(src)) {
@@ -56,6 +66,7 @@ for (const file of filesToCopy) {
     if (file.endsWith('.html')) {
       let content = fs.readFileSync(src, 'utf8');
       content = content.replace(/__BUILD_DATE__/g, buildDate);
+      content = content.replace(/__OPENCC_WASM_VERSION__/g, wasmVersion);
       fs.writeFileSync(dst, content, 'utf8');
     } else {
       fs.copyFileSync(src, dst);

@@ -9,6 +9,8 @@
     textarea { width: 100%; height: 140px; font-size: 14px; padding: 10px; }
     button { padding: 10px 14px; margin-top: 10px; }
     pre { background: #f7f7f7; padding: 12px; border: 1px solid #ddd; white-space: pre-wrap; }
+    .footer { text-align: center; color: #666; margin: 22px 0 10px; font-size: 14px; }
+    .footer a { color: #0066cc; }
   </style>
 </head>
 <body>
@@ -25,6 +27,8 @@
 
   <h3>结果</h3>
   <pre id="output"></pre>
+
+  <p class="footer">本頁基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a></p>
 
   <script type="module">
     import OpenCCWasm from "./vendor/opencc-wasm/esm/index.js";

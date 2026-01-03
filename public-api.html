@@ -99,6 +99,16 @@
       min-width: 64px;
       width: auto;
     }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      margin: 28px 0 10px;
+      font-size: 14px;
+    }
+    .footer a,
+    a:visited {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -125,6 +135,10 @@
   <div class="card">
     <h2>日志 / 结果</h2>
     <pre id="logOutput"></pre>
+  </div>
+
+  <div class="footer">
+    本頁基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a>
   </div>
 
   <script type="module">

@@ -1,10 +1,10 @@
 {
-  "name": "wasm-demo",
-  "version": "0.0.0",
+  "name": "opencc-wasm-demo-site",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
   "dependencies": {
-    "opencc-wasm": "^0.1.0",
+    "opencc-wasm": "^0.2.1",
     "opencc-js": "^1.0.5"
   },
   "scripts": {
