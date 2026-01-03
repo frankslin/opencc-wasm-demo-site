@@ -1,4 +1,4 @@
-name = "opencc-wasm-demo-site"
+name = "opencc-wasm-demo"
 main = "worker.js"
 compatibility_date = "2026-01-01"
 
