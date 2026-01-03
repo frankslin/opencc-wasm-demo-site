@@ -1,0 +1,20 @@
+{
+  "name": "opencc-wasm-demo-site",
+  "version": "1.0.0",
+  "description": "Demo website for NPM package opencc-wasm",
+  "main": "worker.js",
+  "scripts": {
+    "build": "npm run build:site",
+    "build:site": "mkdir -p dist && cp src/index.html dist/ || true"
+  },
+  "keywords": [
+    "opencc",
+    "wasm",
+    "cloudflare-worker"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
