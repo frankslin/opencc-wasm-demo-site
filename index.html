@@ -219,6 +219,18 @@
       box-shadow: none;
     }
 
+    .icon-btn {
+      width: auto !important;
+      min-width: 0;
+      padding: 8px 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
     .chips {
       display: flex;
       flex-wrap: wrap;
@@ -226,13 +238,16 @@
       margin-top: 8px;
     }
 
-    #activePipeline {
-      display: flex;
-      flex: 1 1 auto;
-      min-height: 36px;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 8px;
+#activePipeline {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 160px;
+  max-width: 240px;
+  min-height: 36px;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
       margin-top: 4px;
     }
 
@@ -246,6 +261,7 @@
       height: 32px;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
     }
 
     .chip-button {
@@ -285,6 +301,37 @@
       min-height: 220px;
     }
 
+
+.mode-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex: 0 0 auto;
+}
+
+.mode-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.mode-header h2 {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+    #openConfigModal {
+      white-space: nowrap;
+      padding: 8px 12px;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+
     /* Modal */
     .modal-backdrop {
       position: fixed;
@@ -300,44 +347,59 @@
       background: #1f1f1f;
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 16px;
+      padding: 10px 12px 14px;
       max-width: 680px;
       width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
       position: relative;
     }
 
+    .modal-header {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #1f1f1f;
+      padding: 2px 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
     .modal h3 {
-      margin: 0 0 10px;
-      font-size: 20px;
+      margin: 0;
+      font-size: 18px;
     }
 
     .modal-close {
-      position: absolute;
-      top: 8px;
-      right: 10px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      font-size: 20px;
+      border: 1px solid var(--border);
+      background: #2a2a2a;
+      color: var(--text);
+      font-size: 16px;
       cursor: pointer;
       line-height: 1;
-      padding: 4px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      width: auto;
     }
 
     .config-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 6px;
       margin-top: 10px;
     }
 
     .config-card {
-      background: #2a2a2a;
+      background: #242424;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 12px;
-      text-align: left;
+      padding: 8px;
+      display: grid;
+      gap: 6px;
     }
 
     .config-card button {
@@ -346,30 +408,26 @@
       color: var(--text);
       border: 1px solid var(--border);
       border-radius: 8px;
-      padding: 8px 10px;
+      padding: 8px;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
       cursor: pointer;
-      margin-bottom: 6px;
     }
 
     .config-card p {
       margin: 0;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
-    .modal-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    @media (max-width: 900px) {
-      .two-col {
-        grid-template-columns: 1fr;
+    @media (max-width: 640px) {
+      /* 中小螢幕：選項固定雙欄，地域用詞佔滿一欄 */
+      .options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .options #regionType {
+        grid-column: 1 / -1;
       }
     }
 
@@ -394,6 +452,77 @@
       .output-box {
         font-size: 15px;
       }
+
+      .modal {
+        width: 96%;
+      }
+
+      .config-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+      }
+
+      .config-card {
+        padding: 8px;
+      }
+
+      .config-card button {
+        font-size: 14px;
+        padding: 8px;
+      }
+
+      .config-card p {
+        font-size: 13px;
+      }
+
+  .mode-header-actions {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+      #openConfigModal {
+        padding: 8px 10px;
+        font-size: 15px;
+      }
+
+      /* 手機：地域用詞轉換橫排，並占滿兩欄 */
+      #regionType {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 10px;
+      }
+
+      #regionType label {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 2px;
+        line-height: 1.35;
+      }
+
+      .icon-btn {
+        width: auto !important;
+      }
+
+      /* 雙欄選項，地域用詞佔滿一欄；上下排列輸入/輸出 */
+      .options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .options #regionType {
+        grid-column: 1 / -1;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .mode-header h2 {
+        flex: 0 1 auto;
+      }
+      #activePipeline {
+        min-width: 140px;
+        max-width: 180px;
+      }
     }
   </style>
 </head>
@@ -413,11 +542,11 @@
   </header>
 
   <div class="card" style="max-width: 980px; margin: 0 auto 16px;">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+    <div class="mode-header">
       <h2 style="margin: 0;">選擇轉換模式</h2>
-      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+      <div class="mode-header-actions">
         <div id="activePipeline" class="chips" style="margin-top:4px;"></div>
-        <button id="openConfigModal" class="secondary" style="padding:8px 12px; font-weight:600;">選擇配置</button>
+        <button id="openConfigModal" class="secondary icon-btn" aria-label="選擇配置" title="選擇配置">⚙️</button>
       </div>
     </div>
     <div class="options">
@@ -439,7 +568,7 @@
       </fieldset>
       <fieldset class="option" id="regionType">
         <legend>地域用詞轉換</legend>
-        <label><input type="radio" name="region" value="enable"> 啟用（使用 p 配置）</label>
+        <label><input type="radio" name="region" value="enable"> 轉換地域用詞 (p)</label>
         <label><input type="radio" name="region" value="none" checked> 不轉換</label>
       </fieldset>
     </div>
@@ -451,7 +580,7 @@
       <textarea id="textInput" placeholder="請輸入要轉換的文本"></textarea>
       <div class="toolbar">
         <button id="convertBtn">轉換</button>
-        <button id="resetBtn" class="secondary">新轉換</button>
+        <button id="resetBtn" class="secondary">清空輸入框</button>
       </div>
     </div>
 
@@ -466,9 +595,11 @@
 
   <div id="configModalBackdrop" class="modal-backdrop">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="configModalTitle">
-      <button id="closeConfigModal" class="modal-close" aria-label="關閉">×</button>
-      <h3 id="configModalTitle">選擇配置檔</h3>
-      <p class="muted" style="margin:0 0 8px;">點擊配置名稱立即切換；可隨時返回來源/目標組合。</p>
+      <div class="modal-header">
+        <h3 id="configModalTitle">選擇配置檔</h3>
+        <button id="closeConfigModal" class="modal-close icon-btn" aria-label="關閉" title="關閉">✕</button>
+      </div>
+      <p class="muted" style="margin:8px 0;">點擊配置名稱立即切換。</p>
       <div id="configList" class="config-grid"></div>
     </div>
   </div>
@@ -738,8 +869,20 @@
     let targetManuallySelected = false;
     let regionManuallySelected = false;
     const forceSelect = (inputs, value) => { inputs.forEach(i => { if (i.value === value) i.checked = true; }); };
+    const getChecked = (name) => document.querySelector(`input[name="${name}"]:checked`);
+    const ensureChecked = (name, inputs) => {
+      let current = getChecked(name);
+      if (!current || current.disabled) {
+        const firstEnabled = Array.from(inputs).find(i => !i.disabled);
+        if (firstEnabled) {
+          firstEnabled.checked = true;
+          current = firstEnabled;
+        }
+      }
+      return current;
+    };
     function updateOptionAvailability() {
-      const srcVal = document.querySelector('input[name="source"]:checked').value;
+      const srcVal = getChecked("source")?.value;
 
       // 目標可選項僅在存在對應配置時可用
       let firstEnabledTar = null;
@@ -750,14 +893,11 @@
         if (label) label.classList.toggle("disabled", i.disabled);
         if (!i.disabled && !firstEnabledTar) firstEnabledTar = i;
       });
-      const currentTar = document.querySelector('input[name="target"]:checked');
-      if (currentTar && currentTar.disabled && firstEnabledTar) {
-        firstEnabledTar.checked = true;
-        targetManuallySelected = false;
-      } else if (!targetManuallySelected && firstEnabledTar) {
+      const currentTar = ensureChecked("target", targetInputs);
+      if (!targetManuallySelected && firstEnabledTar && currentTar !== firstEnabledTar) {
         firstEnabledTar.checked = true;
       }
-      const tarVal = document.querySelector('input[name="target"]:checked').value;
+      const tarVal = getChecked("target")?.value;
 
       // 地域用詞：僅當存在 p 結尾配置時啟用
       const regionSupported = availableConfigs.has(`${srcVal}2${tarVal}p.json`);
@@ -767,7 +907,8 @@
         const label = i.parentElement;
         if (label) label.classList.toggle("disabled", i.disabled);
       });
-      const currentRegion = document.querySelector('input[name="region"]:checked')?.value;
+      ensureChecked("region", regionInputs);
+      const currentRegion = getChecked("region")?.value;
       if (!regionSupported) {
         forceSelect(regionInputs, "none");
         regionManuallySelected = false;
