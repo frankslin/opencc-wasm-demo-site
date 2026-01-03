@@ -1,9 +1,7 @@
 export default {
   async fetch(request, env, ctx) {
-    return new Response('OpenCC WASM Demo Site', {
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-      },
-    });
+    // The static assets from the dist directory will be served automatically
+    // This worker will handle any custom logic if needed
+    return env.ASSETS.fetch(request);
   },
 };
