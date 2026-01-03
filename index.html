@@ -132,6 +132,16 @@
       font-size: 16px;
     }
 
+    .option label.disabled {
+      color: #666;
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .option input:disabled {
+      cursor: not-allowed;
+    }
+
     textarea {
       width: 100%;
       min-height: 180px;
@@ -238,6 +248,20 @@
       align-items: center;
     }
 
+    .chip-button {
+      cursor: pointer;
+      transition: transform 0.08s ease, box-shadow 0.16s ease;
+      background: #30343a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    }
+
+    .chip-button:active {
+      transform: translateY(1px);
+      box-shadow: none;
+    }
+
     .muted {
       color: var(--muted);
     }
@@ -259,6 +283,88 @@
     .card.stretch .output-box {
       flex: 0 1 auto;
       min-height: 220px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .modal {
+      background: #1f1f1f;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      max-width: 680px;
+      width: 90%;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    .modal h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      border: none;
+      background: transparent;
+      color: var(--muted);
+      font-size: 20px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 4px;
+    }
+
+    .config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .config-card {
+      background: #2a2a2a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: left;
+    }
+
+    .config-card button {
+      width: 100%;
+      background: #1d283a;
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 6px;
+    }
+
+    .config-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 14px;
     }
 
     @media (max-width: 900px) {
@@ -309,32 +415,32 @@
   <div class="card" style="max-width: 980px; margin: 0 auto 16px;">
     <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
       <h2 style="margin: 0;">選擇轉換模式</h2>
-      <div id="activePipeline" class="chips" style="margin-top:4px;"></div>
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <div id="activePipeline" class="chips" style="margin-top:4px;"></div>
+        <button id="openConfigModal" class="secondary" style="padding:8px 12px; font-weight:600;">選擇配置</button>
+      </div>
     </div>
     <div class="options">
-      <fieldset class="option" id="origType">
-        <legend>原文</legend>
-        <label><input type="radio" name="orig" value="simp" checked> 簡體中文</label>
-        <label><input type="radio" name="orig" value="trad"> 繁體中文</label>
-        <label><input type="radio" name="orig" value="jpshinjitai"> 日文新字體</label>
+      <fieldset class="option" id="sourceType">
+        <legend>來源</legend>
+        <label><input type="radio" name="source" value="s" checked> 簡體中文 (s)</label>
+        <label><input type="radio" name="source" value="tw"> 台灣正體 (tw)</label>
+        <label><input type="radio" name="source" value="hk"> 香港繁體 (hk)</label>
+        <label><input type="radio" name="source" value="t"> OpenCC 標準繁體 (t)</label>
+        <label><input type="radio" name="source" value="jp"> 日文新字體 (jp)</label>
       </fieldset>
-      <fieldset class="option" id="tarType">
+      <fieldset class="option" id="targetType">
         <legend>目標</legend>
-        <label><input type="radio" name="tar" value="simp"> 簡體中文</label>
-        <label><input type="radio" name="tar" value="trad" checked> 繁體中文</label>
-        <label><input type="radio" name="tar" value="jpshinjitai"> 日文新字體</label>
+        <label><input type="radio" name="target" value="s"> 簡體中文 (s)</label>
+        <label><input type="radio" name="target" value="tw"> 台灣正體 (tw)</label>
+        <label><input type="radio" name="target" value="hk"> 香港繁體 (hk)</label>
+        <label><input type="radio" name="target" value="t" checked> OpenCC 標準繁體 (t)</label>
+        <label><input type="radio" name="target" value="jp"> 日文新字體 (jp)</label>
       </fieldset>
-      <fieldset class="option" id="variantType">
-        <legend>異體字轉換</legend>
-        <label><input type="radio" name="variant" value="taiwan" checked> 台灣標準</label>
-        <label><input type="radio" name="variant" value="hongkong"> 香港標準</label>
-        <label><input type="radio" name="variant" value="opencc"> OpenCC 標準</label>
-      </fieldset>
-      <fieldset class="option" id="idiomType">
+      <fieldset class="option" id="regionType">
         <legend>地域用詞轉換</legend>
-        <label><input type="radio" name="idiom" value="disabled" checked> 不轉換</label>
-        <label><input type="radio" name="idiom" value="mainland"> 中國大陸模式</label>
-        <label><input type="radio" name="idiom" value="taiwan"> 台灣模式</label>
+        <label><input type="radio" name="region" value="enable"> 啟用（使用 p 配置）</label>
+        <label><input type="radio" name="region" value="none" checked> 不轉換</label>
       </fieldset>
     </div>
   </div>
@@ -355,6 +461,15 @@
       <div class="toolbar" style="justify-content: flex-end; align-items: center;">
         <button id="copyBtn" class="secondary">複製結果</button>
       </div>
+    </div>
+  </div>
+
+  <div id="configModalBackdrop" class="modal-backdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="configModalTitle">
+      <button id="closeConfigModal" class="modal-close" aria-label="關閉">×</button>
+      <h3 id="configModalTitle">選擇配置檔</h3>
+      <p class="muted" style="margin:0 0 8px;">點擊配置名稱立即切換；可隨時返回來源/目標組合。</p>
+      <div id="configList" class="config-grid"></div>
     </div>
   </div>
 
@@ -465,61 +580,75 @@
       }
     }
 
-    function pipelineForSelection(orig, tar, variant, idiom) {
-      const chain = [];
-      if (orig === tar) return chain;
+    const availableConfigs = new Set([
+      "hk2s.json", "hk2t.json", "jp2t.json", "s2hk.json", "s2t.json", "s2twp.json",
+      "s2tw.json", "t2hk.json", "t2jp.json", "t2s.json", "t2tw.json",
+      "tw2s.json", "tw2t.json", "tw2sp.json"
+    ]);
 
-      // 簡體中文 → 繁體中文
-      if (orig === "simp" && tar === "trad") {
-        if (variant === "taiwan") chain.push(idiom === "taiwan" ? "s2twp.json" : "s2tw.json");
-        else if (variant === "hongkong") chain.push("s2hk.json");
-        else chain.push("s2t.json");
-        return chain;
-      }
-      // 簡體中文 → 日文新字體
-      if (orig === "simp" && tar === "jpshinjitai") {
-        chain.push("jp2t.json");
-        return chain;
-      }
+    const configDescriptions = {
+      "s2t.json": "簡體 → 標準繁體",
+      "s2tw.json": "簡體 → 台灣正體",
+      "s2twp.json": "簡體 → 台灣正體（含用詞）",
+      "s2hk.json": "簡體 → 香港繁體",
+      "t2s.json": "繁體 → 簡體",
+      "tw2s.json": "台灣正體 → 簡體",
+      "tw2sp.json": "台灣正體 → 簡體（含用詞）",
+      "tw2t.json": "台灣正體 → 標準繁體",
+      "t2tw.json": "標準繁體 → 台灣正體",
+      "t2hk.json": "標準繁體 → 香港繁體",
+      "hk2s.json": "香港繁體 → 簡體",
+      "hk2t.json": "香港繁體 → 標準繁體",
+      "jp2t.json": "日文新字體 → 繁體",
+      "t2jp.json": "繁體 → 日文新字體"
+    };
 
-      // 繁體中文 → 簡體中文
-      if (orig === "trad" && tar === "simp") {
-        if (variant === "hongkong") chain.push("hk2s.json");
-        else if (variant === "taiwan") chain.push(idiom === "mainland" ? "tw2sp.json" : "tw2s.json");
-        else chain.push("t2s.json");
-        return chain;
-      }
-      // 繁體中文 → 日文新字體
-      if (orig === "trad" && tar === "jpshinjitai") {
-        chain.push("t2jp.json");
-        return chain;
-      }
+    const hasConfig = (src, tar) =>
+      availableConfigs.has(`${src}2${tar}.json`) || availableConfigs.has(`${src}2${tar}p.json`);
 
-      // 繁體中文 → 繁體中文（異體）
-      if (orig === "trad" && tar === "trad") {
-        if (variant === "hongkong") chain.push("t2hk.json");
-        else if (variant === "taiwan") chain.push("t2tw.json");
-        return chain;
+    function pipelineForSelection(src, tar, region) {
+      if (src === tar) return null;
+      const base = `${src}2${tar}.json`;
+      const withRegion = `${src}2${tar}p.json`;
+      if (region === "enable" && availableConfigs.has(withRegion)) {
+        return [withRegion];
       }
-
-      // 日文新字體 → 繁體中文
-      if (orig === "jpshinjitai" && tar === "trad") {
-        chain.push("jp2t.json");
-        return chain;
-      }
+      if (availableConfigs.has(base)) return [base];
       return null;
+    }
+
+    let manualConfig = null;
+
+    function renderPipelineChips(pipeline) {
+      const pipelineBox = document.getElementById("activePipeline");
+      pipelineBox.innerHTML = "";
+      if (manualConfig) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip chip-button";
+        btn.textContent = manualConfig;
+        btn.addEventListener("click", openConfigModal);
+        pipelineBox.appendChild(btn);
+        return;
+      }
+      if (!pipeline.length) return;
+      pipeline.forEach(cfg => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "chip chip-button";
+        btn.textContent = cfg;
+        btn.addEventListener("click", openConfigModal);
+        pipelineBox.appendChild(btn);
+      });
     }
 
     async function convertText() {
       const status = document.getElementById("status");
-      const pipelineBox = document.getElementById("activePipeline");
-      pipelineBox.innerHTML = "";
 
-      const orig = document.querySelector('input[name="orig"]:checked').value;
-      const tar = document.querySelector('input[name="tar"]:checked').value;
-      const variant = document.querySelector('input[name="variant"]:checked').value;
-      const idiom = document.querySelector('input[name="idiom"]:checked').value;
-      const pipeline = pipelineForSelection(orig, tar, variant, idiom);
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const tar = document.querySelector('input[name="target"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+      const pipeline = manualConfig ? [manualConfig] : pipelineForSelection(src, tar, region);
       if (pipeline === null) {
         status.textContent = "無效的轉換組合，請更改選項。";
         return;
@@ -531,9 +660,9 @@
         return;
       }
       status.textContent = "正在載入設定與字典...";
+      renderPipelineChips(pipeline);
       let current = inputText;
       for (const cfg of pipeline) {
-        pipelineBox.appendChild(Object.assign(document.createElement("span"), { className: "chip", textContent: cfg }));
         const handle = await ensureConfig(cfg);
         current = Api.convert(handle, current);
       }
@@ -585,13 +714,10 @@
       if (preloading) return;
       preloading = true;
       const status = document.getElementById("status");
-      const pipelineBox = document.getElementById("activePipeline");
-      pipelineBox.innerHTML = "";
-      const orig = document.querySelector('input[name="orig"]:checked').value;
-      const tar = document.querySelector('input[name="tar"]:checked').value;
-      const variant = document.querySelector('input[name="variant"]:checked').value;
-      const idiom = document.querySelector('input[name="idiom"]:checked').value;
-      const pipeline = pipelineForSelection(orig, tar, variant, idiom) || [];
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const tar = document.querySelector('input[name="target"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+      const pipeline = manualConfig ? [manualConfig] : (pipelineForSelection(src, tar, region) || []);
       if (!pipeline.length) { preloading = false; return; }
       try {
         status.textContent = "預先載入設定中...";
@@ -599,12 +725,7 @@
           await ensureConfig(cfg);
         }
         status.textContent = "設定已預先載入，可直接轉換。";
-        pipeline.forEach(cfg => {
-          const chip = document.createElement("span");
-          chip.className = "chip";
-          chip.textContent = cfg;
-          pipelineBox.appendChild(chip);
-        });
+        renderPipelineChips(pipeline);
       } catch (err) {
         status.textContent = "預先載入失敗：" + err;
       } finally {
@@ -612,61 +733,61 @@
       }
     }
 
-    const targetInputs = document.querySelectorAll('input[name="tar"]');
-    const variantInputs = document.querySelectorAll('input[name="variant"]');
-    const idiomInputs = document.querySelectorAll('input[name="idiom"]');
-    let variantWasForced = false;
-    const forceSelect = (inputs, value) => {
-      inputs.forEach(i => { if (i.value === value) i.checked = true; });
-    };
+    const targetInputs = document.querySelectorAll('input[name="target"]');
+    const regionInputs = document.querySelectorAll('input[name="region"]');
+    let targetManuallySelected = false;
+    let regionManuallySelected = false;
+    const forceSelect = (inputs, value) => { inputs.forEach(i => { if (i.value === value) i.checked = true; }); };
     function updateOptionAvailability() {
-      const origVal = document.querySelector('input[name="orig"]:checked').value;
+      const srcVal = document.querySelector('input[name="source"]:checked').value;
 
-      // 目標可選項
-      targetInputs.forEach(i => { i.disabled = false; });
-      if (origVal === "simp") {
-        targetInputs.forEach(i => {
-          if (i.value === "simp" || i.value === "jpshinjitai") i.disabled = true;
-        });
-      } else if (origVal === "trad") {
-        targetInputs.forEach(i => { if (i.value === "trad") i.disabled = true; });
-      } else if (origVal === "jpshinjitai") {
-        targetInputs.forEach(i => { if (i.value !== "trad") i.disabled = true; });
+      // 目標可選項僅在存在對應配置時可用
+      let firstEnabledTar = null;
+      targetInputs.forEach(i => {
+        const tarVal = i.value;
+        i.disabled = !hasConfig(srcVal, tarVal);
+        const label = i.parentElement;
+        if (label) label.classList.toggle("disabled", i.disabled);
+        if (!i.disabled && !firstEnabledTar) firstEnabledTar = i;
+      });
+      const currentTar = document.querySelector('input[name="target"]:checked');
+      if (currentTar && currentTar.disabled && firstEnabledTar) {
+        firstEnabledTar.checked = true;
+        targetManuallySelected = false;
+      } else if (!targetManuallySelected && firstEnabledTar) {
+        firstEnabledTar.checked = true;
       }
-      const currentTar = document.querySelector('input[name="tar"]:checked');
-      if (currentTar && currentTar.disabled) {
-        const firstEnabledTar = Array.from(targetInputs).find(i => !i.disabled);
-        if (firstEnabledTar) firstEnabledTar.checked = true;
-      }
-      const tarVal = document.querySelector('input[name="tar"]:checked').value;
+      const tarVal = document.querySelector('input[name="target"]:checked').value;
 
-      // 異體字：目標或原文為日文時禁用
-      const disableVariant = tarVal === "jpshinjitai" || origVal === "jpshinjitai";
-      variantInputs.forEach(i => { i.disabled = disableVariant; });
-      if (disableVariant) {
-        variantWasForced = true;
-        forceSelect(variantInputs, "opencc");
-      } else if (variantWasForced) {
-        // 恢復可用時回到默認台灣
-        forceSelect(variantInputs, "taiwan");
-        variantWasForced = false;
+      // 地域用詞：僅當存在 p 結尾配置時啟用
+      const regionSupported = availableConfigs.has(`${srcVal}2${tarVal}p.json`);
+      regionInputs.forEach(i => {
+        if (i.value === "none") { i.disabled = false; return; }
+        i.disabled = !regionSupported;
+        const label = i.parentElement;
+        if (label) label.classList.toggle("disabled", i.disabled);
+      });
+      const currentRegion = document.querySelector('input[name="region"]:checked')?.value;
+      if (!regionSupported) {
+        forceSelect(regionInputs, "none");
+        regionManuallySelected = false;
+      } else if (currentRegion !== "enable") {
+        // 若支援 p 配置且目前未選中，預設啟用（但尊重用戶手動選擇）
+        if (!regionManuallySelected) forceSelect(regionInputs, "enable");
       }
-      const variantVal = document.querySelector('input[name="variant"]:checked').value;
-
-      // 地域用詞：僅在 (簡->繁 且 台灣異體) 或 (繁->簡 且 台灣異體) 時啟用
-      let disableIdiom = true;
-      if (origVal === "simp" && tarVal === "trad" && variantVal === "taiwan") {
-        disableIdiom = false;
-      } else if (origVal === "trad" && tarVal === "simp" && variantVal === "taiwan") {
-        disableIdiom = false;
-      }
-      idiomInputs.forEach(i => { i.disabled = disableIdiom; });
-      if (disableIdiom) forceSelect(idiomInputs, "disabled");
     }
 
-    ["orig", "tar", "variant", "idiom"].forEach(name => {
+    ["source", "target", "region"].forEach(name => {
       document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
         r.addEventListener("change", () => {
+          if (name === "target") targetManuallySelected = true;
+          if (name === "region") regionManuallySelected = true;
+          if (manualConfig && name !== "region") {
+            // 來源或目標變更時退出自選配置，避免混用
+            manualConfig = null;
+            document.getElementById("status").textContent = "已返回來源/目標組合";
+            renderPipelineChips([]);
+          }
           updateOptionAvailability();
           preloadCurrentPipeline();
         });
@@ -676,6 +797,64 @@
     // 開啟頁面就預載預設組合
     updateOptionAvailability();
     preloadCurrentPipeline();
+
+    // ----- Modal: direct config selection -----
+    const configList = document.getElementById("configList");
+    const configModal = document.getElementById("configModalBackdrop");
+    const openConfigModalBtn = document.getElementById("openConfigModal");
+    const closeConfigModalBtn = document.getElementById("closeConfigModal");
+
+    function openConfigModal() {
+      configModal.style.display = "flex";
+    }
+    function closeConfigModal() {
+      configModal.style.display = "none";
+    }
+    const selectRadio = (name, value) => {
+      document.querySelectorAll(`input[name="${name}"]`).forEach(i => { i.checked = i.value === value; });
+    };
+    function applyManualConfig(name) {
+      manualConfig = name;
+      // 解析 config 名：如 s2twp => source=s, target=tw, region=enable
+      const base = name.replace(".json", "");
+      const [srcPart, tarPartRaw] = base.split("2");
+      const regionVal = base.endsWith("p") ? "enable" : "none";
+      const tarPart = regionVal === "enable" ? tarPartRaw.slice(0, -1) : tarPartRaw;
+
+      targetManuallySelected = true;
+      regionManuallySelected = true;
+      selectRadio("source", srcPart);
+      selectRadio("target", tarPart);
+      selectRadio("region", regionVal);
+      updateOptionAvailability();
+
+      document.getElementById("status").textContent = `已切換到手動配置：${name}`;
+      closeConfigModal();
+      renderPipelineChips([name]);
+      preloadCurrentPipeline();
+    }
+
+    // Build config list with descriptions
+    configList.innerHTML = "";
+    Object.entries(configDescriptions).forEach(([name, desc]) => {
+      const card = document.createElement("div");
+      card.className = "config-card";
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = name;
+      btn.onclick = () => applyManualConfig(name);
+      const p = document.createElement("p");
+      p.textContent = desc;
+      card.appendChild(btn);
+      card.appendChild(p);
+      configList.appendChild(card);
+    });
+
+    openConfigModalBtn.addEventListener("click", openConfigModal);
+    closeConfigModalBtn.addEventListener("click", closeConfigModal);
+    configModal.addEventListener("click", (e) => {
+      if (e.target === configModal) closeConfigModal();
+    });
   </script>
   <div class="container"
     style="margin-top: 22px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.5;">
