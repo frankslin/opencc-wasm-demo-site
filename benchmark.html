@@ -24,8 +24,8 @@
 
       <div class="options">
         <div>
-          <label for="configName">配置（如 s2t.json）</label>
-          <input id="configName" value="s2t.json"
+          <label for="configName">配置（如 s2twp.json）</label>
+          <input id="configName" value="s2twp.json"
             style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: #f9fafb;" />
         </div>
       </div>
@@ -66,6 +66,31 @@
       throw lastErr || new Error("opencc-js not available");
     }
 
+    async function runBenchmark(label, createConverter, input, lines) {
+      try {
+        const tLoad0 = performance.now();
+        const conv = await createConverter();
+        const tLoad1 = performance.now();
+
+        await conv("預熱");
+
+        const runs = [];
+        let result = "";
+        for (let i = 0; i < 5; i++) {
+          const t0 = performance.now();
+          result = await conv(input);
+          const t1 = performance.now();
+          runs.push(t1 - t0);
+        }
+        const avg = runs.reduce((a, b) => a + b, 0) / runs.length;
+        lines.push(`${label} 加载: ${(tLoad1 - tLoad0).toFixed(2)} ms，转换(5次): ${runs.map(n => n.toFixed(2)).join(", ")} ms，平均: ${avg.toFixed(2)} ms`);
+        lines.push(`${label} 输出: ${result}`);
+      } catch (e) {
+        lines.push(`${label} 失败: ${e}`);
+        console.error(e);
+      }
+    }
+
     document.getElementById("run").onclick = async () => {
       const cfg = document.getElementById("configName").value.trim();
       const text = document.getElementById("inputText").value;
@@ -79,60 +104,27 @@
       lines.push(`输入长度: ${text.length} 字符`);
 
       // WASM
-      try {
-        const tLoad0 = performance.now();
-        // Use local wasm path explicit trick if needed, but here we assume prepare.js ran correctly
-        // and defaults work or we rely on the same fix as index.html if it fails.
-        // For consistency let's try default first.
-        const wasmConv = OpenCCWasm.Converter({
+      await runBenchmark(
+        "WASM",
+        () => OpenCCWasm.Converter({
           config: cfg,
           wasmPath: './vendor/opencc-wasm/dist/opencc-wasm.wasm'
-        });
-        await wasmConv("预热");
-        const tLoad1 = performance.now();
-        const runs = [];
-        let wasmResult = "";
-        for (let i = 0; i < 5; i++) {
-          const t0 = performance.now();
-          wasmResult = await wasmConv(text);
-          const t1 = performance.now();
-          runs.push(t1 - t0);
-        }
-        const avg = runs.reduce((a, b) => a + b, 0) / runs.length;
-        lines.push(`WASM 加载: ${(tLoad1 - tLoad0).toFixed(2)} ms，转换(5次): ${runs.map(n => n.toFixed(2)).join(", ")} ms，平均: ${avg.toFixed(2)} ms`);
-        lines.push(`WASM 输出: ${wasmResult}`);
-      } catch (e) {
-        lines.push("WASM 失败: " + e);
-        console.error(e);
-      }
+        }),
+        text,
+        lines
+      );
 
-      // JS（仅支持部分 from/to 映射）
-      const configToLocale = {
-        "s2t.json": { from: "cn", to: "t" },
-        "t2s.json": { from: "t", to: "cn" },
-      };
-      if (configToLocale[cfg]) {
-        try {
-          const tLoad0 = performance.now();
-          const OpenCCJS = await loadOpenCCJS();
-          const jsConv = OpenCCJS.Converter(configToLocale[cfg]);
-          const tLoad1 = performance.now();
-          const runs = [];
-          let jsResult = "";
-          for (let i = 0; i < 5; i++) {
-            const t0 = performance.now();
-            jsResult = jsConv(text);
-            const t1 = performance.now();
-            runs.push(t1 - t0);
-          }
-          const avg = runs.reduce((a, b) => a + b, 0) / runs.length;
-          lines.push(`opencc-js 加载: ${(tLoad1 - tLoad0).toFixed(2)} ms，转换(5次): ${runs.map(n => n.toFixed(2)).join(", ")} ms，平均: ${avg.toFixed(2)} ms`);
-          lines.push(`opencc-js 输出: ${jsResult}`);
-        } catch (e) {
-          lines.push("opencc-js 运行失败: " + e);
-        }
-      } else {
-        lines.push("opencc-js 仅示例对比 s2t.json / t2s.json，其它配置暂不对比。");
+      // JS
+      try {
+        const OpenCCJS = await loadOpenCCJS();
+        await runBenchmark(
+          "opencc-js",
+          () => OpenCCJS.Converter({ config: cfg }),
+          text,
+          lines
+        );
+      } catch (e) {
+        lines.push("opencc-js 加载失败: " + e);
       }
 
       out.textContent = lines.join("\n");
