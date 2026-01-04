@@ -1,34 +1,52 @@
 <!doctype html>
 <html lang="zh">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OpenCC WASM vs opencc-js Benchmark</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 760px; margin: 24px auto; padding: 0 16px; }
-    textarea { width: 100%; height: 140px; font-size: 14px; padding: 10px; }
-    button { padding: 10px 14px; margin-top: 10px; }
-    pre { background: #f7f7f7; padding: 12px; border: 1px solid #ddd; white-space: pre-wrap; }
-    .footer { text-align: center; color: #666; margin: 22px 0 10px; font-size: 14px; }
-    .footer a { color: #0066cc; }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <h1>OpenCC WASM vs opencc-js Benchmark</h1>
-  <p>输入需要转换的文本（建议较长），选择配置后比较两者耗时。</p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <h1>OpenCC Benchmark</h1>
+      </div>
+    </header>
 
-  <label>配置（如 s2t.json）</label>
-  <input id="configName" value="s2t.json" style="width: 100%; padding: 8px; margin-bottom: 8px;" />
+    <div class="card-section">
+      <p style="margin-bottom: 16px; color: var(--text-sub);">输入需要转换的文本（建议较长），选择配置后比较两者耗时。</p>
 
-  <label>输入文本</label>
-  <textarea id="inputText">鼠标里面的硅二极管坏了，导致光标分辨率降低。</textarea>
+      <div class="options">
+        <div>
+          <label for="configName">配置（如 s2t.json）</label>
+          <input id="configName" value="s2t.json"
+            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid var(--border); background: #f9fafb;" />
+        </div>
+      </div>
 
-  <button id="run">运行 Benchmark</button>
+      <label for="inputText">输入文本</label>
+      <textarea id="inputText" style="min-height: 120px;">鼠标里面的硅二极管坏了，导致光标分辨率降低。</textarea>
 
-  <h3>结果</h3>
-  <pre id="output"></pre>
+      <div class="toolbar">
+        <button id="run" class="btn btn-primary">运行 Benchmark</button>
+      </div>
+    </div>
 
-  <p class="footer">本頁基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a></p>
+    <div class="card-section">
+      <h2>结果</h2>
+      <div class="output-box" id="output" style="min-height: 200px;"></div>
+    </div>
+
+    <div class="footer">
+      本頁基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm</a>
+    </div>
+  </div>
 
   <script type="module">
     import OpenCCWasm from "./vendor/opencc-wasm/esm/index.js";
@@ -63,7 +81,13 @@
       // WASM
       try {
         const tLoad0 = performance.now();
-        const wasmConv = OpenCCWasm.Converter({ config: cfg });
+        // Use local wasm path explicit trick if needed, but here we assume prepare.js ran correctly
+        // and defaults work or we rely on the same fix as index.html if it fails.
+        // For consistency let's try default first.
+        const wasmConv = OpenCCWasm.Converter({
+          config: cfg,
+          wasmPath: './vendor/opencc-wasm/dist/opencc-wasm.wasm'
+        });
         await wasmConv("预热");
         const tLoad1 = performance.now();
         const runs = [];
@@ -79,6 +103,7 @@
         lines.push(`WASM 输出: ${wasmResult}`);
       } catch (e) {
         lines.push("WASM 失败: " + e);
+        console.error(e);
       }
 
       // JS（仅支持部分 from/to 映射）
@@ -114,4 +139,5 @@
     };
   </script>
 </body>
+
 </html>

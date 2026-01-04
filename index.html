@@ -5,704 +5,122 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OpenCC WASM 經典版</title>
-  <style>
-    :root {
-      --bg: #1e1e1e;
-      --card: #252526;
-      --input: #3c3c3c;
-      --border: #474747;
-      --accent: #3794ff;
-      --accent-2: #1e70d1;
-      --text: #cccccc;
-      --muted: #858585;
-      --success: #4ec9b0;
-      --error: #f44747;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 20px 14px 60px;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
-      line-height: 1.6;
-      font-size: 18px;
-    }
-
-    header {
-      max-width: 980px;
-      margin: 0 auto 18px;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    header .logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 12px;
-      background: #2e2e2e;
-      border: 1px solid var(--border);
-      padding: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    header .logo svg path {
-      fill: var(--text);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 26px;
-      font-weight: 800;
-      letter-spacing: 0.2px;
-    }
-
-    h1 span {
-      display: block;
-      font-size: 16px;
-      color: var(--muted);
-      font-weight: 500;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 16px 18px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-    }
-
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 8px;
-      font-size: 20px;
-    }
-
-    .section {
-      margin-top: 10px;
-    }
-
-    .options {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-    .option {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 12px;
-      background: #2d2d2d;
-    }
-
-    .option legend {
-      font-size: 16px;
-      color: var(--muted);
-      margin-bottom: 6px;
-      padding: 0;
-    }
-
-    .option label {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 16px;
-    }
-
-    .option label.disabled {
-      color: #666;
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
-    .option input:disabled {
-      cursor: not-allowed;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 180px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--input);
-      color: var(--text);
-      padding: 12px;
-      font-size: 17px;
-      resize: vertical;
-    }
-
-    .output-box {
-      min-height: 140px;
-      white-space: pre-wrap;
-      word-break: break-word;
-      border-radius: 10px;
-      border: 1px dashed var(--border);
-      background: #2d2d2d;
-      padding: 12px;
-      font-size: 16px;
-    }
-
-    .toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .footer {
-      max-width: 980px;
-      margin: 26px auto 8px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .footer a {
-      color: var(--accent);
-    }
-
-    a:visited {
-      color: var(--accent);
-    }
-
-    button {
-      border: none;
-      cursor: pointer;
-      border-radius: 10px;
-      padding: 11px 14px;
-      font-size: 17px;
-      font-weight: 700;
-      color: #ffffff;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
-      transition: transform 0.12s ease, box-shadow 0.2s ease;
-    }
-
-    button:active {
-      transform: translateY(1px);
-    }
-
-    button.secondary {
-      background: #1d283a;
-      color: var(--text);
-      box-shadow: none;
-      border: 1px solid var(--border);
-    }
-
-    button:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .icon-btn {
-      width: auto !important;
-      min-width: 0;
-      padding: 8px 10px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 8px;
-    }
-
-#activePipeline {
-  display: flex;
-  flex: 0 0 auto;
-  min-width: 160px;
-  max-width: 240px;
-  min-height: 36px;
-  white-space: nowrap;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 6px;
-      margin-top: 4px;
-    }
-
-    .chip {
-      background: #2d2d2d;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 16px;
-      color: var(--muted);
-      height: 32px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chip-button {
-      cursor: pointer;
-      transition: transform 0.08s ease, box-shadow 0.16s ease;
-      background: #30343a;
-      color: var(--text);
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    }
-
-    .chip-button:active {
-      transform: translateY(1px);
-      box-shadow: none;
-    }
-
-    .muted {
-      color: var(--muted);
-    }
-
-    .status {
-      margin-top: 8px;
-      font-size: 16px;
-      color: var(--muted);
-      white-space: pre-wrap;
-    }
-
-    .card.stretch {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .card.stretch textarea,
-    .card.stretch .output-box {
-      flex: 0 1 auto;
-      min-height: 220px;
-    }
-
-
-.mode-header-actions {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: nowrap;
-  justify-content: flex-end;
-  flex: 0 0 auto;
-}
-
-.mode-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: nowrap;
-  width: 100%;
-}
-.mode-header h2 {
-  margin: 0;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-    #openConfigModal {
-      white-space: nowrap;
-      padding: 8px 12px;
-      font-weight: 700;
-      flex: 0 0 auto;
-    }
-
-    /* Modal */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.55);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-
-    .modal {
-      background: #1f1f1f;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 12px 14px;
-      max-width: 680px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
-      position: relative;
-    }
-
-    .modal-header {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background: #1f1f1f;
-      padding: 2px 0 8px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .modal h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-
-    .modal-close {
-      border: 1px solid var(--border);
-      background: #2a2a2a;
-      color: var(--text);
-      font-size: 16px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 6px 10px;
-      border-radius: 8px;
-      width: auto;
-    }
-
-    .config-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 6px;
-      margin-top: 10px;
-    }
-
-    .config-card {
-      background: #242424;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 8px;
-      display: grid;
-      gap: 6px;
-    }
-
-    .config-card button {
-      width: 100%;
-      background: #1d283a;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 8px;
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .config-card p {
-      margin: 0;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.45;
-    }
-
-    @media (max-width: 640px) {
-      /* 中小螢幕：選項固定雙欄，地域用詞佔滿一欄 */
-      .options {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .options #regionType {
-        grid-column: 1 / -1;
-      }
-    }
-
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 22px;
-      }
-
-      .card {
-        padding: 14px;
-      }
-
-      .toolbar {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-
-      textarea,
-      .output-box {
-        font-size: 15px;
-      }
-
-      .modal {
-        width: 96%;
-      }
-
-      .config-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 6px;
-      }
-
-      .config-card {
-        padding: 8px;
-      }
-
-      .config-card button {
-        font-size: 14px;
-        padding: 8px;
-      }
-
-      .config-card p {
-        font-size: 13px;
-      }
-
-  .mode-header-actions {
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: flex-end;
-  }
-
-      #openConfigModal {
-        padding: 8px 10px;
-        font-size: 15px;
-      }
-
-      /* 手機：地域用詞轉換橫排，並占滿兩欄 */
-      #regionType {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 4px 10px;
-      }
-
-      #regionType label {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 2px;
-        line-height: 1.35;
-      }
-
-      .icon-btn {
-        width: auto !important;
-      }
-
-      /* 雙欄選項，地域用詞佔滿一欄；上下排列輸入/輸出 */
-      .options {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .options #regionType {
-        grid-column: 1 / -1;
-      }
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .mode-header h2 {
-        flex: 0 1 auto;
-      }
-      #activePipeline {
-        min-width: 140px;
-        max-width: 180px;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <header>
-    <div class="logo" aria-label="OpenCC logo">
-      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 152 152">
-        <!-- https://commons.wikimedia.org/wiki/File:%E5%AD%97_favicon.svg -->
-        <path
-          d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
-        <path
-          d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
-      </svg>
-    </div>
-    <h1>OpenCC 轉換工具演示 <span>更新日期：__BUILD_DATE__</span></h1>
-  </header>
-
-  <div class="card" style="max-width: 980px; margin: 0 auto 16px;">
-    <div class="mode-header">
-      <h2 style="margin: 0;">選擇轉換模式</h2>
-      <div class="mode-header-actions">
-        <div id="activePipeline" class="chips" style="margin-top:4px;"></div>
-        <button id="openConfigModal" class="secondary icon-btn" aria-label="選擇配置" title="選擇配置">⚙️</button>
+  <div class="container">
+    <header>
+      <div class="brand" aria-label="OpenCC logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+          <!-- Logo Path -->
+          <path fill="currentColor"
+            d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
+          <path fill="currentColor"
+            d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
+        </svg>
+        <div>
+          <h1>OpenCC 轉換工具演示</h1>
+          <span>更新日期：__BUILD_DATE__</span>
+        </div>
       </div>
-    </div>
-    <div class="options">
-      <fieldset class="option" id="sourceType">
-        <legend>來源</legend>
-        <label><input type="radio" name="source" value="s" checked> 簡體中文 (s)</label>
-        <label><input type="radio" name="source" value="tw"> 台灣正體 (tw)</label>
-        <label><input type="radio" name="source" value="hk"> 香港繁體 (hk)</label>
-        <label><input type="radio" name="source" value="t"> OpenCC 標準繁體 (t)</label>
-        <label><input type="radio" name="source" value="jp"> 日文新字體 (jp)</label>
-      </fieldset>
-      <fieldset class="option" id="targetType">
-        <legend>目標</legend>
-        <label><input type="radio" name="target" value="s"> 簡體中文 (s)</label>
-        <label><input type="radio" name="target" value="tw"> 台灣正體 (tw)</label>
-        <label><input type="radio" name="target" value="hk"> 香港繁體 (hk)</label>
-        <label><input type="radio" name="target" value="t" checked> OpenCC 標準繁體 (t)</label>
-        <label><input type="radio" name="target" value="jp"> 日文新字體 (jp)</label>
-      </fieldset>
-      <fieldset class="option" id="regionType">
-        <legend>地域用詞轉換</legend>
-        <label><input type="radio" name="region" value="enable"> 轉換地域用詞 (p)</label>
-        <label><input type="radio" name="region" value="none" checked> 不轉換</label>
-      </fieldset>
-    </div>
-  </div>
+      <div id="statusBadge" class="status-badge">
+        <div class="status-dot"></div>
+        <span id="statusText">準備中...</span>
+      </div>
+    </header>
 
-  <div class="container two-col">
-    <div class="card stretch">
-      <h2>輸入原文</h2>
-      <textarea id="textInput" placeholder="請輸入要轉換的文本"></textarea>
-      <div class="toolbar">
-        <button id="convertBtn">轉換</button>
-        <button id="resetBtn" class="secondary">清空輸入框</button>
+    <div class="card-section">
+      <div class="pane-header">
+        <h2 style="margin:0">選擇轉換模式</h2>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div id="activePipeline" class="chips"></div>
+          <button id="openConfigModal" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.9em;">⚙️</button>
+        </div>
+      </div>
+      <div class="options">
+        <fieldset>
+          <legend>來源</legend>
+          <label><input type="radio" name="source" value="s" checked> 簡體中文 (s)</label>
+          <label><input type="radio" name="source" value="tw"> 台灣正體 (tw)</label>
+          <label><input type="radio" name="source" value="hk"> 香港繁體 (hk)</label>
+          <label><input type="radio" name="source" value="t"> OpenCC 標準繁體 (t)</label>
+          <label><input type="radio" name="source" value="jp"> 日文新字體 (jp)</label>
+        </fieldset>
+        <fieldset>
+          <legend>目標</legend>
+          <label><input type="radio" name="target" value="s"> 簡體中文 (s)</label>
+          <label><input type="radio" name="target" value="tw"> 台灣正體 (tw)</label>
+          <label><input type="radio" name="target" value="hk"> 香港繁體 (hk)</label>
+          <label><input type="radio" name="target" value="t" checked> OpenCC 標準繁體 (t)</label>
+          <label><input type="radio" name="target" value="jp"> 日文新字體 (jp)</label>
+        </fieldset>
+        <fieldset>
+          <legend>地域用詞轉換</legend>
+          <label><input type="radio" name="region" value="enable"> 轉換地域用詞 (p)</label>
+          <label><input type="radio" name="region" value="none" checked> 不轉換</label>
+        </fieldset>
       </div>
     </div>
 
-    <div class="card stretch">
-      <h2>轉換結果</h2>
-      <div class="output-box" id="output"></div>
-      <div class="toolbar" style="justify-content: flex-end; align-items: center;">
-        <button id="copyBtn" class="secondary">複製結果</button>
+    <div class="editor-area">
+      <div class="pane">
+        <div class="pane-header">
+          <span class="pane-title">輸入原文</span>
+          <button id="resetBtn" class="copy-btn">清空</button>
+        </div>
+        <textarea id="textInput" placeholder="請輸入要轉換的文本"></textarea>
       </div>
+
+      <div class="divider">
+        <button id="convertBtn" class="action-btn" title="點擊轉換">
+          <svg id="icon-convert" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+          <div id="icon-loading" class="loader" style="display: none;"></div>
+        </button>
+      </div>
+
+      <div class="pane">
+        <div class="pane-header">
+          <span class="pane-title">轉換結果</span>
+          <button id="copyBtn" class="copy-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            複製
+          </button>
+        </div>
+        <div class="output-box" id="output"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      本頁面使用 <a href="https://npmjs.com/package/opencc-wasm" target="_blank">opencc-wasm</a> 於本地進行轉換。<br>OpenCC <a href="https://github.com/byvoid/OpenCC" target="_blank">GitHub</a> <a href="https://t.me/+TVq4LmPRlN9hZjE0" target="_blank">Telegram</a>
     </div>
   </div>
 
   <div id="configModalBackdrop" class="modal-backdrop">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="configModalTitle">
+    <div class="modal">
       <div class="modal-header">
-        <h3 id="configModalTitle">選擇配置檔</h3>
-        <button id="closeConfigModal" class="modal-close icon-btn" aria-label="關閉" title="關閉">✕</button>
+        <h3>選擇配置檔</h3>
+        <button id="closeConfigModal" class="modal-close">✕</button>
       </div>
-      <p class="muted" style="margin:8px 0;">點擊配置名稱立即切換。</p>
+      <p style="margin-bottom:16px; color:var(--text-sub);">點擊預定義的配置文件以直接套用。</p>
       <div id="configList" class="config-grid"></div>
     </div>
   </div>
 
   <script type="module">
-    let cachedFactory = null;
-    let Module = null;
-    let Api = null;
-    const vendorBase = new URL("./vendor/opencc-wasm/", window.location.href);
-    const locateFile = (path) => new URL(path, vendorBase).href;
+    import OpenCC from "./vendor/opencc-wasm/esm/index.js";
 
-    const handles = new Map();
-    const loadedDicts = new Set();
-    const loadedConfigs = new Set();
-    const readableNames = new Map();
-    let preloading = false;
-
-    async function loadWasmFactory() {
-      if (cachedFactory) return cachedFactory;
-      const mod = await import(new URL("esm/opencc-wasm.js", vendorBase).href);
-      cachedFactory = mod.default;
-      return cachedFactory;
-    }
-
-    async function initModule() {
-      if (!Module) {
-        const createOpenCCWasm = await loadWasmFactory();
-        Module = await createOpenCCWasm({ locateFile });
-      }
-      if (!Api) {
-        Api = {
-          create: Module.cwrap("opencc_create", "number", ["string"]),
-          convert: Module.cwrap("opencc_convert", "string", ["number", "string"]),
-          destroy: Module.cwrap("opencc_destroy", null, ["number"]),
-        };
-      }
-      return Module;
-    }
-
-    const collectOcd2Files = (dictNode, acc) => {
-      if (!dictNode || typeof dictNode !== "object") return;
-      if (dictNode.type === "ocd2" && dictNode.file) acc.add(dictNode.file);
-      if (dictNode.type === "group" && Array.isArray(dictNode.dicts)) {
-        dictNode.dicts.forEach(d => collectOcd2Files(d, acc));
-      }
-    };
-
-    async function ensureConfig(cfgName) {
-      if (handles.has(cfgName) && loadedConfigs.has(cfgName)) return handles.get(cfgName);
-      const mod = await initModule();
-      const out = document.getElementById("status");
-      try {
-        out.textContent = `拉取設定 ${cfgName}...`;
-        try { mod.FS.mkdir("/data"); } catch (e) { }
-        try { mod.FS.mkdir("/data/config"); } catch (e) { }
-        try { mod.FS.mkdir("/data/dict"); } catch (e) { }
-
-        const base = vendorBase.href;
-        const cfgUrl = `${base}data/config/${cfgName}`;
-        const cfgResp = await fetch(cfgUrl);
-        if (!cfgResp.ok) throw new Error(`${cfgUrl} -> HTTP ${cfgResp.status}`);
-        const cfgJson = await cfgResp.json();
-        const dicts = new Set();
-        collectOcd2Files(cfgJson.segmentation?.dict, dicts);
-        if (Array.isArray(cfgJson.conversion_chain)) {
-          cfgJson.conversion_chain.forEach(item => collectOcd2Files(item?.dict, dicts));
-        }
-        const written = [`/data/config/${cfgName}`];
-        for (const file of dicts) {
-          if (!loadedDicts.has(file)) {
-            const url = `${base}data/dict/${file}`;
-            const resp = await fetch(url);
-            if (!resp.ok) throw new Error(`${url} -> HTTP ${resp.status}`);
-            const buf = new Uint8Array(await resp.arrayBuffer());
-            mod.FS.writeFile(`/data/dict/${file}`, buf);
-            loadedDicts.add(file);
-          }
-          written.push(`/data/dict/${file}`);
-        }
-        const patchPaths = (node) => {
-          if (!node || typeof node !== "object") return;
-          if (node.type === "ocd2" && node.file) node.file = `/data/dict/${node.file}`;
-          if (node.type === "group" && Array.isArray(node.dicts)) node.dicts.forEach(patchPaths);
-        };
-        patchPaths(cfgJson.segmentation?.dict);
-        if (Array.isArray(cfgJson.conversion_chain)) {
-          cfgJson.conversion_chain.forEach(item => patchPaths(item?.dict));
-        }
-        mod.FS.writeFile(`/data/config/${cfgName}`, JSON.stringify(cfgJson));
-        if (handles.has(cfgName)) Api.destroy(handles.get(cfgName));
-        const handle = Api.create(`/data/config/${cfgName}`);
-        if (!handle || handle < 0) throw new Error("opencc_create failed");
-        handles.set(cfgName, handle);
-        loadedConfigs.add(cfgName);
-        readableNames.set(cfgName, cfgJson.name || cfgName);
-        document.getElementById("filesLoaded").textContent = "字典檔案已載入";
-        return handle;
-      } catch (err) {
-        out.textContent = "載入失敗：" + err;
-        throw err;
-      }
-    }
-
+    // Configuration Definitions
     const availableConfigs = new Set([
       "hk2s.json", "hk2t.json", "jp2t.json", "s2hk.json", "s2t.json", "s2twp.json",
       "s2tw.json", "t2hk.json", "t2jp.json", "t2s.json", "t2tw.json",
@@ -710,303 +128,349 @@
     ]);
 
     const configDescriptions = {
-      "s2t.json": "簡體 → 標準繁體",
+      "s2t.json": "簡體 → OpenCC 標準繁體",
       "s2tw.json": "簡體 → 台灣正體",
-      "s2twp.json": "簡體 → 台灣正體（含用詞）",
+      "s2twp.json": "簡體 → 台灣正體（轉換地域用詞）",
       "s2hk.json": "簡體 → 香港繁體",
       "t2s.json": "繁體 → 簡體",
       "tw2s.json": "台灣正體 → 簡體",
-      "tw2sp.json": "台灣正體 → 簡體（含用詞）",
-      "tw2t.json": "台灣正體 → 標準繁體",
-      "t2tw.json": "標準繁體 → 台灣正體",
-      "t2hk.json": "標準繁體 → 香港繁體",
+      "tw2sp.json": "台灣正體 → 簡體（轉換地域用詞）",
+      "tw2t.json": "台灣正體 → OpenCC 標準繁體",
+      "t2tw.json": "OpenCC 標準繁體 → 台灣正體",
+      "t2hk.json": "OpenCC 標準繁體 → 香港繁體",
       "hk2s.json": "香港繁體 → 簡體",
-      "hk2t.json": "香港繁體 → 標準繁體",
-      "jp2t.json": "日文新字體 → 繁體",
-      "t2jp.json": "繁體 → 日文新字體"
+      "hk2t.json": "香港繁體 → OpenCC 標準繁體",
+      "jp2t.json": "日文新字體 → 日文舊字體（繁體）",
+      "t2jp.json": "日文舊字體（繁體） → 日文新字體"
     };
 
-    const hasConfig = (src, tar) =>
-      availableConfigs.has(`${src}2${tar}.json`) || availableConfigs.has(`${src}2${tar}p.json`);
+    // State
+    let manualConfig = null;
+    let converters = new Map(); // cache converters by config name
 
-    function pipelineForSelection(src, tar, region) {
-      if (src === tar) return null;
+    // UI Refs
+    const textInput = document.getElementById("textInput");
+    const output = document.getElementById("output");
+    const statusBadge = document.getElementById("statusBadge");
+    const statusText = document.getElementById("statusText");
+    const activePipeline = document.getElementById("activePipeline");
+    const convertBtn = document.getElementById("convertBtn");
+    const iconConvert = document.getElementById("icon-convert");
+    const iconLoading = document.getElementById("icon-loading");
+
+    // Helper: Update Status
+    function updateStatus(msg, type = 'normal') {
+      statusText.textContent = msg;
+      statusBadge.className = 'status-badge ' + (type === 'success' ? 'ready' : type === 'error' ? 'error' : '');
+    }
+
+    // Helper: Toggle Loading
+    function toggleLoading(isLoading) {
+      if (isLoading) {
+        iconConvert.style.display = 'none';
+        iconLoading.style.display = 'block';
+        convertBtn.disabled = true;
+      } else {
+        iconConvert.style.display = 'block';
+        iconLoading.style.display = 'none';
+        convertBtn.disabled = false;
+      }
+    }
+
+    // Helper: Determining pipeline from radio selection
+    function getPipeline() {
+      if (manualConfig) return [manualConfig];
+
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const tar = document.querySelector('input[name="target"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+
+      if (src === tar) return [];
+
       const base = `${src}2${tar}.json`;
       const withRegion = `${src}2${tar}p.json`;
+
       if (region === "enable" && availableConfigs.has(withRegion)) {
         return [withRegion];
       }
-      if (availableConfigs.has(base)) return [base];
-      return null;
+      if (availableConfigs.has(base)) {
+        return [base];
+      }
+      return null; // invalid
     }
 
-    let manualConfig = null;
+    // UI: Render Pipeline Chips
+    function renderPipeline() {
+      const pipeline = getPipeline();
+      activePipeline.innerHTML = '';
 
-    function renderPipelineChips(pipeline) {
-      const pipelineBox = document.getElementById("activePipeline");
-      pipelineBox.innerHTML = "";
-      if (manualConfig) {
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "chip chip-button";
-        btn.textContent = manualConfig;
-        btn.addEventListener("click", openConfigModal);
-        pipelineBox.appendChild(btn);
+      if (pipeline === null) {
+        activePipeline.innerHTML = '<span class="chip" style="background:#fee2e2;color:#991b1b">無效組合</span>';
         return;
       }
-      if (!pipeline.length) return;
+      if (pipeline.length === 0) {
+        activePipeline.innerHTML = '<span class="chip">無轉換 (同源)</span>';
+        return;
+      }
+
       pipeline.forEach(cfg => {
         const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "chip chip-button";
+        btn.className = "chip";
+        btn.style.cursor = "pointer";
         btn.textContent = cfg;
-        btn.addEventListener("click", openConfigModal);
-        pipelineBox.appendChild(btn);
+        btn.onclick = openConfigModal;
+        btn.title = configDescriptions[cfg] || cfg;
+        activePipeline.appendChild(btn);
       });
     }
 
+    // Logic: Convert
     async function convertText() {
-      const status = document.getElementById("status");
+      const pipeline = getPipeline();
+      const text = textInput.value;
 
+      if (pipeline === null) {
+        alert("無效的轉換來源與目標組合");
+        return;
+      }
+
+      if (pipeline.length === 0 || !text) {
+        output.textContent = text;
+        return;
+      }
+
+      toggleLoading(true);
+      updateStatus("轉換中...");
+
+      try {
+        let currentText = text;
+
+        // Process pipeline sequentially
+        for (const cfg of pipeline) {
+          let converter = converters.get(cfg);
+          if (!converter) {
+            // Initialize new converter with local assets
+            converter = OpenCC.Converter({ config: cfg });
+            converters.set(cfg, converter);
+          }
+          currentText = await converter(currentText);
+        }
+
+        output.textContent = currentText;
+        updateStatus("完成", 'success');
+      } catch (err) {
+        console.error(err);
+        updateStatus("錯誤", 'error');
+        output.textContent = "轉換發生錯誤: " + err.message;
+      } finally {
+        toggleLoading(false);
+      }
+    }
+
+    // Modal Logic
+    const modalBackdrop = document.getElementById("configModalBackdrop");
+    const configList = document.getElementById("configList");
+
+    function openConfigModal() {
+      modalBackdrop.style.display = "flex";
+      renderConfigList();
+    }
+
+    function closeConfigModal() {
+      modalBackdrop.style.display = "none";
+    }
+
+    function renderConfigList() {
+      configList.innerHTML = "";
+      Object.entries(configDescriptions).forEach(([cfg, desc]) => {
+        const btn = document.createElement("button");
+        btn.className = "config-btn";
+        btn.innerHTML = `<strong>${cfg}</strong><span>${desc}</span>`;
+        btn.onclick = () => {
+          // Attempt to reverse-sync to radios
+          // Format: src + '2' + tar + (p?) + '.json'
+          const m = cfg.match(/^([a-z]+)2([a-z]+)(p?)\.json$/);
+          if (m) {
+            const [_, s, t, p] = m;
+
+            // Check if these values exist in our radio options
+            const sRadio = document.querySelector(`input[name="source"][value="${s}"]`);
+            const tRadio = document.querySelector(`input[name="target"][value="${t}"]`);
+
+            if (sRadio) sRadio.checked = true;
+            if (tRadio) tRadio.checked = true;
+
+            const rVal = p ? 'enable' : 'none';
+            const rRadio = document.querySelector(`input[name="region"][value="${rVal}"]`);
+            if (rRadio) rRadio.checked = true;
+
+            manualConfig = null; // Sync successful, treat as normal selection
+            updateUi(false, false);
+          } else {
+            manualConfig = cfg; // Fallback for custom configs
+          }
+
+          closeConfigModal();
+          renderPipeline();
+          convertText();
+        };
+        configList.appendChild(btn);
+      });
+    }
+
+    // Explicitly bind click handler just in case
+    const openBtn = document.getElementById("openConfigModal");
+    if (openBtn) openBtn.onclick = openConfigModal;
+
+    document.getElementById("closeConfigModal").onclick = closeConfigModal;
+    modalBackdrop.onclick = (e) => {
+      if (e.target === modalBackdrop) closeConfigModal();
+    };
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalBackdrop.style.display === "flex") {
+        closeConfigModal();
+      }
+    });
+
+    // Helper: Toggle disabled styles for radio labels
+    function syncOptionDisabledState(radio) {
+      if (!radio) return;
+      const label = radio.parentElement;
+      if (label) {
+        label.classList.toggle("option-disabled", radio.disabled);
+      }
+    }
+
+    // Helper: Update Region Radio State
+    function updateRegionState(resetPreference) {
       const src = document.querySelector('input[name="source"]:checked').value;
       const tar = document.querySelector('input[name="target"]:checked').value;
-      const region = document.querySelector('input[name="region"]:checked').value;
-      const pipeline = manualConfig ? [manualConfig] : pipelineForSelection(src, tar, region);
-      if (pipeline === null) {
-        status.textContent = "無效的轉換組合，請更改選項。";
-        return;
+
+      const regionEnable = document.querySelector('input[name="region"][value="enable"]');
+      const regionNone = document.querySelector('input[name="region"][value="none"]');
+
+      // Rule: Only allow region enable for s->tw and tw->s
+      const isRegionAllowed = (src === "s" && tar === "tw") || (src === "tw" && tar === "s");
+
+      regionEnable.disabled = !isRegionAllowed;
+      syncOptionDisabledState(regionEnable);
+      syncOptionDisabledState(regionNone);
+
+      // Update Selection
+      if (!isRegionAllowed) {
+        // Force None if invalid
+        regionNone.checked = true;
+      } else {
+        // If allowed, and we want to reset preference (e.g. user changed src/tar)
+        // Default to Enable
+        if (resetPreference) {
+          regionEnable.checked = true;
+        }
       }
-      const inputText = document.getElementById("textInput").value || "";
-      if (!pipeline.length) {
-        status.textContent = "來源與目標腳本相同，未進行轉換。";
-        document.getElementById("output").textContent = inputText;
-        return;
-      }
-      status.textContent = "正在載入設定與字典...";
-      renderPipelineChips(pipeline);
-      let current = inputText;
-      for (const cfg of pipeline) {
-        const handle = await ensureConfig(cfg);
-        current = Api.convert(handle, current);
-      }
-      document.getElementById("output").textContent = current;
-      document.getElementById("output").scrollIntoView({ behavior: "smooth", block: "center" });
-      const names = pipeline.map(c => readableNames.get(c) || c).join(" › ");
-      status.textContent = `已使用設定：${names}（配置：${pipeline.join(", ")}）`;
     }
+
+    // Helper: Update Target Radio Availability
+    function updateTargetState(forceReset) {
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+
+      document.querySelectorAll('input[name="target"]').forEach(targetRadio => {
+        const tar = targetRadio.value;
+        let isValid = false;
+
+        if (src === tar) {
+          isValid = false;
+        } else {
+          const base = `${src}2${tar}.json`;
+          const withRegion = `${src}2${tar}p.json`;
+          const hasBase = availableConfigs.has(base);
+          const hasRegion = availableConfigs.has(withRegion);
+
+          // Logic fix: 
+          // If the potential pair (src->tar) SUPPORTS region conversion (s->tw), then respect the current region setting.
+          // IF NOT (e.g. s->hk), ignore the current "region=enable" setting (because it will be auto-disabled anyway),
+          // and validate against the base config.
+          const supportsRegion = (src === "s" && tar === "tw") || (src === "tw" && tar === "s");
+
+          if (supportsRegion) {
+            if (region === "enable") isValid = hasRegion;
+            else isValid = hasBase;
+          } else {
+            isValid = hasBase;
+          }
+        }
+
+        targetRadio.disabled = !isValid;
+        syncOptionDisabledState(targetRadio);
+      });
+
+      // Auto-select valid target if current invalid
+      const currentTarget = document.querySelector('input[name="target"]:checked');
+      if (forceReset || !currentTarget || currentTarget.disabled) {
+        const firstValid = Array.from(document.querySelectorAll('input[name="target"]')).find(r => !r.disabled);
+        if (firstValid) {
+          firstValid.checked = true;
+          // Target changed -> Re-evaluate Region state for new target
+          updateRegionState(true);
+        }
+      }
+    }
+
+    function updateUi(resetTarget, resetRegionPreference) {
+      updateTargetState(resetTarget);
+      updateRegionState(resetRegionPreference);
+      renderPipeline();
+    }
+
+    // Event Listeners
+    document.querySelectorAll('input[name="source"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(true, true); // Source change: Reset Target AND Region pref
+      });
+    });
+
+    document.querySelectorAll('input[name="target"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(false, true); // Target change: Keep Target, Reset Region pref
+      });
+    });
+
+    document.querySelectorAll('input[name="region"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(false, false); // Region change: Keep Target, Don't reset pref
+      });
+    });
+
+    // Input Change listener to reset status
+    textInput.addEventListener('input', () => {
+      updateStatus("就緒", 'success');
+    });
 
     document.getElementById("convertBtn").onclick = convertText;
     document.getElementById("resetBtn").onclick = () => {
-      document.getElementById("textInput").value = "";
-      document.getElementById("output").textContent = "";
-    };
-    document.getElementById("copyBtn").onclick = async () => {
-      const text = document.getElementById("output").textContent;
-      const status = document.getElementById("status");
-      if (!text) {
-        status.textContent = "沒有可複製的內容";
-        return;
-      }
-      try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          const helper = document.createElement("textarea");
-          helper.value = text;
-          helper.style.position = "fixed";
-          helper.style.opacity = "0";
-          document.body.appendChild(helper);
-          helper.select();
-          document.execCommand("copy");
-          document.body.removeChild(helper);
-        }
-        status.textContent = "已複製到剪貼簿";
-      } catch (err) {
-        status.textContent = "複製失敗：" + err;
-      }
+      textInput.value = "";
+      output.textContent = "";
+      updateStatus("就緒", 'success');
     };
 
-    document.getElementById("textInput").addEventListener("keydown", (e) => {
-      if ((e.metaKey || e.ctrlKey) && e.key === "Enter") {
-        e.preventDefault();
-        convertText();
-      }
-    });
-
-    async function preloadCurrentPipeline() {
-      if (preloading) return;
-      preloading = true;
-      const status = document.getElementById("status");
-      const src = document.querySelector('input[name="source"]:checked').value;
-      const tar = document.querySelector('input[name="target"]:checked').value;
-      const region = document.querySelector('input[name="region"]:checked').value;
-      const pipeline = manualConfig ? [manualConfig] : (pipelineForSelection(src, tar, region) || []);
-      if (!pipeline.length) { preloading = false; return; }
-      try {
-        status.textContent = "預先載入設定中...";
-        for (const cfg of pipeline) {
-          await ensureConfig(cfg);
-        }
-        status.textContent = "設定已預先載入，可直接轉換。";
-        renderPipelineChips(pipeline);
-      } catch (err) {
-        status.textContent = "預先載入失敗：" + err;
-      } finally {
-        preloading = false;
-      }
-    }
-
-    const targetInputs = document.querySelectorAll('input[name="target"]');
-    const regionInputs = document.querySelectorAll('input[name="region"]');
-    let targetManuallySelected = false;
-    let regionManuallySelected = false;
-    const forceSelect = (inputs, value) => { inputs.forEach(i => { if (i.value === value) i.checked = true; }); };
-    const getChecked = (name) => document.querySelector(`input[name="${name}"]:checked`);
-    const ensureChecked = (name, inputs) => {
-      let current = getChecked(name);
-      if (!current || current.disabled) {
-        const firstEnabled = Array.from(inputs).find(i => !i.disabled);
-        if (firstEnabled) {
-          firstEnabled.checked = true;
-          current = firstEnabled;
-        }
-      }
-      return current;
-    };
-    function updateOptionAvailability() {
-      const srcVal = getChecked("source")?.value;
-
-      // 目標可選項僅在存在對應配置時可用
-      let firstEnabledTar = null;
-      targetInputs.forEach(i => {
-        const tarVal = i.value;
-        i.disabled = !hasConfig(srcVal, tarVal);
-        const label = i.parentElement;
-        if (label) label.classList.toggle("disabled", i.disabled);
-        if (!i.disabled && !firstEnabledTar) firstEnabledTar = i;
+    document.getElementById("copyBtn").onclick = () => {
+      if (!output.textContent) return;
+      navigator.clipboard.writeText(output.textContent).then(() => {
+        const btn = document.getElementById("copyBtn");
+        const original = btn.innerHTML;
+        btn.textContent = "已複製!";
+        setTimeout(() => btn.innerHTML = original, 1500);
       });
-      const currentTar = ensureChecked("target", targetInputs);
-      if (!targetManuallySelected && firstEnabledTar && currentTar !== firstEnabledTar) {
-        firstEnabledTar.checked = true;
-      }
-      const tarVal = getChecked("target")?.value;
-
-      // 地域用詞：僅當存在 p 結尾配置時啟用
-      const regionSupported = availableConfigs.has(`${srcVal}2${tarVal}p.json`);
-      regionInputs.forEach(i => {
-        if (i.value === "none") { i.disabled = false; return; }
-        i.disabled = !regionSupported;
-        const label = i.parentElement;
-        if (label) label.classList.toggle("disabled", i.disabled);
-      });
-      ensureChecked("region", regionInputs);
-      const currentRegion = getChecked("region")?.value;
-      if (!regionSupported) {
-        forceSelect(regionInputs, "none");
-        regionManuallySelected = false;
-      } else if (currentRegion !== "enable") {
-        // 若支援 p 配置且目前未選中，預設啟用（但尊重用戶手動選擇）
-        if (!regionManuallySelected) forceSelect(regionInputs, "enable");
-      }
-    }
-
-    ["source", "target", "region"].forEach(name => {
-      document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
-        r.addEventListener("change", () => {
-          if (name === "target") targetManuallySelected = true;
-          if (name === "region") regionManuallySelected = true;
-          if (manualConfig && name !== "region") {
-            // 來源或目標變更時退出自選配置，避免混用
-            manualConfig = null;
-            document.getElementById("status").textContent = "已返回來源/目標組合";
-            renderPipelineChips([]);
-          }
-          updateOptionAvailability();
-          preloadCurrentPipeline();
-        });
-      });
-    });
-
-    // 開啟頁面就預載預設組合
-    updateOptionAvailability();
-    preloadCurrentPipeline();
-
-    // ----- Modal: direct config selection -----
-    const configList = document.getElementById("configList");
-    const configModal = document.getElementById("configModalBackdrop");
-    const openConfigModalBtn = document.getElementById("openConfigModal");
-    const closeConfigModalBtn = document.getElementById("closeConfigModal");
-
-    function openConfigModal() {
-      configModal.style.display = "flex";
-    }
-    function closeConfigModal() {
-      configModal.style.display = "none";
-    }
-    const selectRadio = (name, value) => {
-      document.querySelectorAll(`input[name="${name}"]`).forEach(i => { i.checked = i.value === value; });
     };
-    function applyManualConfig(name) {
-      manualConfig = name;
-      // 解析 config 名：如 s2twp => source=s, target=tw, region=enable
-      const base = name.replace(".json", "");
-      const [srcPart, tarPartRaw] = base.split("2");
-      const regionVal = base.endsWith("p") ? "enable" : "none";
-      const tarPart = regionVal === "enable" ? tarPartRaw.slice(0, -1) : tarPartRaw;
 
-      targetManuallySelected = true;
-      regionManuallySelected = true;
-      selectRadio("source", srcPart);
-      selectRadio("target", tarPart);
-      selectRadio("region", regionVal);
-      updateOptionAvailability();
+    // Init
+    updateStatus("就緒", 'success');
+    updateUi(true, true);
 
-      document.getElementById("status").textContent = `已切換到手動配置：${name}`;
-      closeConfigModal();
-      renderPipelineChips([name]);
-      preloadCurrentPipeline();
-    }
-
-    // Build config list with descriptions
-    configList.innerHTML = "";
-    Object.entries(configDescriptions).forEach(([name, desc]) => {
-      const card = document.createElement("div");
-      card.className = "config-card";
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.textContent = name;
-      btn.onclick = () => applyManualConfig(name);
-      const p = document.createElement("p");
-      p.textContent = desc;
-      card.appendChild(btn);
-      card.appendChild(p);
-      configList.appendChild(card);
-    });
-
-    openConfigModalBtn.addEventListener("click", openConfigModal);
-    closeConfigModalBtn.addEventListener("click", closeConfigModal);
-    configModal.addEventListener("click", (e) => {
-      if (e.target === configModal) closeConfigModal();
-    });
   </script>
-  <div class="container"
-    style="margin-top: 22px; text-align: center; color: var(--muted); font-size: 15px; line-height: 1.5;">
-    <div id="status" class="status" style="margin-top: 0; color: var(--muted);"></div>
-    <div id="filesLoaded" class="muted" style="margin-top: 4px;"></div>
-    <div style="margin-top: 8px;">
-      本頁面中的轉換全部在瀏覽器內完成，不會上傳文字，保障您的隱私。 <br>
-      本頁使用的是原生 WASM API 示例；若要看 opencc-js 兼容 API 示例，請前往 <a href="./public-api.html"
-        style="color: var(--accent); border-bottom: 1px dashed var(--border); text-decoration: none;">public-api.html</a>。<br>
-      基於 <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" rel="noreferrer">opencc-wasm __OPENCC_WASM_VERSION__</a>
-    </div>
-    <div style="margin-top: 4px; color: var(--muted); font-size: 15px;">Copyright 2026 OpenCC Authors</div>
-    <div style="margin-top: 8px; color: var(--muted); font-size: 14px;">
-      <a href="https://github.com/BYVoid/OpenCC" target="_blank"
-        style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">OpenCC GitHub</a> |
-      <a href="https://t.me/+TVq4LmPRlN9hZjE0" target="_blank"
-        style="color: var(--muted); border-bottom: 1px dashed var(--border); text-decoration: none;">Telegram 討論組</a>
-    </div>
-  </div>
 </body>
 
 </html>

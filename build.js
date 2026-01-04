@@ -56,7 +56,15 @@ if (fs.existsSync(ocjsSrc)) {
 // copy demo assets with build date + version injection
 const buildDate = getBuildDate();
 const wasmVersion = getWasmVersion();
-const filesToCopy = ["index.html", "public-api.html", "classic.html", "benchmark.html", "wasm.html", "cdn.html", "testcases.json"];
+const filesToCopy = ["index.html", "classic.html", "benchmark.html", "wasm.html", "cdn.html", "testcases.json"];
+
+// copy css directory
+const cssSrc = path.join(demoRoot, "css");
+const cssDst = path.join(outRoot, "css");
+if (fs.existsSync(cssSrc)) {
+  fs.cpSync(cssSrc, cssDst, { recursive: true });
+}
+
 for (const file of filesToCopy) {
   const src = path.join(demoRoot, file);
   if (fs.existsSync(src)) {
