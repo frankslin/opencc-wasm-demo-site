@@ -143,19 +143,13 @@
 
   <script type="module">
     let OpenCC = null;
+    const vendorBase = new URL("./vendor/opencc-wasm/", window.location.href);
     async function loadApi() {
       if (OpenCC) return OpenCC;
-      let lastErr = null;
-      try {
-        const baseUrl = new URL("./vendor/opencc-wasm/", window.location.href).href;
-        const url = new URL("esm/index.js", baseUrl).href;
-        const mod = await import(url);
-        OpenCC = mod.default;
-        return OpenCC;
-      } catch (e) {
-        lastErr = e;
-      }
-      throw lastErr || new Error("cannot resolve vendor path");
+      const url = new URL("esm/index.js", vendorBase).href;
+      const mod = await import(url);
+      OpenCC = mod.default;
+      return OpenCC;
     }
 
     const configFiles = [
@@ -189,7 +183,7 @@
           // opencc-js 兼容 API：传 config 文件名即可
           const converter = api.Converter({ config: name });
           await converter("预热"); // 触发加载
-          const cfgPath = `vendor/opencc-wasm/data/config/${name}`;
+          const cfgPath = new URL(`data/config/${name}`, vendorBase).href;
           setReady(name, converter);
           log.textContent = `配置已加载：${name}\n(路径: ${cfgPath})`;
         } catch (e) {

@@ -35,20 +35,15 @@
 
     // 动态加载 opencc-js（仅从本地 vendor，未安装则给出提示）
     async function loadOpenCCJS() {
-      const candidates = [
-        "./vendor/opencc-js/esm/full.js",
-        "./wasm-demo/vendor/opencc-js/esm/full.js"
-      ];
+      const url = "./vendor/opencc-js/esm/full.js";
       let lastErr = null;
-      for (const url of candidates) {
-        try {
-          const mod = await import(new URL(url, window.location.href).href);
-          const api = mod.default || mod.OpenCC || mod;
-          if (!api?.Converter) throw new Error("Converter not found in opencc-js module");
-          return api;
-        } catch (e) {
-          lastErr = e;
-        }
+      try {
+        const mod = await import(new URL(url, window.location.href).href);
+        const api = mod.default || mod.OpenCC || mod;
+        if (!api?.Converter) throw new Error("Converter not found in opencc-js module");
+        return api;
+      } catch (e) {
+        lastErr = e;
       }
       throw lastErr || new Error("opencc-js not available");
     }

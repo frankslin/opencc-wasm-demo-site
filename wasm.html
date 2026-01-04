@@ -159,27 +159,14 @@
 
   <script type="module">
     let cachedFactory = null;
-    let vendorBase = null; // 解析后的绝对 base
-    let locateFile = null;
+    const vendorBase = new URL("./vendor/opencc-wasm/", window.location.href);
+    const locateFile = (path) => new URL(path, vendorBase).href;
     async function loadWasmFactory() {
       if (cachedFactory) return cachedFactory;
-      let lastErr = null;
-      try {
-        const baseUrl = new URL("./vendor/opencc-wasm/", window.location.href).href;
-        const url = new URL("esm/opencc-wasm.js", baseUrl).href;
-        const wasmUrl = new URL("opencc-wasm.wasm", baseUrl).href;
-        const mod = await import(url);
-        vendorBase = baseUrl;
-        locateFile = (path) => {
-          if (path.endsWith(".wasm")) return wasmUrl;
-          return new URL(path, baseUrl).href;
-        };
-        cachedFactory = mod.default;
-        return cachedFactory;
-      } catch (e) {
-        lastErr = e;
-      }
-      throw lastErr || new Error("cannot resolve vendor path");
+      const url = new URL("esm/opencc-wasm.js", vendorBase).href;
+      const mod = await import(url);
+      cachedFactory = mod.default;
+      return cachedFactory;
     }
 
     let Module = null;
@@ -262,7 +249,7 @@
         try { mod.FS.mkdir("/data/config"); } catch (e) {}
         try { mod.FS.mkdir("/data/dict"); } catch (e) {}
 
-        const base = vendorBase || new URL("./vendor/opencc-wasm/", window.location.href).href;
+        const base = vendorBase.href;
         const cfgUrl = `${base}data/config/${cfgName}`;
         const cfgResp = await fetch(cfgUrl);
         if (!cfgResp.ok) throw new Error(`${cfgUrl} -> HTTP ${cfgResp.status}`);
