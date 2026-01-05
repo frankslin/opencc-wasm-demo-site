@@ -1,11 +1,11 @@
 {
   "name": "opencc-wasm-demo-site",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Demo website for NPM package opencc-wasm",
   "private": true,
   "type": "module",
   "dependencies": {
-    "opencc-wasm": "^0.3.0",
+    "opencc-wasm": "^0.4.1",
     "opencc-js": "^1.0.5"
   },
   "scripts": {
