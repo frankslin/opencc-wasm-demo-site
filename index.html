@@ -147,6 +147,8 @@
     // State
     let manualConfig = null;
     let converters = new Map(); // cache converters by config name
+    let inputDebounceTimer = null;
+    const inputDebounceMs = 500;
 
     // UI Refs
     const textInput = document.getElementById("textInput");
@@ -175,6 +177,15 @@
         iconLoading.style.display = 'none';
         convertBtn.disabled = false;
       }
+    }
+
+    function scheduleConvert() {
+      if (inputDebounceTimer) {
+        clearTimeout(inputDebounceTimer);
+      }
+      inputDebounceTimer = setTimeout(() => {
+        convertText();
+      }, inputDebounceMs);
     }
 
     // Helper: Determining pipeline from radio selection
@@ -312,7 +323,7 @@
 
           closeConfigModal();
           renderPipeline();
-          convertText();
+          scheduleConvert();
         };
         configList.appendChild(btn);
       });
@@ -427,6 +438,7 @@
       r.addEventListener('change', () => {
         manualConfig = null;
         updateUi(true, true); // Source change: Reset Target AND Region pref
+        scheduleConvert();
       });
     });
 
@@ -434,6 +446,7 @@
       r.addEventListener('change', () => {
         manualConfig = null;
         updateUi(false, true); // Target change: Keep Target, Reset Region pref
+        scheduleConvert();
       });
     });
 
@@ -441,12 +454,14 @@
       r.addEventListener('change', () => {
         manualConfig = null;
         updateUi(false, false); // Region change: Keep Target, Don't reset pref
+        scheduleConvert();
       });
     });
 
     // Input Change listener to reset status
     textInput.addEventListener('input', () => {
       updateStatus("就緒", 'success');
+      scheduleConvert();
     });
 
     document.getElementById("convertBtn").onclick = convertText;
