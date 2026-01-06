@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>OpenCC WASM 經典版</title>
+  <title>OpenCC 轉換工具演示</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
@@ -43,25 +43,67 @@
       </div>
       <div class="options">
         <fieldset>
-          <legend>來源</legend>
-          <label><input type="radio" name="source" value="s" checked> 簡體中文 (s)</label>
-          <label><input type="radio" name="source" value="tw"> 台灣正體 (tw)</label>
-          <label><input type="radio" name="source" value="hk"> 香港繁體 (hk)</label>
-          <label><input type="radio" name="source" value="t"> OpenCC 標準繁體 (t)</label>
-          <label><input type="radio" name="source" value="jp"> 日文新字體 (jp)</label>
+          <legend>來源 (Source)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="source" value="s" id="source-s" checked>
+              <label for="source-s">簡體中文 (s)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="tw" id="source-tw">
+              <label for="source-tw">台灣正體 (tw)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="hk" id="source-hk">
+              <label for="source-hk">香港繁體 (hk)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="t" id="source-t">
+              <label for="source-t">OpenCC 標準繁體 (t)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="jp" id="source-jp">
+              <label for="source-jp">日文新字體 (jp)</label>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
-          <legend>目標</legend>
-          <label><input type="radio" name="target" value="s"> 簡體中文 (s)</label>
-          <label><input type="radio" name="target" value="tw"> 台灣正體 (tw)</label>
-          <label><input type="radio" name="target" value="hk"> 香港繁體 (hk)</label>
-          <label><input type="radio" name="target" value="t" checked> OpenCC 標準繁體 (t)</label>
-          <label><input type="radio" name="target" value="jp"> 日文新字體 (jp)</label>
+          <legend>目標 (Target)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="target" value="s" id="target-s">
+              <label for="target-s">簡體中文 (s)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="tw" id="target-tw">
+              <label for="target-tw">台灣正體 (tw)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="hk" id="target-hk">
+              <label for="target-hk">香港繁體 (hk)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="t" id="target-t" checked>
+              <label for="target-t">OpenCC 標準繁體 (t)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="jp" id="target-jp">
+              <label for="target-jp">日文新字體 (jp)</label>
+            </div>
+          </div>
         </fieldset>
         <fieldset>
-          <legend>地域用詞轉換</legend>
-          <label><input type="radio" name="region" value="enable"> 轉換地域用詞 (p)</label>
-          <label><input type="radio" name="region" value="none" checked> 不轉換</label>
+          <legend>地域用詞 (Phrases)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="region" value="enable" id="region-enable">
+              <label for="region-enable">轉換地域用詞 (p)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="region" value="none" id="region-none" checked>
+              <label for="region-none">不轉換</label>
+            </div>
+          </div>
         </fieldset>
       </div>
     </div>
@@ -346,9 +388,16 @@
     // Helper: Toggle disabled styles for radio labels
     function syncOptionDisabledState(radio) {
       if (!radio) return;
-      const label = radio.parentElement;
-      if (label) {
-        label.classList.toggle("option-disabled", radio.disabled);
+      // Find the label associated with this radio (next sibling in .radio-option structure)
+      const label = radio.nextElementSibling;
+      if (label && label.tagName === 'LABEL') {
+        if (radio.disabled) {
+          label.style.opacity = '0.5';
+          label.style.cursor = 'not-allowed';
+        } else {
+          label.style.opacity = '';
+          label.style.cursor = '';
+        }
       }
     }
 
