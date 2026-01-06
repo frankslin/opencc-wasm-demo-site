@@ -132,11 +132,11 @@ header {
 }
 
 .pane-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: var(--text-sub);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-sub);
 }
 
 .btn {
@@ -247,7 +247,7 @@ legend {
   background: #f9fafb;
 }
 
-.radio-option input:checked + label {
+.radio-option input:checked+label {
   border-color: var(--primary);
   background: var(--primary-light);
   color: var(--primary);
@@ -259,7 +259,8 @@ legend {
     We use a class .option-disabled on the wrapper to forcefully style the children
 */
 .radio-option.option-disabled {
-  pointer-events: none; /* Crucial: completely disable clicks */
+  pointer-events: none;
+  /* Crucial: completely disable clicks */
   opacity: 0.6;
 }
 
@@ -268,7 +269,8 @@ legend {
   border-color: #e5e7eb;
   color: #9ca3af;
   cursor: not-allowed;
-  text-decoration: line-through; /* Restored: Clear visual indicator */
+  text-decoration: line-through;
+  /* Restored: Clear visual indicator */
   box-shadow: none;
 }
 
@@ -289,12 +291,14 @@ legend {
 
 .pane-header {
   padding: 12px 20px;
-  border-bottom: 1px solid transparent; /* Placeholder alignment */
+  border-bottom: 1px solid transparent;
+  /* Placeholder alignment */
   background: #fff;
   margin: 0;
 }
 
-textarea, .output-box {
+textarea,
+.output-box {
   flex: 1;
   width: 100%;
   border: none;
@@ -357,10 +361,10 @@ textarea::placeholder {
 }
 
 .action-btn:disabled {
-    background: #9ca3af;
-    cursor: not-allowed;
-    transform: none;
-    box-shadow: none;
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .action-btn svg {
@@ -389,8 +393,8 @@ textarea::placeholder {
 }
 
 .copy-btn svg {
-    width: 14px;
-    height: 14px;
+  width: 14px;
+  height: 14px;
 }
 
 /* Footer */
@@ -415,32 +419,32 @@ textarea::placeholder {
 
 /* Chips */
 .chips {
-    display: inline-flex;
-    flex-wrap: wrap;
-    gap: 6px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .chip {
-    background: var(--primary-light);
-    color: var(--primary);
-    border: 1px solid transparent;
-    border-radius: 12px;
-    padding: 2px 10px;
-    font-size: 0.75rem;
-    font-weight: 500;
+  background: var(--primary-light);
+  color: var(--primary);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
 }
 
 button.chip {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 button.chip:hover {
-    border-color: var(--primary);
+  border-color: var(--primary);
 }
 
 /* Loader */
 .loader {
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   border-top: 2px solid #fff;
   width: 20px;
@@ -449,8 +453,13 @@ button.chip:hover {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Modal */
@@ -460,7 +469,7 @@ button.chip:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(2px);
   display: none;
   align-items: center;
@@ -530,6 +539,44 @@ button.chip:hover {
 .config-btn span {
   font-size: 0.8rem;
   color: var(--text-sub);
+}
+
+/* Diff Toggle Checkbox */
+.diff-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--text-sub);
+  cursor: pointer;
+  user-select: none;
+}
+
+.diff-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.diff-toggle:hover {
+  color: var(--text-main);
+}
+
+/* Diff Highlighting */
+.diff-del {
+  background-color: #fee2e2;
+  color: #991b1b;
+  text-decoration: line-through;
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+.diff-ins {
+  background-color: #dcfce7;
+  color: #166534;
+  border-radius: 2px;
+  padding: 0 2px;
 }
 
 /* Responsive */
