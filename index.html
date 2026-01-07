@@ -487,13 +487,13 @@ console.<span class="code-function">log</span>(result);  <span class="code-comme
 
             <h4 style="margin-top: 32px; color: var(--primary);">OpenCC.CustomConverter() - 自訂轉換器</h4>
             <pre><code><span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">CustomConverter</span>([
-  [<span class="code-string">"""</span>, <span class="code-string">"「"</span>],
-  [<span class="code-string">"""</span>, <span class="code-string">"」"</span>],
-  [<span class="code-string">"'"</span>, <span class="code-string">"『"</span>],
-  [<span class="code-string">"'"</span>, <span class="code-string">"』"</span>],
+  [<span class="code-string">"“"</span>, <span class="code-string">"「"</span>],
+  [<span class="code-string">"”"</span>, <span class="code-string">"」"</span>],
+  [<span class="code-string">"‘"</span>, <span class="code-string">"『"</span>],
+  [<span class="code-string">"’"</span>, <span class="code-string">"』"</span>],
 ]);
 
-<span class="code-keyword">const</span> result = <span class="code-function">converter</span>(<span class="code-string">"这是"引号"和'单引号'"</span>);
+<span class="code-keyword">const</span> result = <span class="code-function">converter</span>(<span class="code-string">"这是“引号”和‘单引号’"</span>);
 <span class="code-comment">// Output: 这是「引号」和『单引号』</span></code></pre>
 
             <h3>💡 使用範例 Examples</h3>
