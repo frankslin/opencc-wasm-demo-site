@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenCC 轉換工具演示</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="brand" aria-label="OpenCC logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+          <!-- Logo Path -->
+          <path fill="currentColor"
+            d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
+          <path fill="currentColor"
+            d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
+        </svg>
+        <div>
+          <h1>OpenCC 轉換工具演示</h1>
+          <span>更新日期：__BUILD_DATE__</span>
+        </div>
+      </div>
+      <div id="statusBadge" class="status-badge">
+        <div class="status-dot"></div>
+        <span id="statusText">準備中...</span>
+      </div>
+    </header>
+
+    <div class="card-section">
+      <div class="pane-header">
+        <h2 style="margin:0">選擇轉換模式</h2>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div id="activePipeline" class="chips"></div>
+          <button id="openConfigModal" class="btn btn-secondary"
+            style="padding: 6px 12px; font-size: 0.9em;">⚙️</button>
+        </div>
+      </div>
+      <div class="options">
+        <fieldset>
+          <legend>來源 (Source)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="source" value="s" id="source-s" checked>
+              <label for="source-s">簡體中文 (s)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="tw" id="source-tw">
+              <label for="source-tw">台灣正體 (tw)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="hk" id="source-hk">
+              <label for="source-hk">香港繁體 (hk)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="t" id="source-t">
+              <label for="source-t">OpenCC 標準繁體 (t)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="source" value="jp" id="source-jp">
+              <label for="source-jp">日文新字體 (jp)</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>目標 (Target)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="target" value="s" id="target-s">
+              <label for="target-s">簡體中文 (s)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="tw" id="target-tw">
+              <label for="target-tw">台灣正體 (tw)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="hk" id="target-hk">
+              <label for="target-hk">香港繁體 (hk)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="t" id="target-t" checked>
+              <label for="target-t">OpenCC 標準繁體 (t)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="target" value="jp" id="target-jp">
+              <label for="target-jp">日文新字體 (jp)</label>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>地域用詞 (Phrases)</legend>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" name="region" value="enable" id="region-enable">
+              <label for="region-enable">轉換地域用詞 (p)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" name="region" value="none" id="region-none" checked>
+              <label for="region-none">不轉換</label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <div class="editor-area">
+      <div class="pane">
+        <div class="pane-header">
+          <span class="pane-title">輸入原文</span>
+          <button id="resetBtn" class="copy-btn">清空</button>
+        </div>
+        <textarea id="textInput" placeholder="請輸入要轉換的文本"></textarea>
+      </div>
+
+      <div class="divider">
+        <button id="convertBtn" class="action-btn" title="點擊轉換">
+          <svg id="icon-convert" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+          <div id="icon-loading" class="loader" style="display: none;"></div>
+        </button>
+      </div>
+
+      <div class="pane">
+        <div class="pane-header">
+          <span class="pane-title">轉換結果</span>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <label class="diff-toggle" for="showDiff">
+              <input type="checkbox" id="showDiff">
+              <span>顯示差異</span>
+            </label>
+            <button id="copyBtn" class="copy-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              複製
+            </button>
+          </div>
+        </div>
+        <div class="output-box" id="output"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      本頁面使用 <a href="https://npmjs.com/package/opencc-wasm" target="_blank">opencc-wasm</a> 於本地進行轉換。<br>OpenCC <a
+        href="https://github.com/byvoid/OpenCC" target="_blank">GitHub</a> <a href="https://t.me/+TVq4LmPRlN9hZjE0"
+        target="_blank">Telegram</a>
+    </div>
+  </div>
+
+  <div id="configModalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>選擇配置檔</h3>
+        <button id="closeConfigModal" class="modal-close">✕</button>
+      </div>
+      <p style="margin-bottom:16px; color:var(--text-sub);">點擊預定義的配置文件以直接套用。</p>
+      <div id="configList" class="config-grid"></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import OpenCC from "./vendor/opencc-wasm/esm/index.js";
+
+    // Configuration Definitions
+    const availableConfigs = new Set([
+      "hk2s.json", "hk2t.json", "jp2t.json", "s2hk.json", "s2t.json", "s2twp.json",
+      "s2tw.json", "t2hk.json", "t2jp.json", "t2s.json", "t2tw.json",
+      "tw2s.json", "tw2t.json", "tw2sp.json"
+    ]);
+
+    const configDescriptions = {
+      "s2t.json": "簡體 → OpenCC 標準繁體",
+      "s2tw.json": "簡體 → 台灣正體",
+      "s2twp.json": "簡體 → 台灣正體（轉換地域用詞）",
+      "s2hk.json": "簡體 → 香港繁體",
+      "t2s.json": "繁體 → 簡體",
+      "tw2s.json": "台灣正體 → 簡體",
+      "tw2sp.json": "台灣正體 → 簡體（轉換地域用詞）",
+      "tw2t.json": "台灣正體 → OpenCC 標準繁體",
+      "t2tw.json": "OpenCC 標準繁體 → 台灣正體",
+      "t2hk.json": "OpenCC 標準繁體 → 香港繁體",
+      "hk2s.json": "香港繁體 → 簡體",
+      "hk2t.json": "香港繁體 → OpenCC 標準繁體",
+      "jp2t.json": "日文新字體 → 日文舊字體（繁體）",
+      "t2jp.json": "日文舊字體（繁體） → 日文新字體"
+    };
+
+    // State
+    let manualConfig = null;
+    let converters = new Map(); // cache converters by config name
+    let inputDebounceTimer = null;
+    const inputDebounceMs = 500;
+
+    // UI Refs
+    const textInput = document.getElementById("textInput");
+    const output = document.getElementById("output");
+    const statusBadge = document.getElementById("statusBadge");
+    const statusText = document.getElementById("statusText");
+    const activePipeline = document.getElementById("activePipeline");
+    const convertBtn = document.getElementById("convertBtn");
+    const iconConvert = document.getElementById("icon-convert");
+    const iconLoading = document.getElementById("icon-loading");
+    const showDiffCheckbox = document.getElementById("showDiff");
+
+    // Store last conversion result for re-rendering when diff toggle changes
+    let lastInput = "";
+    let lastOutput = "";
+
+    /**
+     * Compute diff between two strings using Longest Common Subsequence (LCS)
+     * Returns an array of operations: { type: 'equal'|'delete'|'insert', text: string }
+     */
+    function computeDiff(oldStr, newStr) {
+      const oldChars = [...oldStr];
+      const newChars = [...newStr];
+      const m = oldChars.length;
+      const n = newChars.length;
+
+      // Build LCS table
+      const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          if (oldChars[i - 1] === newChars[j - 1]) {
+            dp[i][j] = dp[i - 1][j - 1] + 1;
+          } else {
+            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+          }
+        }
+      }
+
+      // Backtrack to find diff operations
+      const ops = [];
+      let i = m, j = n;
+      while (i > 0 || j > 0) {
+        if (i > 0 && j > 0 && oldChars[i - 1] === newChars[j - 1]) {
+          ops.push({ type: 'equal', text: oldChars[i - 1] });
+          i--; j--;
+        } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+          ops.push({ type: 'insert', text: newChars[j - 1] });
+          j--;
+        } else {
+          ops.push({ type: 'delete', text: oldChars[i - 1] });
+          i--;
+        }
+      }
+      ops.reverse();
+
+      // Merge consecutive operations of the same type
+      const merged = [];
+      for (const op of ops) {
+        if (merged.length > 0 && merged[merged.length - 1].type === op.type) {
+          merged[merged.length - 1].text += op.text;
+        } else {
+          merged.push({ ...op });
+        }
+      }
+      return merged;
+    }
+
+    /**
+     * Render diff result as HTML
+     */
+    function renderDiff(input, converted) {
+      const diff = computeDiff(input, converted);
+      let html = '';
+      for (const op of diff) {
+        const escaped = escapeHtml(op.text);
+        if (op.type === 'equal') {
+          html += escaped;
+        } else if (op.type === 'delete') {
+          html += `<span class="diff-del">${escaped}</span>`;
+        } else if (op.type === 'insert') {
+          html += `<span class="diff-ins">${escaped}</span>`;
+        }
+      }
+      return html;
+    }
+
+    /**
+     * Escape HTML special characters
+     */
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    /**
+     * Update output display based on current diff toggle state
+     */
+    function updateOutputDisplay() {
+      if (!lastOutput && !lastInput) {
+        output.innerHTML = '';
+        return;
+      }
+      if (showDiffCheckbox.checked && lastInput !== lastOutput) {
+        output.innerHTML = renderDiff(lastInput, lastOutput);
+      } else {
+        output.textContent = lastOutput;
+      }
+    }
+
+    // Helper: Update Status
+    function updateStatus(msg, type = 'normal') {
+      statusText.textContent = msg;
+      statusBadge.className = 'status-badge ' + (type === 'success' ? 'ready' : type === 'error' ? 'error' : '');
+    }
+
+    // Helper: Toggle Loading
+    function toggleLoading(isLoading) {
+      if (isLoading) {
+        iconConvert.style.display = 'none';
+        iconLoading.style.display = 'block';
+        convertBtn.disabled = true;
+      } else {
+        iconConvert.style.display = 'block';
+        iconLoading.style.display = 'none';
+        convertBtn.disabled = false;
+      }
+    }
+
+    function scheduleConvert() {
+      if (inputDebounceTimer) {
+        clearTimeout(inputDebounceTimer);
+      }
+      inputDebounceTimer = setTimeout(() => {
+        convertText();
+      }, inputDebounceMs);
+    }
+
+    // Helper: Determining pipeline from radio selection
+    function getPipeline() {
+      if (manualConfig) return [manualConfig];
+
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const tar = document.querySelector('input[name="target"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+
+      if (src === tar) return [];
+
+      const base = `${src}2${tar}.json`;
+      const withRegion = `${src}2${tar}p.json`;
+
+      if (region === "enable" && availableConfigs.has(withRegion)) {
+        return [withRegion];
+      }
+      if (availableConfigs.has(base)) {
+        return [base];
+      }
+      return null; // invalid
+    }
+
+    // UI: Render Pipeline Chips
+    function renderPipeline() {
+      const pipeline = getPipeline();
+      activePipeline.innerHTML = '';
+
+      if (pipeline === null) {
+        activePipeline.innerHTML = '<span class="chip" style="background:#fee2e2;color:#991b1b">無效組合</span>';
+        return;
+      }
+      if (pipeline.length === 0) {
+        activePipeline.innerHTML = '<span class="chip">無轉換 (同源)</span>';
+        return;
+      }
+
+      pipeline.forEach(cfg => {
+        const btn = document.createElement("button");
+        btn.className = "chip";
+        btn.style.cursor = "pointer";
+        btn.textContent = cfg;
+        btn.onclick = openConfigModal;
+        btn.title = configDescriptions[cfg] || cfg;
+        activePipeline.appendChild(btn);
+      });
+    }
+
+    // Logic: Convert
+    async function convertText() {
+      const pipeline = getPipeline();
+      const text = textInput.value;
+
+      if (pipeline === null) {
+        alert("無效的轉換來源與目標組合");
+        return;
+      }
+
+      if (pipeline.length === 0 || !text) {
+        lastInput = text;
+        lastOutput = text;
+        updateOutputDisplay();
+        return;
+      }
+
+      toggleLoading(true);
+      updateStatus("轉換中...");
+
+      try {
+        let currentText = text;
+
+        // Process pipeline sequentially
+        for (const cfg of pipeline) {
+          let converter = converters.get(cfg);
+          if (!converter) {
+            // Initialize new converter with local assets
+            converter = OpenCC.Converter({ config: cfg });
+            converters.set(cfg, converter);
+          }
+          currentText = await converter(currentText);
+        }
+
+        lastInput = text;
+        lastOutput = currentText;
+        updateOutputDisplay();
+        updateStatus("完成", 'success');
+      } catch (err) {
+        console.error(err);
+        updateStatus("錯誤", 'error');
+        lastInput = '';
+        lastOutput = "轉換發生錯誤: " + err.message;
+        updateOutputDisplay();
+      } finally {
+        toggleLoading(false);
+      }
+    }
+
+    // Modal Logic
+    const modalBackdrop = document.getElementById("configModalBackdrop");
+    const configList = document.getElementById("configList");
+
+    function openConfigModal() {
+      modalBackdrop.style.display = "flex";
+      renderConfigList();
+    }
+
+    function closeConfigModal() {
+      modalBackdrop.style.display = "none";
+    }
+
+    function renderConfigList() {
+      configList.innerHTML = "";
+      Object.entries(configDescriptions).forEach(([cfg, desc]) => {
+        const btn = document.createElement("button");
+        btn.className = "config-btn";
+        btn.innerHTML = `<strong>${cfg}</strong><span>${desc}</span>`;
+        btn.onclick = () => {
+          // Attempt to reverse-sync to radios
+          // Format: src + '2' + tar + (p?) + '.json'
+          // Use explicit target values to avoid greedy matching consuming the 'p'
+          const m = cfg.match(/^([a-z]+)2(s|t|tw|hk|jp)(p?)\.json$/);
+          if (m) {
+            const [_, s, t, p] = m;
+
+            // Check if these values exist in our radio options
+            const sRadio = document.querySelector(`input[name="source"][value="${s}"]`);
+            const tRadio = document.querySelector(`input[name="target"][value="${t}"]`);
+
+            if (sRadio) sRadio.checked = true;
+            if (tRadio) tRadio.checked = true;
+
+            const rVal = p ? 'enable' : 'none';
+            const rRadio = document.querySelector(`input[name="region"][value="${rVal}"]`);
+            if (rRadio) rRadio.checked = true;
+
+            manualConfig = null; // Sync successful, treat as normal selection
+            updateUi(false, false);
+          } else {
+            manualConfig = cfg; // Fallback for custom configs
+          }
+
+          closeConfigModal();
+          renderPipeline();
+          scheduleConvert();
+        };
+        configList.appendChild(btn);
+      });
+    }
+
+    // Explicitly bind click handler just in case
+    const openBtn = document.getElementById("openConfigModal");
+    if (openBtn) openBtn.onclick = openConfigModal;
+
+    document.getElementById("closeConfigModal").onclick = closeConfigModal;
+    modalBackdrop.onclick = (e) => {
+      if (e.target === modalBackdrop) closeConfigModal();
+    };
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modalBackdrop.style.display === "flex") {
+        closeConfigModal();
+      }
+    });
+
+    // Helper: Toggle disabled styles for radio labels
+    function syncOptionDisabledState(radio) {
+      if (!radio) return;
+      // Find the label associated with this radio (next sibling in .radio-option structure)
+      const label = radio.nextElementSibling;
+      if (label && label.tagName === 'LABEL') {
+        if (radio.disabled) {
+          label.style.opacity = '0.5';
+          label.style.cursor = 'not-allowed';
+        } else {
+          label.style.opacity = '';
+          label.style.cursor = '';
+        }
+      }
+    }
+
+    // Helper: Update Region Radio State
+    function updateRegionState(resetPreference) {
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const tar = document.querySelector('input[name="target"]:checked').value;
+
+      const regionEnable = document.querySelector('input[name="region"][value="enable"]');
+      const regionNone = document.querySelector('input[name="region"][value="none"]');
+
+      // Rule: Only allow region enable for s->tw and tw->s
+      const isRegionAllowed = (src === "s" && tar === "tw") || (src === "tw" && tar === "s");
+
+      regionEnable.disabled = !isRegionAllowed;
+      syncOptionDisabledState(regionEnable);
+      syncOptionDisabledState(regionNone);
+
+      // Update Selection
+      if (!isRegionAllowed) {
+        // Force None if invalid
+        regionNone.checked = true;
+      } else {
+        // If allowed, and we want to reset preference (e.g. user changed src/tar)
+        // Default to Enable
+        if (resetPreference) {
+          regionEnable.checked = true;
+        }
+      }
+    }
+
+    // Helper: Update Target Radio Availability
+    function updateTargetState(forceReset) {
+      const src = document.querySelector('input[name="source"]:checked').value;
+      const region = document.querySelector('input[name="region"]:checked').value;
+
+      document.querySelectorAll('input[name="target"]').forEach(targetRadio => {
+        const tar = targetRadio.value;
+        let isValid = false;
+
+        if (src === tar) {
+          isValid = false;
+        } else {
+          const base = `${src}2${tar}.json`;
+          const withRegion = `${src}2${tar}p.json`;
+          const hasBase = availableConfigs.has(base);
+          const hasRegion = availableConfigs.has(withRegion);
+
+          // Logic fix: 
+          // If the potential pair (src->tar) SUPPORTS region conversion (s->tw), then respect the current region setting.
+          // IF NOT (e.g. s->hk), ignore the current "region=enable" setting (because it will be auto-disabled anyway),
+          // and validate against the base config.
+          const supportsRegion = (src === "s" && tar === "tw") || (src === "tw" && tar === "s");
+
+          if (supportsRegion) {
+            if (region === "enable") isValid = hasRegion;
+            else isValid = hasBase;
+          } else {
+            isValid = hasBase;
+          }
+        }
+
+        targetRadio.disabled = !isValid;
+        syncOptionDisabledState(targetRadio);
+      });
+
+      // Auto-select valid target if current invalid
+      const currentTarget = document.querySelector('input[name="target"]:checked');
+      if (forceReset || !currentTarget || currentTarget.disabled) {
+        const firstValid = Array.from(document.querySelectorAll('input[name="target"]')).find(r => !r.disabled);
+        if (firstValid) {
+          firstValid.checked = true;
+          // Target changed -> Re-evaluate Region state for new target
+          updateRegionState(true);
+        }
+      }
+    }
+
+    function updateUi(resetTarget, resetRegionPreference) {
+      updateTargetState(resetTarget);
+      updateRegionState(resetRegionPreference);
+      renderPipeline();
+    }
+
+    // Event Listeners
+    document.querySelectorAll('input[name="source"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(true, true); // Source change: Reset Target AND Region pref
+        scheduleConvert();
+      });
+    });
+
+    document.querySelectorAll('input[name="target"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(false, true); // Target change: Keep Target, Reset Region pref
+        scheduleConvert();
+      });
+    });
+
+    document.querySelectorAll('input[name="region"]').forEach(r => {
+      r.addEventListener('change', () => {
+        manualConfig = null;
+        updateUi(false, false); // Region change: Keep Target, Don't reset pref
+        scheduleConvert();
+      });
+    });
+
+    // Input Change listener to reset status
+    textInput.addEventListener('input', () => {
+      updateStatus("就緒", 'success');
+      scheduleConvert();
+    });
+
+    document.getElementById("convertBtn").onclick = convertText;
+    document.getElementById("resetBtn").onclick = () => {
+      textInput.value = "";
+      output.textContent = "";
+      updateStatus("就緒", 'success');
+    };
+
+    document.getElementById("copyBtn").onclick = () => {
+      if (!lastOutput) return;
+      navigator.clipboard.writeText(lastOutput).then(() => {
+        const btn = document.getElementById("copyBtn");
+        const original = btn.innerHTML;
+        btn.textContent = "已複製!";
+        setTimeout(() => btn.innerHTML = original, 1500);
+      });
+    };
+
+    // Toggle diff display when checkbox changes
+    showDiffCheckbox.addEventListener('change', updateOutputDisplay);
+
+    // Init
+    updateStatus("就緒", 'success');
+    updateUi(true, true);
+
+  </script>
+</body>
+
+</html>
