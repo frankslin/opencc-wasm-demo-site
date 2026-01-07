@@ -458,7 +458,8 @@
         btn.onclick = () => {
           // Attempt to reverse-sync to radios
           // Format: src + '2' + tar + (p?) + '.json'
-          const m = cfg.match(/^([a-z]+)2([a-z]+)(p?)\.json$/);
+          // Use explicit target values to avoid greedy matching consuming the 'p'
+          const m = cfg.match(/^([a-z]+)2(s|t|tw|hk|jp)(p?)\.json$/);
           if (m) {
             const [_, s, t, p] = m;
 
