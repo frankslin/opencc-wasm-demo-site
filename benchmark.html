@@ -26,6 +26,13 @@
           <span>性能基準測試</span>
         </div>
       </div>
+      <div class="chips">
+        <a href="index.html" class="chip" style="text-decoration:none;">首頁 Home</a>
+        <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" target="_blank" class="chip"
+          style="text-decoration:none;">GitHub</a>
+        <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" class="chip"
+          style="text-decoration:none;">npm</a>
+      </div>
     </header>
 
     <div class="card-section">
@@ -128,7 +135,7 @@
         const OpenCCJS = await loadOpenCCJS();
         await runBenchmark(
           "opencc-js",
-          () => OpenCCJS.Converter({ config: cfg }),
+          () => OpenCCJS.Converter({ from: 'cn', to: 'twp' }),
           text,
           lines
         );
