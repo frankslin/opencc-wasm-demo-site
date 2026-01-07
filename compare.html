@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,293 +9,121 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
-    <style>
-        /* Additional styles specific to compare page */
-        .container {
-            max-width: 1400px;
-        }
-
-        /* Input Section */
-        .input-section {
-            padding: 24px 30px;
-            border-bottom: 1px solid var(--border);
-            background: #fafafa;
-        }
-
-        .input-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .input-header h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        textarea#input {
-            width: 100%;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-main);
-            outline: none;
-            background: #fff;
-            font-family: inherit;
-            resize: vertical;
-            min-height: 120px;
-            transition: all 0.2s;
-        }
-
-        textarea#input:focus {
-            border-color: var(--primary);
-            background: white;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-
-        /* Results Grid */
-        .results-section {
-            padding: 24px 30px;
-            max-height: 70vh;
-            overflow-y: auto;
-            background: #fff;
-        }
-
-        .results-header {
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .results-header h2 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-sub);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 16px;
-        }
-
-        .result-card {
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 16px;
-            transition: all 0.2s;
-        }
-
-        .result-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
-        }
-
-        .result-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 8px;
-            gap: 8px;
-        }
-
-        .result-card-title {
-            flex: 1;
-        }
-
-        .result-card-title strong {
-            display: block;
-            color: var(--primary);
-            font-size: 0.9rem;
-            margin-bottom: 2px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .result-card-title span {
-            font-size: 0.8rem;
-            color: var(--text-sub);
-        }
-
-        .copy-icon {
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 4px;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .copy-icon:hover {
-            background: #f9fafb;
-            border-color: var(--primary);
-        }
-
-        .copy-icon svg {
-            width: 14px;
-            height: 14px;
-            color: var(--text-sub);
-        }
-
-        .result-content {
-            padding: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--text-main);
-            white-space: pre-wrap;
-            word-break: break-word;
-            min-height: 60px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .result-content.loading {
-            color: var(--text-sub);
-            font-style: italic;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .result-content.error {
-            color: #991b1b;
-            background: #fee2e2;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .results-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
+
 <body>
 
-<div class="container">
-    <header>
-        <div class="brand">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
-                <path fill="currentColor"
-                    d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
-                <path fill="currentColor"
-                    d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
-            </svg>
-            <div>
-                <h1>OpenCC 轉換工具</h1>
-                <span>配置對比工具</span>
+    <div class="container compare-container">
+        <header>
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+                    <path fill="currentColor"
+                        d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
+                    <path fill="currentColor"
+                        d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
+                </svg>
+                <div>
+                    <h1>OpenCC 轉換配置對比工具</h1>
+                    <span>一鍵轉換 16 種配置</span>
+                </div>
             </div>
-        </div>
-        <div id="status" class="status-badge">
-            <div class="status-dot"></div>
-            <span id="status-text">初始化中...</span>
-        </div>
-    </header>
+            <div id="status" class="status-badge">
+                <div class="status-dot"></div>
+                <span id="status-text">初始化中...</span>
+            </div>
+        </header>
 
-    <div class="input-section">
-        <div class="input-header">
-            <h2>輸入文本</h2>
+        <div class="input-section">
+            <div class="input-header">
+                <h2>輸入文本</h2>
+            </div>
+            <textarea id="input"
+                placeholder="請輸入要轉換的文本...&#10;&#10;提示：您也可以通過 URL 參數 ?t=您的文本 來指定輸入內容">歡迎使用 OpenCC 配置對比工具。你可以輸入一段文字，然後查看所有配置的轉換結果，方便比較不同模式的輸出差異。</textarea>
+            <button id="convertBtn" class="btn btn-primary" disabled>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                    stroke="currentColor" width="24" height="24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
+                轉換所有配置
+                <div id="loading-icon" class="loader" style="display: none; margin-left: 4px;"></div>
+            </button>
         </div>
-        <textarea id="input" placeholder="請輸入要轉換的文本...&#10;&#10;提示：您也可以通過 URL 參數 ?t=您的文本 來指定輸入內容">歡迎使用 OpenCC 配置對比工具。你可以輸入一段文字，然後查看所有配置的轉換結果，方便比較不同模式的輸出差異。</textarea>
-        <button id="convertBtn" class="btn btn-primary" disabled>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="24" height="24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"></path>
-            </svg>
-            轉換所有配置
-            <div id="loading-icon" class="loader" style="display: none; margin-left: 4px;"></div>
-        </button>
+
+        <div class="results-section">
+            <div class="results-header">
+                <h2>轉換結果 (<span id="results-count">0</span> 個配置)</h2>
+            </div>
+            <div id="results" class="results-grid"></div>
+        </div>
+
+        <div class="footer">
+            本頁面通過 jsdelivr CDN 加載 opencc-wasm __OPENCC_WASM_VERSION__，使用 opencc-js 相容 API。<br>
+            可比較所有配置的轉換結果，方便觀察不同模式的輸出差異。
+        </div>
     </div>
 
-    <div class="results-section">
-        <div class="results-header">
-            <h2>轉換結果 (<span id="results-count">0</span> 個配置)</h2>
-        </div>
-        <div id="results" class="results-grid"></div>
-    </div>
+    <script type="module">
+        import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@__OPENCC_WASM_VERSION__/dist/esm/index.js";
 
-    <div class="footer">
-        本頁面通過 jsdelivr CDN 加載 opencc-wasm __OPENCC_WASM_VERSION__，使用 opencc-js 相容 API。<br>
-        可比較所有配置的轉換結果，方便觀察不同模式的輸出差異。
-    </div>
-</div>
+        // Configuration Definitions
+        const configDescriptions = {
+            "s2t.json": "簡體 → OpenCC 標準繁體",
+            "s2tw.json": "簡體 → 台灣正體",
+            "s2twp.json": "簡體 → 台灣正體（轉換地域用詞）",
+            "s2hk.json": "簡體 → 香港繁體",
+            "t2s.json": "繁體 → 簡體",
+            "tw2s.json": "台灣正體 → 簡體",
+            "tw2sp.json": "台灣正體 → 簡體（轉換地域用詞）",
+            "tw2t.json": "台灣正體 → OpenCC 標準繁體",
+            "t2tw.json": "OpenCC 標準繁體 → 台灣正體",
+            "t2hk.json": "OpenCC 標準繁體 → 香港繁體",
+            "hk2s.json": "香港繁體 → 簡體",
+            "hk2t.json": "香港繁體 → OpenCC 標準繁體",
+            "jp2t.json": "日文新字體 → 日文舊字體（繁體）",
+            "t2jp.json": "日文舊字體（繁體） → 日文新字體",
+            "t2cngov.json": "繁體 → 通用規範漢字表繁體",
+            "t2cngov_keep_simp.json": "繁體 → 通用規範漢字表繁體（保留簡體字）"
+        };
 
-<script type="module">
-    import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@__OPENCC_WASM_VERSION__/dist/esm/index.js";
+        // UI Elements
+        const statusBadge = document.getElementById('status');
+        const statusText = document.getElementById('status-text');
+        const input = document.getElementById('input');
+        const convertBtn = document.getElementById('convertBtn');
+        const loadingIcon = document.getElementById('loading-icon');
+        const resultsGrid = document.getElementById('results');
+        const resultsCount = document.getElementById('results-count');
 
-    // Configuration Definitions
-    const configDescriptions = {
-        "s2t.json": "簡體 → OpenCC 標準繁體",
-        "s2tw.json": "簡體 → 台灣正體",
-        "s2twp.json": "簡體 → 台灣正體（轉換地域用詞）",
-        "s2hk.json": "簡體 → 香港繁體",
-        "t2s.json": "繁體 → 簡體",
-        "tw2s.json": "台灣正體 → 簡體",
-        "tw2sp.json": "台灣正體 → 簡體（轉換地域用詞）",
-        "tw2t.json": "台灣正體 → OpenCC 標準繁體",
-        "t2tw.json": "OpenCC 標準繁體 → 台灣正體",
-        "t2hk.json": "OpenCC 標準繁體 → 香港繁體",
-        "hk2s.json": "香港繁體 → 簡體",
-        "hk2t.json": "香港繁體 → OpenCC 標準繁體",
-        "jp2t.json": "日文新字體 → 日文舊字體（繁體）",
-        "t2jp.json": "日文舊字體（繁體） → 日文新字體",
-        "t2cngov.json": "繁體 → 通用規範漢字表繁體",
-        "t2cngov_keep_simp.json": "繁體 → 通用規範漢字表繁體（保留簡體字）"
-    };
+        // State
+        const converters = new Map();
+        let isConverting = false;
 
-    // UI Elements
-    const statusBadge = document.getElementById('status');
-    const statusText = document.getElementById('status-text');
-    const input = document.getElementById('input');
-    const convertBtn = document.getElementById('convertBtn');
-    const loadingIcon = document.getElementById('loading-icon');
-    const resultsGrid = document.getElementById('results');
-    const resultsCount = document.getElementById('results-count');
+        function updateStatus(msg, type = 'normal') {
+            statusText.textContent = msg;
+            statusBadge.className = 'status-badge ' + (type === 'success' ? 'ready' : type === 'error' ? 'error' : '');
+        }
 
-    // State
-    const converters = new Map();
-    let isConverting = false;
+        function toggleLoading(isLoading) {
+            isConverting = isLoading;
+            convertBtn.disabled = isLoading;
+            loadingIcon.style.display = isLoading ? 'block' : 'none';
+        }
 
-    function updateStatus(msg, type = 'normal') {
-        statusText.textContent = msg;
-        statusBadge.className = 'status-badge ' + (type === 'success' ? 'ready' : type === 'error' ? 'error' : '');
-    }
+        // Read URL parameter ?t=
+        function getTextFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('t') || '';
+        }
 
-    function toggleLoading(isLoading) {
-        isConverting = isLoading;
-        convertBtn.disabled = isLoading;
-        loadingIcon.style.display = isLoading ? 'block' : 'none';
-    }
+        // Create result cards
+        function createResultCards() {
+            resultsGrid.innerHTML = '';
+            resultsCount.textContent = Object.keys(configDescriptions).length;
 
-    // Read URL parameter ?t=
-    function getTextFromUrl() {
-        const params = new URLSearchParams(window.location.search);
-        return params.get('t') || '';
-    }
-
-    // Create result cards
-    function createResultCards() {
-        resultsGrid.innerHTML = '';
-        resultsCount.textContent = Object.keys(configDescriptions).length;
-
-        Object.entries(configDescriptions).forEach(([config, description]) => {
-            const card = document.createElement('div');
-            card.className = 'result-card';
-            card.innerHTML = `
+            Object.entries(configDescriptions).forEach(([config, description]) => {
+                const card = document.createElement('div');
+                card.className = 'result-card';
+                card.innerHTML = `
                 <div class="result-card-header">
                     <div class="result-card-title">
                         <strong>${config}</strong>
@@ -309,130 +138,131 @@
                 </div>
                 <div class="result-content loading" data-config="${config}">等待轉換...</div>
             `;
-            resultsGrid.appendChild(card);
-        });
-
-        // Add copy event listeners
-        document.querySelectorAll('.copy-icon').forEach(btn => {
-            btn.addEventListener('click', async (e) => {
-                const config = e.currentTarget.dataset.config;
-                const resultDiv = document.querySelector(`.result-content[data-config="${config}"]`);
-                if (resultDiv && resultDiv.textContent && !resultDiv.classList.contains('loading') && !resultDiv.classList.contains('error')) {
-                    try {
-                        await navigator.clipboard.writeText(resultDiv.textContent);
-                        const originalHTML = e.currentTarget.innerHTML;
-                        e.currentTarget.innerHTML = '✓';
-                        setTimeout(() => {
-                            e.currentTarget.innerHTML = originalHTML;
-                        }, 1500);
-                    } catch (err) {
-                        console.error('複製失敗:', err);
-                    }
-                }
+                resultsGrid.appendChild(card);
             });
-        });
-    }
 
-    // Convert text with all configs
-    async function convertAll() {
-        const text = input.value.trim();
-        if (!text) {
-            updateStatus('請輸入文本', 'error');
-            return;
+            // Add copy event listeners
+            document.querySelectorAll('.copy-icon').forEach(btn => {
+                btn.addEventListener('click', async (e) => {
+                    const config = e.currentTarget.dataset.config;
+                    const resultDiv = document.querySelector(`.result-content[data-config="${config}"]`);
+                    if (resultDiv && resultDiv.textContent && !resultDiv.classList.contains('loading') && !resultDiv.classList.contains('error')) {
+                        try {
+                            await navigator.clipboard.writeText(resultDiv.textContent);
+                            const originalHTML = e.currentTarget.innerHTML;
+                            e.currentTarget.innerHTML = '✓';
+                            setTimeout(() => {
+                                e.currentTarget.innerHTML = originalHTML;
+                            }, 1500);
+                        } catch (err) {
+                            console.error('複製失敗:', err);
+                        }
+                    }
+                });
+            });
         }
 
-        toggleLoading(true);
-        updateStatus('正在轉換所有配置...');
+        // Convert text with all configs
+        async function convertAll() {
+            const text = input.value.trim();
+            if (!text) {
+                updateStatus('請輸入文本', 'error');
+                return;
+            }
 
-        const configs = Object.keys(configDescriptions);
-        let completed = 0;
+            toggleLoading(true);
+            updateStatus('正在轉換所有配置...');
 
-        // Convert each config
-        for (const config of configs) {
-            const resultDiv = document.querySelector(`.result-content[data-config="${config}"]`);
-            if (!resultDiv) continue;
+            const configs = Object.keys(configDescriptions);
+            let completed = 0;
 
-            try {
-                // Get or create converter
-                let converter = converters.get(config);
-                if (!converter) {
-                    converter = OpenCC.Converter({ config });
-                    converters.set(config, converter);
+            // Convert each config
+            for (const config of configs) {
+                const resultDiv = document.querySelector(`.result-content[data-config="${config}"]`);
+                if (!resultDiv) continue;
+
+                try {
+                    // Get or create converter
+                    let converter = converters.get(config);
+                    if (!converter) {
+                        converter = OpenCC.Converter({ config });
+                        converters.set(config, converter);
+                    }
+
+                    // Convert
+                    const result = await converter(text);
+                    resultDiv.textContent = result;
+                    resultDiv.classList.remove('loading', 'error');
+
+                } catch (err) {
+                    console.error(`轉換 ${config} 失敗:`, err);
+                    resultDiv.textContent = `錯誤: ${err.message}`;
+                    resultDiv.classList.remove('loading');
+                    resultDiv.classList.add('error');
                 }
 
-                // Convert
-                const result = await converter(text);
-                resultDiv.textContent = result;
-                resultDiv.classList.remove('loading', 'error');
+                completed++;
+                updateStatus(`轉換中... (${completed}/${configs.length})`);
+            }
+
+            toggleLoading(false);
+            updateStatus('轉換完成', 'success');
+        }
+
+        // Initialize
+        async function init() {
+            try {
+                updateStatus('正在載入 opencc-wasm...');
+
+                // Pre-warm with a simple converter
+                const testConverter = OpenCC.Converter({ config: "s2t.json" });
+                await testConverter("預熱");
+
+                updateStatus('準備就緒', 'success');
+                convertBtn.disabled = false;
+
+                // Create result cards
+                createResultCards();
+
+                // Check URL parameter and auto-convert if present
+                const urlText = getTextFromUrl();
+                if (urlText) {
+                    input.value = urlText;
+                    // Auto-convert after a short delay
+                    setTimeout(() => {
+                        convertAll();
+                    }, 500);
+                }
 
             } catch (err) {
-                console.error(`轉換 ${config} 失敗:`, err);
-                resultDiv.textContent = `錯誤: ${err.message}`;
-                resultDiv.classList.remove('loading');
-                resultDiv.classList.add('error');
+                console.error(err);
+                updateStatus('初始化失敗: ' + err.message, 'error');
+                convertBtn.disabled = true;
             }
-
-            completed++;
-            updateStatus(`轉換中... (${completed}/${configs.length})`);
         }
 
-        toggleLoading(false);
-        updateStatus('轉換完成', 'success');
-    }
+        // Event Listeners
+        convertBtn.addEventListener('click', convertAll);
 
-    // Initialize
-    async function init() {
-        try {
-            updateStatus('正在載入 opencc-wasm...');
+        input.addEventListener('input', () => {
+            if (!isConverting) {
+                updateStatus('準備就緒', 'success');
+            }
+        });
 
-            // Pre-warm with a simple converter
-            const testConverter = OpenCC.Converter({ config: "s2t.json" });
-            await testConverter("預熱");
-
-            updateStatus('準備就緒', 'success');
-            convertBtn.disabled = false;
-
-            // Create result cards
-            createResultCards();
-
-            // Check URL parameter and auto-convert if present
-            const urlText = getTextFromUrl();
-            if (urlText) {
-                input.value = urlText;
-                // Auto-convert after a short delay
-                setTimeout(() => {
+        // Allow Enter+Ctrl/Cmd to trigger conversion
+        input.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                if (!convertBtn.disabled) {
                     convertAll();
-                }, 500);
+                }
             }
+        });
 
-        } catch (err) {
-            console.error(err);
-            updateStatus('初始化失敗: ' + err.message, 'error');
-            convertBtn.disabled = true;
-        }
-    }
-
-    // Event Listeners
-    convertBtn.addEventListener('click', convertAll);
-
-    input.addEventListener('input', () => {
-        if (!isConverting) {
-            updateStatus('準備就緒', 'success');
-        }
-    });
-
-    // Allow Enter+Ctrl/Cmd to trigger conversion
-    input.addEventListener('keydown', (e) => {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-            e.preventDefault();
-            if (!convertBtn.disabled) {
-                convertAll();
-            }
-        }
-    });
-
-    // Start initialization
-    init();
-</script>
+        // Start initialization
+        init();
+    </script>
 </body>
+
 </html>
