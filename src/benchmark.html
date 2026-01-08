@@ -36,7 +36,7 @@
     </header>
 
     <div class="card-section">
-      <p style="margin-bottom: 16px; color: var(--text-sub);">输入需要转换的文本（建议较长），选择配置后比较两者耗时。</p>
+      <p style="margin-bottom: 16px; color: var(--text-sub);">輸入需要轉換的文本（建議較長），選擇配置後比較兩者耗時。</p>
 
       <div class="options">
         <div>
@@ -46,16 +46,16 @@
         </div>
       </div>
 
-      <label for="inputText">输入文本</label>
+      <label for="inputText">輸入文本</label>
       <textarea id="inputText" style="min-height: 120px;">鼠标里面的硅二极管坏了，导致光标分辨率降低。</textarea>
 
       <div class="toolbar">
-        <button id="run" class="btn btn-primary">运行 Benchmark</button>
+        <button id="run" class="btn btn-primary">運行 Benchmark</button>
       </div>
     </div>
 
     <div class="card-section">
-      <h2>结果</h2>
+      <h2>結果</h2>
       <div class="output-box" id="output" style="min-height: 200px;"></div>
     </div>
 
@@ -111,10 +111,10 @@
           runs.push(t1 - t0);
         }
         const avg = runs.reduce((a, b) => a + b, 0) / runs.length;
-        lines.push(`${label} 加载: ${(tLoad1 - tLoad0).toFixed(2)} ms，转换(5次): ${runs.map(n => n.toFixed(2)).join(", ")} ms，平均: ${avg.toFixed(2)} ms`);
-        lines.push(`${label} 输出: ${result}`);
+        lines.push(`${label} 載入: ${(tLoad1 - tLoad0).toFixed(2)} ms，轉換(5次): ${runs.map(n => n.toFixed(2)).join(", ")} ms，平均: ${avg.toFixed(2)} ms`);
+        lines.push(`${label} 輸出: ${result}`);
       } catch (e) {
-        lines.push(`${label} 失败: ${e}`);
+        lines.push(`${label} 失敗: ${e}`);
         console.error(e);
       }
     }
@@ -124,12 +124,12 @@
       const text = document.getElementById("inputText").value;
       const out = document.getElementById("output");
       if (!cfg) {
-        out.textContent = "配置不能为空";
+        out.textContent = "配置不能為空";
         return;
       }
 
       const lines = [];
-      lines.push(`输入长度: ${text.length} 字符`);
+      lines.push(`輸入長度: ${text.length} 字元`);
 
       // WASM
       await runBenchmark(
@@ -152,7 +152,7 @@
           lines
         );
       } catch (e) {
-        lines.push("opencc-js 加载失败: " + e);
+        lines.push("opencc-js 載入失敗: " + e);
       }
 
       out.textContent = lines.join("\n");

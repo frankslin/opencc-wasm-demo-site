@@ -75,43 +75,43 @@
     </header>
 
     <div class="card-section">
-      <h2>加载配置与词典</h2>
-      <p style="color:var(--text-sub);">点击配置名，手动写入虚拟文件系统 <code>/data/config/</code>。</p>
+      <h2>載入配置與詞典</h2>
+      <p style="color:var(--text-sub);">點擊配置名，手動寫入虛擬檔案系統 <code>/data/config/</code>。</p>
       <div id="configButtons"></div>
     </div>
 
     <div class="card-section">
-      <h2>文本转换</h2>
+      <h2>文本轉換</h2>
       <div class="options">
         <div>
-          <label>配置名称</label>
-          <input id="configPath" type="text" placeholder="尚未选择配置" disabled style="background:#f3f4f6;" />
+          <label>配置名稱</label>
+          <input id="configPath" type="text" placeholder="尚未選擇配置" disabled style="background:#f3f4f6;" />
         </div>
         <div>
-          <label>待转换文本</label>
+          <label>待轉換文本</label>
           <input id="textInput" type="text" placeholder="汉字" />
         </div>
       </div>
       <div class="toolbar">
-        <button id="runConvert" class="btn btn-primary" disabled>执行转换</button>
+        <button id="runConvert" class="btn btn-primary" disabled>執行轉換</button>
       </div>
 
       <div style="margin-top: 16px;">
-        <label>转换结果</label>
+        <label>轉換結果</label>
         <div style="display:flex; align-items:flex-start; gap:8px;">
           <div class="output-box" id="convertOutput" style="min-height: 80px;"></div>
-          <button id="copyOutput" class="btn btn-secondary" style="padding: 8px 12px;">复制</button>
+          <button id="copyOutput" class="btn btn-secondary" style="padding: 8px 12px;">複製</button>
         </div>
       </div>
     </div>
 
     <div class="card-section">
-      <h2>运行测试用例</h2>
-      <button id="runTests" class="btn btn-secondary">运行测试</button>
+      <h2>運行測試用例</h2>
+      <button id="runTests" class="btn btn-secondary">運行測試</button>
     </div>
 
     <div class="card-section">
-      <h2>日志</h2>
+      <h2>日誌</h2>
       <pre id="logOutput" class="status-log"></pre>
     </div>
 
@@ -173,15 +173,15 @@
       const handle = Number(cfgInput.dataset.handle || 0);
       const ready = cfgInput.dataset.ready === "1";
       if (!cfg) {
-        document.getElementById("convertOutput").textContent = "请选择配置后再转换";
+        document.getElementById("convertOutput").textContent = "請選擇配置後再轉換";
         return;
       }
       if (!ready) {
-        document.getElementById("convertOutput").textContent = "词典未加载成功，无法转换";
+        document.getElementById("convertOutput").textContent = "詞典未載入成功，無法轉換";
         return;
       }
       if (!handle) {
-        document.getElementById("convertOutput").textContent = "转换句柄未就绪";
+        document.getElementById("convertOutput").textContent = "轉換句柄未就緒";
         return;
       }
       const text = document.getElementById("textInput").value || "汉字";
@@ -208,7 +208,7 @@
         cfgInput.dataset.handle = String(handles.get(cfgName));
         cfgInput.dataset.ready = "1";
         document.getElementById("runConvert").disabled = false;
-        document.getElementById("logOutput").textContent = `已缓存：${label}`;
+        document.getElementById("logOutput").textContent = `已快取：${label}`;
         return handles.get(cfgName);
       }
       const mod = await initModule();
@@ -363,10 +363,10 @@
         await navigator.clipboard.writeText(text);
         const btn = document.getElementById("copyOutput");
         const old = btn.textContent;
-        btn.textContent = "已复制";
+        btn.textContent = "已複製";
         setTimeout(() => (btn.textContent = old), 1200);
       } catch (err) {
-        alert("复制失败: " + err);
+        alert("複製失敗: " + err);
       }
     };
   </script>
