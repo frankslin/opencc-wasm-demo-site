@@ -31,13 +31,6 @@
                 <div class="status-dot"></div>
                 <span id="status-text">初始化中...</span>
             </div>
-            <div class="chips">
-                <a href="index.html" class="chip" style="text-decoration:none;">首頁 Home</a>
-                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" target="_blank" class="chip"
-                    style="text-decoration:none;">GitHub</a>
-                <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" class="chip"
-                    style="text-decoration:none;">npm</a>
-            </div>
         </header>
 
         <div class="editor-area">
@@ -61,16 +54,24 @@
             <div class="pane">
                 <div class="pane-header">
                     <span>「通用規範漢字表」繁體中文</span>
-                    <button class="copy-btn" id="copy-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                        </svg>
-                        複製結果
-                    </button>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <label class="diff-toggle" for="showDiff">
+                            <input type="checkbox" id="showDiff">
+                            <span>顯示差異</span>
+                        </label>
+                        <button class="copy-btn" id="copy-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            複製結果
+                        </button>
+                    </div>
                 </div>
-                <textarea id="output" readonly placeholder="轉換結果將顯示在這裡..."></textarea>
+                <div id="output" class="output-box" style="flex: 1; min-height: 120px; overflow-y: auto;">轉換結果將顯示在這裡...
+                </div>
             </div>
         </div>
 
@@ -84,8 +85,9 @@
                 <a href="https://t.me/+TVq4LmPRlN9hZjE0" class="chip" target="_blank">Telegram</a>
             </p>
             <p>本演示頁使用了 <code>t2cngov.json</code> 配置，將繁體中文轉換至「通用規範漢字表」標準。</p>
-            <p>該配置來自 <a href="https://github.com/TerryTian-tech" target="_blank">TerryTian-Tech</a>，感謝 TerryTian-Tech
-                的貢獻！</p>
+            <p>該配置來自 <a
+                    href="https://github.com/TerryTian-tech/OpenCC-Traditional-Chinese-characters-according-to-Chinese-government-standards"
+                    target="_blank">TerryTian-Tech</a>，感謝 Terry Tian 等朋友的貢獻！</p>
             <p style="font-size: 0.8rem;">
                 OpenCC is open source software licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0"
                     target="_blank">Apache 2.0</a>. Copyright © OpenCC contributors.
@@ -94,7 +96,7 @@
     </div>
 
     <script type="module">
-        import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@__OPENCC_WASM_VERSION__/dist/esm/index.js";
+        import OpenCC from "./vendor/opencc-wasm/esm/index.js";
 
         // UI Elements
         const statusBadge = document.getElementById('status');
@@ -105,8 +107,13 @@
         const copyBtn = document.getElementById('copy-btn');
         const iconConvert = document.getElementById('icon-convert');
         const iconLoading = document.getElementById('icon-loading');
+        const showDiffCheckbox = document.getElementById("showDiff");
 
         let converter = null;
+        let lastInput = "";
+        let lastOutput = "";
+        let inputDebounceTimer = null;
+        const inputDebounceMs = 500;
 
         function updateStatus(msg, type = 'normal') {
             statusText.textContent = msg;
@@ -125,9 +132,101 @@
             }
         }
 
+        /**
+         * Compute diff between two strings using Longest Common Subsequence (LCS)
+         */
+        function computeDiff(oldStr, newStr) {
+            const oldChars = [...oldStr];
+            const newChars = [...newStr];
+            const m = oldChars.length;
+            const n = newChars.length;
+
+            const dp = Array(m + 1).fill(null).map(() => Array(n + 1).fill(0));
+            for (let i = 1; i <= m; i++) {
+                for (let j = 1; j <= n; j++) {
+                    if (oldChars[i - 1] === newChars[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    } else {
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    }
+                }
+            }
+
+            const ops = [];
+            let i = m, j = n;
+            while (i > 0 || j > 0) {
+                if (i > 0 && j > 0 && oldChars[i - 1] === newChars[j - 1]) {
+                    ops.push({ type: 'equal', text: oldChars[i - 1] });
+                    i--; j--;
+                } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+                    ops.push({ type: 'insert', text: newChars[j - 1] });
+                    j--;
+                } else {
+                    ops.push({ type: 'delete', text: oldChars[i - 1] });
+                    i--;
+                }
+            }
+            ops.reverse();
+
+            const merged = [];
+            for (const op of ops) {
+                if (merged.length > 0 && merged[merged.length - 1].type === op.type) {
+                    merged[merged.length - 1].text += op.text;
+                } else {
+                    merged.push({ ...op });
+                }
+            }
+            return merged;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function renderDiff(input, converted) {
+            const diff = computeDiff(input, converted);
+            let html = '';
+            for (const op of diff) {
+                const escaped = escapeHtml(op.text);
+                if (op.type === 'equal') {
+                    html += escaped;
+                } else if (op.type === 'delete') {
+                    html += `<span class="diff-del">${escaped}</span>`;
+                } else if (op.type === 'insert') {
+                    html += `<span class="diff-ins">${escaped}</span>`;
+                }
+            }
+            return html;
+        }
+
+        function updateOutputDisplay() {
+            if (!lastOutput && !lastInput) {
+                output.innerHTML = '';
+                return;
+            }
+            if (showDiffCheckbox.checked && lastInput !== lastOutput) {
+                output.innerHTML = renderDiff(lastInput, lastOutput);
+            } else {
+                output.textContent = lastOutput;
+            }
+        }
+
+        function scheduleConvert() {
+            if (inputDebounceTimer) {
+                clearTimeout(inputDebounceTimer);
+            }
+            inputDebounceTimer = setTimeout(() => {
+                doConvert();
+            }, inputDebounceMs);
+        }
+
         copyBtn.onclick = () => {
-            if (!output.value) return;
-            navigator.clipboard.writeText(output.value).then(() => {
+            if (!lastOutput) return;
+            navigator.clipboard.writeText(lastOutput).then(() => {
                 const originalText = copyBtn.innerHTML;
                 copyBtn.innerHTML = '已複製!';
                 setTimeout(() => copyBtn.innerHTML = originalText, 1500);
@@ -138,18 +237,24 @@
             if (!converter) return;
             const text = input.value;
             if (!text.trim()) {
-                output.value = '';
+                lastInput = "";
+                lastOutput = "";
+                updateOutputDisplay();
                 return;
             }
             toggleLoading(true);
             updateStatus('轉換中...');
             try {
                 const result = await converter(text);
-                output.value = result;
+                lastInput = text;
+                lastOutput = result;
+                updateOutputDisplay();
                 updateStatus('轉換完成', 'success');
             } catch (err) {
                 console.error(err);
-                output.value = '轉換出錯';
+                lastInput = "";
+                lastOutput = '轉換出錯';
+                updateOutputDisplay();
                 updateStatus('轉換失敗: ' + err.message, 'error');
             } finally {
                 toggleLoading(false);
@@ -164,6 +269,11 @@
                 await converter("預熱");
                 updateStatus('準備就緒', 'success');
                 run.disabled = false;
+
+                // Trigger initial convert if there is default text
+                if (input.value.trim()) {
+                    doConvert();
+                }
             } catch (err) {
                 console.error(err);
                 updateStatus('初始化失敗: ' + err.message, 'error');
@@ -174,8 +284,13 @@
         run.onclick = () => doConvert();
 
         input.addEventListener('input', () => {
-            if (converter) updateStatus('準備就緒', 'success');
+            if (converter) {
+                updateStatus('準備就緒', 'success');
+                scheduleConvert();
+            }
         });
+
+        showDiffCheckbox.addEventListener('change', updateOutputDisplay);
 
         init();
     </script>
