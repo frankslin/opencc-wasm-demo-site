@@ -1,12 +1,619 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenCC WASM Demo</title>
+    <title>OpenCC WASM - 繁簡轉換工具</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Landing page specific styles */
+        .hero {
+            padding: 60px 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 32px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .content-section {
+            padding: 48px 30px;
+            background: #fff;
+        }
+
+        .content-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 8px;
+            display: inline-block;
+        }
+
+        .content-section h3 {
+            font-size: 1.2rem;
+            margin: 32px 0 16px 0;
+            color: var(--text-main);
+        }
+
+        .content-section p {
+            color: var(--text-main);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .feature-card {
+            background: #fafafa;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            margin-top: 0;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            margin-bottom: 0;
+        }
+
+        .demo-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .demo-link {
+            display: block;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .demo-link:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .demo-link strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .demo-link span {
+            font-size: 0.85rem;
+            color: var(--text-sub);
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 48px;
+        }
+
+        .lang-section h2 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-tag {
+            font-size: 0.7rem;
+            background: var(--primary);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        code {
+            background: #f3f4f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+
+        pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 16px 0;
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+        }
+
+        .code-comment {
+            color: #94a3b8;
+        }
+
+        .code-keyword {
+            color: #c084fc;
+        }
+
+        .code-string {
+            color: #86efac;
+        }
+
+        .code-function {
+            color: #60a5fa;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 24px;
+        }
+
+        .usage-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .usage-card-header {
+            background: #f8fafc;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .usage-card pre {
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+
+        .config-table th,
+        .config-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .config-table th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .config-table code {
+            font-size: 0.85em;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .two-columns,
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            pre {
+                font-size: 0.8rem;
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    <h1>OpenCC WASM Demo Site</h1>
-    <p>Demo website for NPM package opencc-wasm</p>
+    <div class="container" style="max-width: 1200px;">
+        <header>
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+                    <path fill="currentColor"
+                        d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
+                    <path fill="currentColor"
+                        d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
+                </svg>
+                <div>
+                    <h1 style="font-size:1.1rem;">OpenCC WASM</h1>
+                    <span>更新日期：__BUILD_DATE__</span>
+                </div>
+            </div>
+            <div class="chips">
+                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" target="_blank" class="chip"
+                    style="text-decoration:none;">GitHub</a>
+                <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank" class="chip"
+                    style="text-decoration:none;">npm</a>
+            </div>
+        </header>
+
+        <div class="hero">
+            <h1>OpenCC WASM</h1>
+            <p class="tagline">
+                專為 JavaScript 前端打造的中文繁簡轉換庫<br>
+                Chinese conversion library for JavaScript frontend<br><br>
+                WebAssembly port of OpenCC with full API compatibility.<br>
+                Bundles the official OpenCC C++ core compiled via Emscripten,<br>
+                plus all official configs and prebuilt <code>.ocd2</code> dictionaries.
+            </p>
+            <div class="hero-buttons">
+                <a href="converter.html" class="btn btn-primary">在線轉換 Start Converting Now</a>
+                <a href="compare.html" class="btn btn-secondary" style="background:#fff;">配置對比 Compare All</a>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <div class="two-columns">
+                <!-- 中文介紹 -->
+                <div class="lang-section">
+                    <h2><span class="lang-tag">中文</span> 關於 OpenCC WASM</h2>
+                    <p>
+                        <strong>OpenCC WASM</strong> 是 <a href="https://github.com/BYVoid/OpenCC"
+                            target="_blank">OpenCC</a> 的 WebAssembly 移植版本，具有完整的 API 相容性。
+                        內建透過 Emscripten 編譯的官方 OpenCC C++ 核心，以及所有官方與部分社區配置和預建的 <code>.ocd2</code> 字典檔案。
+                    </p>
+                    <p>
+                        可在瀏覽器或 Node.js 環境中執行中文繁簡轉換，無需伺服器端處理。支援多種轉換模式：
+                    </p>
+                    <ul style="margin: 16px 0; padding-left: 24px; color: var(--text-main); line-height: 2;">
+                        <li>簡體中文 ↔ 繁體中文（標準、台灣、香港）</li>
+                        <li>地域用詞轉換（如「軟體」↔「软件」）</li>
+                        <li>日文新字體 ↔ 舊字體</li>
+                        <li>通用規範漢字表轉換</li>
+                    </ul>
+                </div>
+
+                <!-- English Introduction -->
+                <div class="lang-section">
+                    <h2><span class="lang-tag">EN</span> About OpenCC WASM</h2>
+                    <p>
+                        <strong>OpenCC WASM</strong> is a WebAssembly port of <a href="https://github.com/BYVoid/OpenCC"
+                            target="_blank">OpenCC</a> with full API compatibility.
+                        Bundles the official OpenCC C++ core compiled via Emscripten, plus all official configs and
+                        prebuilt <code>.ocd2</code> dictionaries.
+                    </p>
+                    <p>
+                        Enables Chinese Simplified-Traditional conversion directly in browsers or Node.js without
+                        server-side processing. Supports multiple conversion modes:
+                    </p>
+                    <ul style="margin: 16px 0; padding-left: 24px; color: var(--text-main); line-height: 2;">
+                        <li>Simplified ↔ Traditional Chinese (Standard, Taiwan, Hong Kong)</li>
+                        <li>Regional phrase conversion (e.g., "軟體" ↔ "软件")</li>
+                        <li>Japanese Shinjitai ↔ Kyūjitai</li>
+                        <li>China's General Standard Characters conversion</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" style="background: #fafafa; border-top: 1px solid var(--border);">
+            <h2>功能特色 Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🌐 純前端運行 Client-Side Only</h3>
+                    <p>所有轉換在瀏覽器本地完成，無需網路請求，資料不會上傳。<br>
+                        All conversions run locally in your browser. No data is uploaded.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📦 易於整合 Easy Integration</h3>
+                    <p>提供 <code>opencc-js</code> 相容 API，輕鬆遷移現有專案。<br>
+                        Compatible with opencc-js API for easy migration.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔧 完整 16 種配置 16 Configurations</h3>
+                    <p>支援完整的 OpenCC 官方配置，包括地域用詞轉換。另有部分開源社區配置。<br>
+                        Full OpenCC configs including regional phrase conversion. Some configs are from OpenCC open
+                        source community.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>✅ 原版算法 Authentic Algorithm</h3>
+                    <p>與原版 OpenCC 工具算法、功能完全一致，辭典格式完全兼容，並非仿寫。<br>
+                        Identical algorithm and functionality to the original OpenCC C++ tool, not a reimplementation
+                        (unlike opencc-js which has some implementation errors).</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚀 真正的 WASM Real WebAssembly</h3>
+                    <p>與 wasm-opencc 相比，使用了真正的 WebAssembly 技術，兼容現代主流瀏覽器。<br>
+                        Uses genuine WebAssembly technology, compatible with all modern browsers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📚 持續更新 Continuously Updated</h3>
+                    <p>兼容最新詞庫並致力於不斷修正，確保轉換品質與時俱進。<br>
+                        Compatible with the latest dictionaries and continuously improving conversion quality.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Section -->
+        <div class="content-section">
+            <h2>📖 使用方法 Usage</h2>
+
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <div class="usage-card-header">🌐 Browser (CDN)</div>
+                    <pre><code><span class="code-comment">// 1. Import from CDN</span>
+<span class="code-keyword">import</span> OpenCC <span class="code-keyword">from</span> <span class="code-string">"https://cdn.jsdelivr.net/npm/opencc-wasm@__OPENCC_WASM_VERSION__/dist/esm/index.js"</span>;
+
+<span class="code-comment">// 2. Create converter (auto-downloads everything!)</span>
+<span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ from: <span class="code-string">"cn"</span>, to: <span class="code-string">"tw"</span> });
+
+<span class="code-comment">// 3. Convert - Done!</span>
+<span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"简体中文"</span>);
+console.<span class="code-function">log</span>(result);  <span class="code-comment">// 簡體中文</span></code></pre>
+                </div>
+
+                <div class="usage-card">
+                    <div class="usage-card-header">📦 Node.js (NPM)</div>
+                    <pre><code><span class="code-comment">// Install: npm install opencc-wasm</span>
+<span class="code-keyword">import</span> OpenCC <span class="code-keyword">from</span> <span class="code-string">"opencc-wasm"</span>;
+
+<span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ from: <span class="code-string">"cn"</span>, to: <span class="code-string">"tw"</span> });
+<span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"简体中文"</span>);
+console.<span class="code-function">log</span>(result);  <span class="code-comment">// 簡體中文</span></code></pre>
+                </div>
+            </div>
+
+            <h3>📋 API Reference</h3>
+
+            <h4 style="margin-top: 24px; color: var(--primary);">OpenCC.Converter() - 建立轉換器</h4>
+            <p>兩種指定轉換方式：</p>
+
+            <p><strong>方式一：使用 config 參數（推薦）</strong></p>
+            <pre><code><span class="code-comment">// 簡體 → 台灣正體（含地域用詞）</span>
+<span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2twp"</span> });
+<span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"服务器软件"</span>);  <span class="code-comment">// 伺服器軟體</span></code></pre>
+
+            <p><strong>方式二：使用 from/to 參數（與 opencc-js 相容）</strong></p>
+            <pre><code><span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ from: <span class="code-string">"cn"</span>, to: <span class="code-string">"twp"</span> });
+<span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"服务器"</span>);  <span class="code-comment">// 伺服器</span></code></pre>
+
+            <h4 style="margin-top: 32px; color: var(--text-main);">支援的配置 Supported Configurations</h4>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>Config</th>
+                        <th>說明 Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>s2twp</code></td>
+                        <td>簡體 → 台灣正體（含地域用詞轉換）</td>
+                    </tr>
+                    <tr>
+                        <td><code>s2tw</code></td>
+                        <td>簡體 → 台灣正體</td>
+                    </tr>
+                    <tr>
+                        <td><code>s2hk</code></td>
+                        <td>簡體 → 香港繁體</td>
+                    </tr>
+                    <tr>
+                        <td><code>s2t</code></td>
+                        <td>簡體 → OpenCC 標準繁體</td>
+                    </tr>
+                    <tr>
+                        <td><code>tw2s</code></td>
+                        <td>台灣正體 → 簡體</td>
+                    </tr>
+                    <tr>
+                        <td><code>tw2sp</code></td>
+                        <td>台灣正體 → 簡體（含地域用詞轉換）</td>
+                    </tr>
+                    <tr>
+                        <td><code>hk2s</code></td>
+                        <td>香港繁體 → 簡體</td>
+                    </tr>
+                    <tr>
+                        <td><code>t2s</code></td>
+                        <td>OpenCC 標準繁體 → 簡體</td>
+                    </tr>
+                    <tr>
+                        <td><code>hk2t</code> / <code>t2hk</code></td>
+                        <td>香港繁體 ↔ OpenCC 標準繁體</td>
+                    </tr>
+                    <tr>
+                        <td><code>tw2t</code> / <code>t2tw</code></td>
+                        <td>台灣正體 ↔ OpenCC 標準繁體</td>
+                    </tr>
+                    <tr>
+                        <td><code>jp2t</code> / <code>t2jp</code></td>
+                        <td>日文新字體 ↔ 舊字體</td>
+                    </tr>
+                    <tr>
+                        <td><code>t2cngov</code></td>
+                        <td>繁體或簡體 → 通用規範漢字表繁體 (來自<a
+                                href="https://github.com/TerryTian-tech/OpenCC-Traditional-Chinese-characters-according-to-Chinese-government-standards"
+                                target="_blank">TerryTian-Tech</a>) <a href="/cngov" class="chip">試用</a></td>
+                    </tr>
+                    <tr>
+                        <td><code>t2cngov_keep_simp</code></td>
+                        <td>繁體或簡體 → 通用規範漢字表繁體（保留簡體字） (來自<a
+                                href="https://github.com/TerryTian-tech/OpenCC-Traditional-Chinese-characters-according-to-Chinese-government-standards"
+                                target="_blank">TerryTian-Tech</a>)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top: 32px; color: var(--primary);">OpenCC.CustomConverter() - 自訂轉換器</h4>
+            <pre><code><span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">CustomConverter</span>([
+  [<span class="code-string">"“"</span>, <span class="code-string">"「"</span>],
+  [<span class="code-string">"”"</span>, <span class="code-string">"」"</span>],
+  [<span class="code-string">"‘"</span>, <span class="code-string">"『"</span>],
+  [<span class="code-string">"’"</span>, <span class="code-string">"』"</span>],
+]);
+
+<span class="code-keyword">const</span> result = <span class="code-function">converter</span>(<span class="code-string">"这是“引号”和‘单引号’"</span>);
+<span class="code-comment">// Output: 这是「引号」和『单引号』</span></code></pre>
+
+            <h3>💡 使用範例 Examples</h3>
+
+            <div class="usage-grid">
+                <div class="usage-card">
+                    <div class="usage-card-header">⚛️ React</div>
+                    <pre><code><span class="code-keyword">import</span> { useState } <span class="code-keyword">from</span> <span class="code-string">'react'</span>;
+<span class="code-keyword">import</span> OpenCC <span class="code-keyword">from</span> <span class="code-string">'opencc-wasm'</span>;
+
+<span class="code-keyword">function</span> <span class="code-function">App</span>() {
+  <span class="code-keyword">const</span> [output, setOutput] = <span class="code-function">useState</span>(<span class="code-string">''</span>);
+
+  <span class="code-keyword">const</span> handleConvert = <span class="code-keyword">async</span> () => {
+    <span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2tw"</span> });
+    <span class="code-function">setOutput</span>(<span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"简体中文"</span>));
+  };
+
+  <span class="code-keyword">return</span> (
+    &lt;div&gt;
+      &lt;button onClick={handleConvert}&gt;Convert&lt;/button&gt;
+      &lt;div&gt;{output}&lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                </div>
+
+                <div class="usage-card">
+                    <div class="usage-card-header">💚 Vue 3</div>
+                    <pre><code>&lt;script setup&gt;
+<span class="code-keyword">import</span> { ref } <span class="code-keyword">from</span> <span class="code-string">'vue'</span>;
+<span class="code-keyword">import</span> OpenCC <span class="code-keyword">from</span> <span class="code-string">'opencc-wasm'</span>;
+
+<span class="code-keyword">const</span> output = <span class="code-function">ref</span>(<span class="code-string">''</span>);
+
+<span class="code-keyword">async function</span> <span class="code-function">handleConvert</span>() {
+  <span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2tw"</span> });
+  output.value = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"简体中文"</span>);
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="handleConvert"&gt;Convert&lt;/button&gt;
+  &lt;div&gt;{{ output }}&lt;/div&gt;
+&lt;/template&gt;</code></pre>
+                </div>
+            </div>
+
+            <h3>🔧 最佳實踐 Best Practices</h3>
+
+            <p><strong>✅ 重複使用轉換器實例</strong></p>
+            <pre><code><span class="code-comment">// ✅ Good: Create once, use many times</span>
+<span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2tw"</span> });
+
+<span class="code-keyword">for</span> (<span class="code-keyword">const</span> text <span class="code-keyword">of</span> manyTexts) {
+  <span class="code-keyword">await</span> <span class="code-function">converter</span>(text);  <span class="code-comment">// Fast!</span>
+}
+
+<span class="code-comment">// ❌ Avoid: Creating new instances every time</span>
+<span class="code-keyword">for</span> (<span class="code-keyword">const</span> text <span class="code-keyword">of</span> manyTexts) {
+  <span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2tw"</span> });  <span class="code-comment">// Slow!</span>
+  <span class="code-keyword">await</span> <span class="code-function">converter</span>(text);
+}</code></pre>
+
+            <p><strong>多個轉換器（自動快取）</strong></p>
+            <pre><code><span class="code-comment">// Create multiple converters (resources auto-cached)</span>
+<span class="code-keyword">const</span> s2t = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2t"</span> });
+<span class="code-keyword">const</span> s2tw = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2tw"</span> });
+<span class="code-keyword">const</span> t2s = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"t2s"</span> });
+
+<span class="code-comment">// Use independently</span>
+console.<span class="code-function">log</span>(<span class="code-keyword">await</span> <span class="code-function">s2t</span>(<span class="code-string">"简体"</span>));   <span class="code-comment">// 簡體</span>
+console.<span class="code-function">log</span>(<span class="code-keyword">await</span> <span class="code-function">s2tw</span>(<span class="code-string">"软件"</span>));  <span class="code-comment">// 軟體</span>
+console.<span class="code-function">log</span>(<span class="code-keyword">await</span> <span class="code-function">t2s</span>(<span class="code-string">"繁體"</span>));   <span class="code-comment">// 繁体</span></code></pre>
+        </div>
+
+        <div class="content-section" style="background: #fafafa; border-top: 1px solid var(--border);">
+            <h2>線上示範 Demo Pages</h2>
+            <div class="demo-links">
+                <a href="converter.html" class="demo-link">
+                    <strong>轉換工具 Converter</strong>
+                    <span>互動式繁簡轉換介面</span>
+                </a>
+                <a href="compare.html" class="demo-link">
+                    <strong>配置對比 Compare</strong>
+                    <span>一次查看 16 種配置結果</span>
+                </a>
+                <a href="wasm.html" class="demo-link">
+                    <strong>WASM API Demo</strong>
+                    <span>底層 WASM API 測試</span>
+                </a>
+                <a href="benchmark.html" class="demo-link">
+                    <strong>效能測試 Benchmark</strong>
+                    <span>WASM vs opencc-js 對比</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="chips">
+                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" class="chip" target="_blank">OpenCC
+                    WASM</a>
+                <a href="https://github.com/BYVoid/OpenCC" class="chip" target="_blank">OpenCC</a>
+                <a href="https://www.npmjs.com/package/opencc-wasm" class="chip" target="_blank">npm</a>
+                <a href="https://t.me/+TVq4LmPRlN9hZjE0" class="chip" target="_blank">Telegram</a>
+            </p>
+            <p style="font-size: 0.8rem;">
+                OpenCC is open source software licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0"
+                    target="_blank">Apache 2.0</a>. Copyright © OpenCC contributors.
+            </p>
+        </div>
+    </div>
 </body>
+
 </html>

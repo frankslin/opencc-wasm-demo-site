@@ -40,6 +40,40 @@ if (!fs.existsSync(pkgRoot)) {
   process.exit(1);
 }
 
+// Set paths
+const srcRoot = path.join(demoRoot, "src");
+
+// Helper: Recursive copy and process
+function processDirectory(srcDir, dstDir) {
+  if (!fs.existsSync(dstDir)) {
+    fs.mkdirSync(dstDir, { recursive: true });
+  }
+
+  const entries = fs.readdirSync(srcDir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const srcPath = path.join(srcDir, entry.name);
+    const dstPath = path.join(dstDir, entry.name);
+
+    if (entry.isDirectory()) {
+      processDirectory(srcPath, dstPath);
+    } else {
+      // Process file
+      if (entry.name.endsWith('.html')) {
+        let content = fs.readFileSync(srcPath, 'utf8');
+        content = content.replace(/__BUILD_DATE__/g, buildDate);
+        content = content.replace(/__OPENCC_WASM_VERSION__/g, wasmVersion);
+        fs.writeFileSync(dstPath, content, 'utf8');
+      } else {
+        fs.copyFileSync(srcPath, dstPath);
+      }
+    }
+  }
+}
+
+const buildDate = getBuildDate();
+const wasmVersion = getWasmVersion();
+
 fs.rmSync(outRoot, { recursive: true, force: true });
 fs.mkdirSync(vendorOut, { recursive: true });
 
@@ -53,33 +87,9 @@ if (fs.existsSync(ocjsSrc)) {
   fs.cpSync(ocjsSrc, vendorJsOut, { recursive: true });
 }
 
-// copy demo assets with build date + version injection
-const buildDate = getBuildDate();
-const wasmVersion = getWasmVersion();
-const filesToCopy = ["index.html", "converter.html", "classic.html", "benchmark.html", "wasm.html", "cdn.html", "cngov.html", "compare.html", "testcases.json"];
-
-// copy css directory
-const cssSrc = path.join(demoRoot, "css");
-const cssDst = path.join(outRoot, "css");
-if (fs.existsSync(cssSrc)) {
-  fs.cpSync(cssSrc, cssDst, { recursive: true });
-}
-
-for (const file of filesToCopy) {
-  const src = path.join(demoRoot, file);
-  if (fs.existsSync(src)) {
-    const dst = path.join(outRoot, path.basename(file));
-
-    // For HTML files, replace __BUILD_DATE__ placeholder
-    if (file.endsWith('.html')) {
-      let content = fs.readFileSync(src, 'utf8');
-      content = content.replace(/__BUILD_DATE__/g, buildDate);
-      content = content.replace(/__OPENCC_WASM_VERSION__/g, wasmVersion);
-      fs.writeFileSync(dst, content, 'utf8');
-    } else {
-      fs.copyFileSync(src, dst);
-    }
-  }
+// Process everything in src directory
+if (fs.existsSync(srcRoot)) {
+  processDirectory(srcRoot, outRoot);
 }
 
 console.log(`Demo bundle ready in wasm-demo/dist/ (build date: ${buildDate})`);
