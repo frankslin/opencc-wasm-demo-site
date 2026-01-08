@@ -407,6 +407,10 @@ textarea::placeholder {
   background: #fafafa;
 }
 
+.footer p+p {
+  margin-top: 12px;
+}
+
 .footer a {
   color: var(--primary);
   text-decoration: none;
@@ -415,6 +419,11 @@ textarea::placeholder {
 
 .footer a:hover {
   text-decoration: underline;
+}
+
+.footer .chips {
+  justify-content: center;
+  margin-bottom: 4px;
 }
 
 /* Chips */

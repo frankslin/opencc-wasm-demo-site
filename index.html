@@ -421,11 +421,11 @@ console.<span class="code-function">log</span>(result);  <span class="code-comme
 <span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ config: <span class="code-string">"s2twp"</span> });
 <span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"服务器软件"</span>);  <span class="code-comment">// 伺服器軟體</span></code></pre>
 
-            <p><strong>方式二：使用 from/to 參數</strong></p>
+            <p><strong>方式二：使用 from/to 參數（與 opencc-js 相容）</strong></p>
             <pre><code><span class="code-keyword">const</span> converter = OpenCC.<span class="code-function">Converter</span>({ from: <span class="code-string">"cn"</span>, to: <span class="code-string">"twp"</span> });
 <span class="code-keyword">const</span> result = <span class="code-keyword">await</span> <span class="code-function">converter</span>(<span class="code-string">"服务器"</span>);  <span class="code-comment">// 伺服器</span></code></pre>
 
-            <h4 style="margin-top: 32px; color: var(--text-main);">支援的配置 Supported Configs</h4>
+            <h4 style="margin-top: 32px; color: var(--text-main);">支援的配置 Supported Configurations</h4>
             <table class="config-table">
                 <thead>
                     <tr>
@@ -435,24 +435,20 @@ console.<span class="code-function">log</span>(result);  <span class="code-comme
                 </thead>
                 <tbody>
                     <tr>
-                        <td><code>s2t</code></td>
-                        <td>簡體 → OpenCC 標準繁體</td>
+                        <td><code>s2twp</code></td>
+                        <td>簡體 → 台灣正體（含地域用詞轉換）</td>
                     </tr>
                     <tr>
                         <td><code>s2tw</code></td>
                         <td>簡體 → 台灣正體</td>
                     </tr>
                     <tr>
-                        <td><code>s2twp</code></td>
-                        <td>簡體 → 台灣正體（含地域用詞）</td>
-                    </tr>
-                    <tr>
                         <td><code>s2hk</code></td>
                         <td>簡體 → 香港繁體</td>
                     </tr>
                     <tr>
-                        <td><code>t2s</code></td>
-                        <td>繁體 → 簡體</td>
+                        <td><code>s2t</code></td>
+                        <td>簡體 → OpenCC 標準繁體</td>
                     </tr>
                     <tr>
                         <td><code>tw2s</code></td>
@@ -460,15 +456,23 @@ console.<span class="code-function">log</span>(result);  <span class="code-comme
                     </tr>
                     <tr>
                         <td><code>tw2sp</code></td>
-                        <td>台灣正體 → 簡體（含地域用詞）</td>
+                        <td>台灣正體 → 簡體（含地域用詞轉換）</td>
                     </tr>
                     <tr>
-                        <td><code>t2tw</code></td>
-                        <td>OpenCC 標準繁體 → 台灣正體</td>
+                        <td><code>hk2s</code></td>
+                        <td>香港繁體 → 簡體</td>
                     </tr>
                     <tr>
-                        <td><code>t2hk</code></td>
-                        <td>OpenCC 標準繁體 → 香港繁體</td>
+                        <td><code>t2s</code></td>
+                        <td>OpenCC 標準繁體 → 簡體</td>
+                    </tr>
+                    <tr>
+                        <td><code>hk2t</code> / <code>t2hk</code></td>
+                        <td>香港繁體 ↔ OpenCC 標準繁體</td>
+                    </tr>
+                    <tr>
+                        <td><code>tw2t</code> / <code>t2tw</code></td>
+                        <td>台灣正體 ↔ OpenCC 標準繁體</td>
                     </tr>
                     <tr>
                         <td><code>jp2t</code> / <code>t2jp</code></td>
@@ -476,11 +480,15 @@ console.<span class="code-function">log</span>(result);  <span class="code-comme
                     </tr>
                     <tr>
                         <td><code>t2cngov</code></td>
-                        <td>繁體 → 通用規範漢字表繁體</td>
+                        <td>繁體或簡體 → 通用規範漢字表繁體 (來自<a
+                                href="https://github.com/TerryTian-tech/OpenCC-Traditional-Chinese-characters-according-to-Chinese-government-standards"
+                                target="_blank">TerryTian-Tech</a>) <a href="/cngov" class="chip">試用</a></td>
                     </tr>
                     <tr>
                         <td><code>t2cngov_keep_simp</code></td>
-                        <td>繁體 → 通用規範漢字表繁體（保留簡體字）</td>
+                        <td>繁體或簡體 → 通用規範漢字表繁體（保留簡體字） (來自<a
+                                href="https://github.com/TerryTian-tech/OpenCC-Traditional-Chinese-characters-according-to-Chinese-government-standards"
+                                target="_blank">TerryTian-Tech</a>)</td>
                     </tr>
                 </tbody>
             </table>
@@ -593,13 +601,14 @@ console.<span class="code-function">log</span>(<span class="code-keyword">await<
         </div>
 
         <div class="footer">
-            <p>
-                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" target="_blank">OpenCC WASM</a> ·
-                <a href="https://github.com/BYVoid/OpenCC" target="_blank">OpenCC</a> ·
-                <a href="https://www.npmjs.com/package/opencc-wasm" target="_blank">npm</a> ·
-                <a href="https://t.me/+TVq4LmPRlN9hZjE0" target="_blank">Telegram</a>
+            <p class="chips">
+                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" class="chip" target="_blank">OpenCC
+                    WASM</a>
+                <a href="https://github.com/BYVoid/OpenCC" class="chip" target="_blank">OpenCC</a>
+                <a href="https://www.npmjs.com/package/opencc-wasm" class="chip" target="_blank">npm</a>
+                <a href="https://t.me/+TVq4LmPRlN9hZjE0" class="chip" target="_blank">Telegram</a>
             </p>
-            <p style="margin-top: 8px; font-size: 0.8rem;">
+            <p style="font-size: 0.8rem;">
                 OpenCC is open source software licensed under <a href="https://www.apache.org/licenses/LICENSE-2.0"
                     target="_blank">Apache 2.0</a>. Copyright © OpenCC contributors.
             </p>
