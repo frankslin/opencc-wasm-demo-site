@@ -5,7 +5,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "opencc-wasm": "^0.4.1",
+    "opencc-wasm": "^0.4.2",
     "opencc-js": "^1.0.5"
   },
   "scripts": {

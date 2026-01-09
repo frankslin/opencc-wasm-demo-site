@@ -107,7 +107,8 @@
 
     <div class="card-section">
       <h2>運行測試用例</h2>
-      <button id="runTests" class="btn btn-secondary">運行測試</button>
+      <button id="runOpenccTests" class="btn btn-secondary">運行 OpenCC 測試</button>
+      <button id="runZhconvertTests" class="btn btn-secondary">運行 ZhConvert 測試</button>
     </div>
 
     <div class="card-section">
@@ -306,12 +307,12 @@
       btnContainer.appendChild(btn);
     });
 
-    document.getElementById("runTests").onclick = async () => {
+    async function runTests(filename) {
       const out = document.getElementById("logOutput");
-      out.textContent = "Loading testcases...";
+      out.textContent = `Loading ${filename}...`;
       try {
-        const resp = await fetch("./testcases.json");
-        if (!resp.ok) throw new Error(`testcases.json HTTP ${resp.status}`);
+        const resp = await fetch(`./${filename}`);
+        if (!resp.ok) throw new Error(`${filename} HTTP ${resp.status}`);
         const parsed = await resp.json();
         const cases = Array.isArray(parsed?.cases) ? parsed.cases : [];
         if (cases.length === 0) {
@@ -324,6 +325,7 @@
             Object.keys(tc.expected).forEach(cfg => cfgSet.add(`${cfg}.json`));
           }
         });
+        out.textContent = `Loading configs for ${filename}...`;
         for (const cfg of cfgSet) {
           await loadConfigAndDicts(cfg);
         }
@@ -336,7 +338,10 @@
             total++;
             const cfgName = `${cfg}.json`;
             const handle = handles.get(cfgName);
-            if (!handle) throw new Error(`missing handle for ${cfgName}`);
+            if (!handle) {
+              lines.push(`✘ [${cfgName}] ${tc.input}\n  Error: Missing handle`);
+              return;
+            }
             const actual = Api.convert(handle, tc.input);
             const ok = actual === expected;
             if (ok) {
@@ -348,13 +353,16 @@
           });
         });
         const failed = total - passed;
-        let msg = `Total assertions: ${total}, Passed: ${passed}, Failed: ${failed}`;
+        let msg = `Test file: ${filename}\nTotal assertions: ${total}, Passed: ${passed}, Failed: ${failed}`;
         msg += `\n\nDetails:\n${lines.join("\n")}`;
         out.textContent = msg;
       } catch (err) {
         out.textContent = "Run tests failed: " + err;
       }
-    };
+    }
+
+    document.getElementById("runOpenccTests").onclick = () => runTests("testcases.json");
+    document.getElementById("runZhconvertTests").onclick = () => runTests("testcases_zhconvert.json");
 
     document.getElementById("copyOutput").onclick = async () => {
       const text = document.getElementById("convertOutput").textContent;

@@ -1,0 +1,6110 @@
+{
+    "cases": [
+        {
+            "id": "case_zhc_001",
+            "input": "徵羽摩柯",
+            "expected": {
+                "t2s": "徵羽摩柯"
+            }
+        },
+        {
+            "id": "case_zhc_002",
+            "input": "想像",
+            "expected": {
+                "t2s": "想象"
+            }
+        },
+        {
+            "id": "case_zhc_003",
+            "input": "想像老鷹一樣",
+            "expected": {
+                "t2s": "想像老鹰一样"
+            }
+        },
+        {
+            "id": "case_zhc_004",
+            "input": "怎么喝",
+            "expected": {
+                "t2s": "怎么喝"
+            }
+        },
+        {
+            "id": "case_zhc_005",
+            "input": "硬著頭皮",
+            "expected": {
+                "t2s": "硬着头皮"
+            }
+        },
+        {
+            "id": "case_zhc_006",
+            "input": "持續著",
+            "expected": {
+                "t2s": "持续着"
+            }
+        },
+        {
+            "id": "case_zhc_007",
+            "input": "持續著作",
+            "expected": {
+                "t2s": "持续著作"
+            }
+        },
+        {
+            "id": "case_zhc_008",
+            "input": "持續著作品",
+            "expected": {
+                "t2s": "持续着作品"
+            }
+        },
+        {
+            "id": "case_zhc_009",
+            "input": "慰藉著我",
+            "expected": {
+                "t2s": "慰藉着我"
+            }
+        },
+        {
+            "id": "case_zhc_010",
+            "input": "你这么喝会呛到",
+            "expected": {
+                "t2s": "你这么喝会呛到"
+            }
+        },
+        {
+            "id": "case_zhc_011",
+            "input": "要么A要么B",
+            "expected": {
+                "s2t": "要麼A要麼B"
+            }
+        },
+        {
+            "id": "case_zhc_012",
+            "input": "要么今天要么明天",
+            "expected": {
+                "s2t": "要麼今天要麼明天"
+            }
+        },
+        {
+            "id": "case_zhc_013",
+            "input": "要么今天，要么明天",
+            "expected": {
+                "s2t": "要麼今天，要麼明天"
+            }
+        },
+        {
+            "id": "case_zhc_014",
+            "input": "埔里米粉",
+            "expected": {
+                "s2t": "埔里米粉"
+            }
+        },
+        {
+            "id": "case_zhc_015",
+            "input": "400公里外",
+            "expected": {
+                "s2t": "400公里外"
+            }
+        },
+        {
+            "id": "case_zhc_016",
+            "input": "绵延数里远",
+            "expected": {
+                "s2t": "綿延數里遠"
+            }
+        },
+        {
+            "id": "case_zhc_017",
+            "input": "放入嘴里之后",
+            "expected": {
+                "s2t": "放入嘴裡之後"
+            }
+        },
+        {
+            "id": "case_zhc_018",
+            "input": "芭菲里有很多水果",
+            "expected": {
+                "s2t": "芭菲裡有很多水果"
+            }
+        },
+        {
+            "id": "case_zhc_019",
+            "input": "那里民风保守",
+            "expected": {
+                "s2t": "那裡民風保守"
+            }
+        },
+        {
+            "id": "case_zhc_020",
+            "input": "脖子里长有一颗肿瘤",
+            "expected": {
+                "s2t": "脖子裡長有一顆腫瘤"
+            }
+        },
+        {
+            "id": "case_zhc_021",
+            "input": "庭院里长有一种草",
+            "expected": {
+                "s2t": "庭院裡長有一種草"
+            }
+        },
+        {
+            "id": "case_zhc_022",
+            "input": "在村子里当里长就行了",
+            "expected": {
+                "s2t": "在村子裡當里長就行了"
+            }
+        },
+        {
+            "id": "case_zhc_023",
+            "input": "里长住在这里",
+            "expected": {
+                "s2t": "里長住在這裡"
+            }
+        },
+        {
+            "id": "case_zhc_024",
+            "input": "角落里长着",
+            "expected": {
+                "s2t": "角落裡長著"
+            }
+        },
+        {
+            "id": "case_zhc_025",
+            "input": "似乎在一栋别墅里长住不走了",
+            "expected": {
+                "s2t": "似乎在一棟別墅裡長住不走了"
+            }
+        },
+        {
+            "id": "case_zhc_026",
+            "input": "生活里长期充满了无奈",
+            "expected": {
+                "s2t": "生活裡長期充滿了無奈"
+            }
+        },
+        {
+            "id": "case_zhc_027",
+            "input": "这里是鲍勃·特纳的家",
+            "expected": {
+                "s2t": "這裡是鮑勃·特納的家"
+            }
+        },
+        {
+            "id": "case_zhc_028",
+            "input": "把信放在鞋柜里约人是习俗吗",
+            "expected": {
+                "s2t": "把信放在鞋櫃裡約人是習俗嗎"
+            }
+        },
+        {
+            "id": "case_zhc_029",
+            "input": "他被寄养在别的家庭里长达十年",
+            "expected": {
+                "s2t": "他被寄養在別的家庭裡長達十年"
+            }
+        },
+        {
+            "id": "case_zhc_030",
+            "input": "学校里达日语一级者有几人",
+            "expected": {
+                "s2t": "學校裡達日語一級者有幾人"
+            }
+        },
+        {
+            "id": "case_zhc_031",
+            "input": "《南总里见八犬传》",
+            "expected": {
+                "s2t": "《南總里見八犬傳》"
+            }
+        },
+        {
+            "id": "case_zhc_032",
+            "input": "异次元里拉出来",
+            "expected": {
+                "s2t": "異次元裡拉出來"
+            }
+        },
+        {
+            "id": "case_zhc_033",
+            "input": "塔里克死了",
+            "expected": {
+                "s2t": "塔里克死了"
+            }
+        },
+        {
+            "id": "case_zhc_034",
+            "input": "拉里·那莎",
+            "expected": {
+                "s2t": "拉里·那莎"
+            }
+        },
+        {
+            "id": "case_zhc_035",
+            "input": "唐纳·克里",
+            "expected": {
+                "s2t": "唐納·克里"
+            }
+        },
+        {
+            "id": "case_zhc_036",
+            "input": "唐纳·克里的狗",
+            "expected": {
+                "s2t": "唐納·克里的狗"
+            }
+        },
+        {
+            "id": "case_zhc_037",
+            "input": "在伯尼·里昂家里",
+            "expected": {
+                "s2t": "在伯尼·里昂家裡"
+            }
+        },
+        {
+            "id": "case_zhc_038",
+            "input": "在伯尼·里昂的家里",
+            "expected": {
+                "s2t": "在伯尼·里昂的家裡"
+            }
+        },
+        {
+            "id": "case_zhc_039",
+            "input": "在房间里翻阅约瑟夫·阿列克谢耶维奇的信件",
+            "expected": {
+                "s2t": "在房間裡翻閱約瑟夫·阿列克謝耶維奇的信件"
+            }
+        },
+        {
+            "id": "case_zhc_040",
+            "input": "3600 多海里",
+            "expected": {
+                "s2t": "3600 多海里"
+            }
+        },
+        {
+            "id": "case_zhc_041",
+            "input": "“喂” \"喂\" 「喂」",
+            "expected": {
+                "s2t": "“喂” \"喂\" 「喂」"
+            }
+        },
+        {
+            "id": "case_zhc_042",
+            "input": "喂！",
+            "expected": {
+                "s2t": "喂！"
+            }
+        },
+        {
+            "id": "case_zhc_043",
+            "input": "喂喂",
+            "expected": {
+                "s2t": "喂喂"
+            }
+        },
+        {
+            "id": "case_zhc_044",
+            "input": "喂喂等等",
+            "expected": {
+                "s2t": "喂喂等等"
+            }
+        },
+        {
+            "id": "case_zhc_045",
+            "input": "喂喂鸽子",
+            "expected": {
+                "s2t": "餵餵鴿子"
+            }
+        },
+        {
+            "id": "case_zhc_046",
+            "input": "喂 喂 喂",
+            "expected": {
+                "s2t": "喂 喂 喂"
+            }
+        },
+        {
+            "id": "case_zhc_047",
+            "input": "喂喂喂喂喂",
+            "expected": {
+                "s2t": "喂喂喂喂喂"
+            }
+        },
+        {
+            "id": "case_zhc_048",
+            "input": "喂你好",
+            "expected": {
+                "s2t": "喂你好"
+            }
+        },
+        {
+            "id": "case_zhc_049",
+            "input": "喂你还回去",
+            "expected": {
+                "s2t": "喂你還回去"
+            }
+        },
+        {
+            "id": "case_zhc_050",
+            "input": "喂你听见没有",
+            "expected": {
+                "s2t": "喂你聽見沒有"
+            }
+        },
+        {
+            "id": "case_zhc_051",
+            "input": "让他自己喂",
+            "expected": {
+                "s2t": "讓他自己餵"
+            }
+        },
+        {
+            "id": "case_zhc_052",
+            "input": "如果不喂",
+            "expected": {
+                "s2t": "如果不餵"
+            }
+        },
+        {
+            "id": "case_zhc_053",
+            "input": "我來喂吧",
+            "expected": {
+                "s2t": "我來餵吧"
+            }
+        },
+        {
+            "id": "case_zhc_054",
+            "input": "喂你小子",
+            "expected": {
+                "s2t": "喂你小子"
+            }
+        },
+        {
+            "id": "case_zhc_055",
+            "input": "喂你够了",
+            "expected": {
+                "s2t": "喂你夠了"
+            }
+        },
+        {
+            "id": "case_zhc_056",
+            "input": "喂喂你干嘛",
+            "expected": {
+                "s2t": "喂喂你幹嘛"
+            }
+        },
+        {
+            "id": "case_zhc_057",
+            "input": "多给我喂玉米",
+            "expected": {
+                "s2t": "多給我餵玉米"
+            }
+        },
+        {
+            "id": "case_zhc_058",
+            "input": "喂他吃安眠药",
+            "expected": {
+                "s2t": "餵他吃安眠藥"
+            }
+        },
+        {
+            "id": "case_zhc_059",
+            "input": "喂个几次",
+            "expected": {
+                "s2t": "餵個幾次"
+            }
+        },
+        {
+            "id": "case_zhc_060",
+            "input": "早晚喂两次",
+            "expected": {
+                "s2t": "早晚餵兩次"
+            }
+        },
+        {
+            "id": "case_zhc_061",
+            "input": "你该去喂喂他",
+            "expected": {
+                "s2t": "你該去餵餵他"
+            }
+        },
+        {
+            "id": "case_zhc_062",
+            "input": "我也想喂喂它呢",
+            "expected": {
+                "s2t": "我也想餵餵它呢"
+            }
+        },
+        {
+            "id": "case_zhc_063",
+            "input": "“喂，喂，来啊。”",
+            "expected": {
+                "s2t": "“喂，喂，來啊。”"
+            }
+        },
+        {
+            "id": "case_zhc_064",
+            "input": "把鸽子喂得圆滚滚",
+            "expected": {
+                "s2t": "把鴿子餵得圓滾滾"
+            }
+        },
+        {
+            "id": "case_zhc_065",
+            "input": "用\"啊\"的喂你是咱的梦想耶",
+            "expected": {
+                "s2t": "用\"啊\"的餵你是咱的夢想耶"
+            }
+        },
+        {
+            "id": "case_zhc_066",
+            "input": "我喂水产市场买的新鲜虾蟹",
+            "expected": {
+                "s2t": "我餵水產市場買的新鮮蝦蟹"
+            }
+        },
+        {
+            "id": "case_zhc_067",
+            "input": "歌后",
+            "expected": {
+                "s2t": "歌后"
+            }
+        },
+        {
+            "id": "case_zhc_068",
+            "input": "唱歌后",
+            "expected": {
+                "s2t": "唱歌後"
+            }
+        },
+        {
+            "id": "case_zhc_069",
+            "input": "女王后",
+            "expected": {
+                "s2t": "女王後"
+            }
+        },
+        {
+            "id": "case_zhc_070",
+            "input": "告诉国王后",
+            "expected": {
+                "s2t": "告訴國王後"
+            }
+        },
+        {
+            "id": "case_zhc_071",
+            "input": "北美舞后",
+            "expected": {
+                "s2t": "北美舞后"
+            }
+        },
+        {
+            "id": "case_zhc_072",
+            "input": "那天隔天后",
+            "expected": {
+                "s2t": "那天隔天後"
+            }
+        },
+        {
+            "id": "case_zhc_073",
+            "input": "拆封后",
+            "expected": {
+                "s2t": "拆封後"
+            }
+        },
+        {
+            "id": "case_zhc_074",
+            "input": "婚后光子",
+            "expected": {
+                "s2t": "婚后光子"
+            }
+        },
+        {
+            "id": "case_zhc_075",
+            "input": "见了面后",
+            "expected": {
+                "s2t": "見了面後"
+            }
+        },
+        {
+            "id": "case_zhc_076",
+            "input": "果然后来",
+            "expected": {
+                "s2t": "果然後來"
+            }
+        },
+        {
+            "id": "case_zhc_077",
+            "input": "电影后来",
+            "expected": {
+                "s2t": "電影後來"
+            }
+        },
+        {
+            "id": "case_zhc_078",
+            "input": "摄影后制",
+            "expected": {
+                "s2t": "攝影後製"
+            }
+        },
+        {
+            "id": "case_zhc_079",
+            "input": "埋葬了我的祖母后",
+            "expected": {
+                "s2t": "埋葬了我的祖母後"
+            }
+        },
+        {
+            "id": "case_zhc_080",
+            "input": "是我等战王后裔的夙愿",
+            "expected": {
+                "s2t": "是我等戰王後裔的夙願"
+            }
+        },
+        {
+            "id": "case_zhc_081",
+            "input": "有人在太后面前提到他",
+            "expected": {
+                "s2t": "有人在太后面前提到他"
+            }
+        },
+        {
+            "id": "case_zhc_082",
+            "input": "我困了",
+            "expected": {
+                "s2t": "我睏了"
+            }
+        },
+        {
+            "id": "case_zhc_083",
+            "input": "我觉得很困",
+            "expected": {
+                "s2t": "我覺得很睏"
+            }
+        },
+        {
+            "id": "case_zhc_084",
+            "input": "困死我了",
+            "expected": {
+                "s2t": "睏死我了"
+            }
+        },
+        {
+            "id": "case_zhc_085",
+            "input": "困得不行",
+            "expected": {
+                "s2t": "睏得不行"
+            }
+        },
+        {
+            "id": "case_zhc_086",
+            "input": "越是挣扎就困得越深",
+            "expected": {
+                "s2t": "越是掙扎就困得越深"
+            }
+        },
+        {
+            "id": "case_zhc_087",
+            "input": "被世俗的社会困得很深",
+            "expected": {
+                "s2t": "被世俗的社會困得很深"
+            }
+        },
+        {
+            "id": "case_zhc_088",
+            "input": "我觉得很困难",
+            "expected": {
+                "s2t": "我覺得很困難"
+            }
+        },
+        {
+            "id": "case_zhc_089",
+            "input": "困了会打哈欠",
+            "expected": {
+                "s2t": "睏了會打哈欠"
+            }
+        },
+        {
+            "id": "case_zhc_090",
+            "input": "我们困不住她",
+            "expected": {
+                "s2t": "我們困不住她"
+            }
+        },
+        {
+            "id": "case_zhc_091",
+            "input": "我在那困了很久",
+            "expected": {
+                "s2t": "我在那困了很久"
+            }
+        },
+        {
+            "id": "case_zhc_092",
+            "input": "困又不敢睡",
+            "expected": {
+                "s2t": "睏又不敢睡"
+            }
+        },
+        {
+            "id": "case_zhc_093",
+            "input": "将我困死在这",
+            "expected": {
+                "s2t": "將我困死在這"
+            }
+        },
+        {
+            "id": "case_zhc_094",
+            "input": "我在那困了就睡",
+            "expected": {
+                "s2t": "我在那睏了就睡"
+            }
+        },
+        {
+            "id": "case_zhc_095",
+            "input": "为钱所困就变得心胸狭窄",
+            "expected": {
+                "s2t": "為錢所困就變得心胸狹窄"
+            }
+        },
+        {
+            "id": "case_zhc_096",
+            "input": "林冲夜奔",
+            "expected": {
+                "s2t": "林冲夜奔"
+            }
+        },
+        {
+            "id": "case_zhc_097",
+            "input": "扔进厕所冲了",
+            "expected": {
+                "s2t": "扔進廁所沖了"
+            }
+        },
+        {
+            "id": "case_zhc_098",
+            "input": "我冲了杯可可",
+            "expected": {
+                "s2t": "我沖了杯可可"
+            }
+        },
+        {
+            "id": "case_zhc_099",
+            "input": "将要冲进来的人",
+            "expected": {
+                "s2t": "將要衝進來的人"
+            }
+        },
+        {
+            "id": "case_zhc_100",
+            "input": "朝寒雨冲去",
+            "expected": {
+                "s2t": "朝寒雨衝去"
+            }
+        },
+        {
+            "id": "case_zhc_101",
+            "input": "他今年犯冲",
+            "expected": {
+                "s2t": "他今年犯沖"
+            }
+        },
+        {
+            "id": "case_zhc_102",
+            "input": "现行犯冲了出来",
+            "expected": {
+                "s2t": "現行犯衝了出來"
+            }
+        },
+        {
+            "id": "case_zhc_103",
+            "input": "被雨冲去了光彩",
+            "expected": {
+                "s2t": "被雨沖去了光彩"
+            }
+        },
+        {
+            "id": "case_zhc_104",
+            "input": "被卷入冲突地区",
+            "expected": {
+                "s2t": "被捲入衝突地區"
+            }
+        },
+        {
+            "id": "case_zhc_105",
+            "input": "水会一直冲着",
+            "expected": {
+                "s2t": "水會一直沖著"
+            }
+        },
+        {
+            "id": "case_zhc_106",
+            "input": "雨天冲去找你",
+            "expected": {
+                "s2t": "雨天衝去找你"
+            }
+        },
+        {
+            "id": "case_zhc_107",
+            "input": "他冒雨冲去了天台",
+            "expected": {
+                "s2t": "他冒雨衝去了天台"
+            }
+        },
+        {
+            "id": "case_zhc_108",
+            "input": "冒着雨冲去了日月潭",
+            "expected": {
+                "s2t": "冒著雨衝去了日月潭"
+            }
+        },
+        {
+            "id": "case_zhc_109",
+            "input": "一场雨冲去了多少繁华",
+            "expected": {
+                "s2t": "一場雨沖去了多少繁華"
+            }
+        },
+        {
+            "id": "case_zhc_110",
+            "input": "雨天冲去你所有的忧愁",
+            "expected": {
+                "s2t": "雨天沖去你所有的憂愁"
+            }
+        },
+        {
+            "id": "case_zhc_111",
+            "input": "大雨里冲去听室外演唱会",
+            "expected": {
+                "s2t": "大雨裡衝去聽室外演唱會"
+            }
+        },
+        {
+            "id": "case_zhc_112",
+            "input": "“昨日一场夜雨，冲去了京城中的暑气。”",
+            "expected": {
+                "s2t": "“昨日一場夜雨，沖去了京城中的暑氣。”"
+            }
+        },
+        {
+            "id": "case_zhc_113",
+            "input": "被冲進來",
+            "expected": {
+                "s2t": "被沖進來"
+            }
+        },
+        {
+            "id": "case_zhc_114",
+            "input": "被冲進來了",
+            "expected": {
+                "s2t": "被沖進來了"
+            }
+        },
+        {
+            "id": "case_zhc_115",
+            "input": "被冲進來的",
+            "expected": {
+                "s2t": "被衝進來的"
+            }
+        },
+        {
+            "id": "case_zhc_116",
+            "input": "冲在战场的最前面",
+            "expected": {
+                "s2t": "衝在戰場的最前面"
+            }
+        },
+        {
+            "id": "case_zhc_117",
+            "input": "想要喝水的冲动",
+            "expected": {
+                "s2t": "想要喝水的衝動"
+            }
+        },
+        {
+            "id": "case_zhc_118",
+            "input": "被冲进家中的老婆",
+            "expected": {
+                "s2t": "被衝進家中的老婆"
+            }
+        },
+        {
+            "id": "case_zhc_119",
+            "input": "给我冲了冷水浴",
+            "expected": {
+                "s2t": "給我沖了冷水浴"
+            }
+        },
+        {
+            "id": "case_zhc_120",
+            "input": "给你冲上一杯咖啡",
+            "expected": {
+                "s2t": "給你沖上一杯咖啡"
+            }
+        },
+        {
+            "id": "case_zhc_121",
+            "input": "用冷水冲冲你的脑袋",
+            "expected": {
+                "s2t": "用冷水沖沖你的腦袋"
+            }
+        },
+        {
+            "id": "case_zhc_122",
+            "input": "我走进浴室冲了个凉",
+            "expected": {
+                "s2t": "我走進浴室沖了個涼"
+            }
+        },
+        {
+            "id": "case_zhc_123",
+            "input": "我被一股子冲动带著走",
+            "expected": {
+                "s2t": "我被一股子衝動帶著走"
+            }
+        },
+        {
+            "id": "case_zhc_124",
+            "input": "一定是从黑海被冲过来的",
+            "expected": {
+                "s2t": "一定是從黑海被沖過來的"
+            }
+        },
+        {
+            "id": "case_zhc_125",
+            "input": "他打算一口气冲回本垒啊",
+            "expected": {
+                "s2t": "他打算一口氣衝回本壘啊"
+            }
+        },
+        {
+            "id": "case_zhc_126",
+            "input": "在那小行星被脉冲星吞噬前",
+            "expected": {
+                "s2t": "在那小行星被脈衝星吞噬前"
+            }
+        },
+        {
+            "id": "case_zhc_127",
+            "input": "虽然冲了一遍 但还是有渍留下",
+            "expected": {
+                "s2t": "雖然沖了一遍 但還是有漬留下"
+            }
+        },
+        {
+            "id": "case_zhc_128",
+            "input": "头发麻",
+            "expected": {
+                "s2t": "頭發麻"
+            }
+        },
+        {
+            "id": "case_zhc_129",
+            "input": "头发痒",
+            "expected": {
+                "s2t": "頭髮癢"
+            }
+        },
+        {
+            "id": "case_zhc_130",
+            "input": "头发生长",
+            "expected": {
+                "s2t": "頭髮生長"
+            }
+        },
+        {
+            "id": "case_zhc_131",
+            "input": "舌头发痒",
+            "expected": {
+                "s2t": "舌頭發癢"
+            }
+        },
+        {
+            "id": "case_zhc_132",
+            "input": "生发中心",
+            "expected": {
+                "s2t": "生發中心"
+            }
+        },
+        {
+            "id": "case_zhc_133",
+            "input": "头发出声音",
+            "expected": {
+                "s2t": "頭發出聲音"
+            }
+        },
+        {
+            "id": "case_zhc_134",
+            "input": "连结发送",
+            "expected": {
+                "s2t": "連結發送"
+            }
+        },
+        {
+            "id": "case_zhc_135",
+            "input": "认真发问",
+            "expected": {
+                "s2t": "認真發問"
+            }
+        },
+        {
+            "id": "case_zhc_136",
+            "input": "码头发生",
+            "expected": {
+                "s2t": "碼頭發生"
+            }
+        },
+        {
+            "id": "case_zhc_137",
+            "input": "“剃发出家 剃发发誓”",
+            "expected": {
+                "s2t": "“剃髮出家 剃髮發誓”"
+            }
+        },
+        {
+            "id": "case_zhc_138",
+            "input": "引发质疑",
+            "expected": {
+                "s2t": "引發質疑"
+            }
+        },
+        {
+            "id": "case_zhc_139",
+            "input": "老头发誓说",
+            "expected": {
+                "s2t": "老頭發誓說"
+            }
+        },
+        {
+            "id": "case_zhc_140",
+            "input": "低头发微信",
+            "expected": {
+                "s2t": "低頭發微信"
+            }
+        },
+        {
+            "id": "case_zhc_141",
+            "input": "头发明天再剪",
+            "expected": {
+                "s2t": "頭髮明天再剪"
+            }
+        },
+        {
+            "id": "case_zhc_142",
+            "input": "饼干发完了",
+            "expected": {
+                "s2t": "餅乾發完了"
+            }
+        },
+        {
+            "id": "case_zhc_143",
+            "input": "金发疯婆子",
+            "expected": {
+                "s2t": "金髮瘋婆子"
+            }
+        },
+        {
+            "id": "case_zhc_144",
+            "input": "颁发指挥奖",
+            "expected": {
+                "s2t": "頒發指揮獎"
+            }
+        },
+        {
+            "id": "case_zhc_145",
+            "input": "延长发电站",
+            "expected": {
+                "s2t": "延長發電站"
+            }
+        },
+        {
+            "id": "case_zhc_146",
+            "input": "乱发的简讯",
+            "expected": {
+                "s2t": "亂發的簡訊"
+            }
+        },
+        {
+            "id": "case_zhc_147",
+            "input": "使羊毛发黃",
+            "expected": {
+                "s2t": "使羊毛發黃"
+            }
+        },
+        {
+            "id": "case_zhc_148",
+            "input": "金发臭小子",
+            "expected": {
+                "s2t": "金髮臭小子"
+            }
+        },
+        {
+            "id": "case_zhc_149",
+            "input": "无须发出通知",
+            "expected": {
+                "s2t": "無須發出通知"
+            }
+        },
+        {
+            "id": "case_zhc_150",
+            "input": "张必须发皆白",
+            "expected": {
+                "s2t": "張必鬚髮皆白"
+            }
+        },
+        {
+            "id": "case_zhc_151",
+            "input": "巾帼不让须眉",
+            "expected": {
+                "s2t": "巾幗不讓鬚眉"
+            }
+        },
+        {
+            "id": "case_zhc_152",
+            "input": "乱发的美少女",
+            "expected": {
+                "s2t": "亂髮的美少女"
+            }
+        },
+        {
+            "id": "case_zhc_153",
+            "input": "上头发号施令",
+            "expected": {
+                "s2t": "上頭發號施令"
+            }
+        },
+        {
+            "id": "case_zhc_154",
+            "input": "第365卷发售日",
+            "expected": {
+                "s2t": "第365卷發售日"
+            }
+        },
+        {
+            "id": "case_zhc_155",
+            "input": "我的头发著火了",
+            "expected": {
+                "s2t": "我的頭髮著火了"
+            }
+        },
+        {
+            "id": "case_zhc_156",
+            "input": "上头发了四份通报",
+            "expected": {
+                "s2t": "上頭發了四份通報"
+            }
+        },
+        {
+            "id": "case_zhc_157",
+            "input": "上头发表四个条件",
+            "expected": {
+                "s2t": "上頭發表四個條件"
+            }
+        },
+        {
+            "id": "case_zhc_158",
+            "input": "头发表现出光泽",
+            "expected": {
+                "s2t": "頭髮表現出光澤"
+            }
+        },
+        {
+            "id": "case_zhc_159",
+            "input": "沙发丝绒躺椅之间",
+            "expected": {
+                "s2t": "沙發絲絨躺椅之間"
+            }
+        },
+        {
+            "id": "case_zhc_160",
+            "input": "性费洛蒙的发香器",
+            "expected": {
+                "s2t": "性費洛蒙的發香器"
+            }
+        },
+        {
+            "id": "case_zhc_161",
+            "input": "查理发布了他的作品",
+            "expected": {
+                "s2t": "查理發布了他的作品"
+            }
+        },
+        {
+            "id": "case_zhc_162",
+            "input": "一个满头乱发的人",
+            "expected": {
+                "s2t": "一個滿頭亂髮的人"
+            }
+        },
+        {
+            "id": "case_zhc_163",
+            "input": "假发明明",
+            "expected": {
+                "s2t": "假髮明明"
+            }
+        },
+        {
+            "id": "case_zhc_164",
+            "input": "重新发动",
+            "expected": {
+                "s2t": "重新發動"
+            }
+        },
+        {
+            "id": "case_zhc_165",
+            "input": "头发动了",
+            "expected": {
+                "s2t": "頭髮動了"
+            }
+        },
+        {
+            "id": "case_zhc_166",
+            "input": "上头发动了",
+            "expected": {
+                "s2t": "上頭發動了"
+            }
+        },
+        {
+            "id": "case_zhc_167",
+            "input": "小红发动攻击",
+            "expected": {
+                "s2t": "小紅發動攻擊"
+            }
+        },
+        {
+            "id": "case_zhc_168",
+            "input": "街头发动大规模袭击",
+            "expected": {
+                "s2t": "街頭發動大規模襲擊"
+            }
+        },
+        {
+            "id": "case_zhc_169",
+            "input": "散发禁止出版的无产者报",
+            "expected": {
+                "s2t": "散發禁止出版的無產者報"
+            }
+        },
+        {
+            "id": "case_zhc_170",
+            "input": "每个月花六便士理一次发",
+            "expected": {
+                "s2t": "每個月花六便士理一次髮"
+            }
+        },
+        {
+            "id": "case_zhc_171",
+            "input": "别把我和头发放到同一句里",
+            "expected": {
+                "s2t": "別把我和頭髮放到同一句裡"
+            }
+        },
+        {
+            "id": "case_zhc_172",
+            "input": "靠怪念头发一点小财",
+            "expected": {
+                "s2t": "靠怪念頭發一點小財"
+            }
+        },
+        {
+            "id": "case_zhc_173",
+            "input": "你的灵魂散发着火焰的味道",
+            "expected": {
+                "s2t": "你的靈魂散發著火焰的味道"
+            }
+        },
+        {
+            "id": "case_zhc_174",
+            "input": "掌握发劲的特征",
+            "expected": {
+                "s2t": "掌握發勁的特徵"
+            }
+        },
+        {
+            "id": "case_zhc_175",
+            "input": "握着拳头发誓",
+            "expected": {
+                "s2t": "握著拳頭發誓"
+            }
+        },
+        {
+            "id": "case_zhc_176",
+            "input": "腹股沟淋巴结发炎",
+            "expected": {
+                "s2t": "腹股溝淋巴結發炎"
+            }
+        },
+        {
+            "id": "case_zhc_177",
+            "input": "背脊直发凉",
+            "expected": {
+                "s2t": "背脊直發涼"
+            }
+        },
+        {
+            "id": "case_zhc_178",
+            "input": "他的新发形",
+            "expected": {
+                "s2t": "他的新髮形"
+            }
+        },
+        {
+            "id": "case_zhc_179",
+            "input": "想出新发型",
+            "expected": {
+                "s2t": "想出新髮型"
+            }
+        },
+        {
+            "id": "case_zhc_180",
+            "input": "长出来的新发",
+            "expected": {
+                "s2t": "長出來的新髮"
+            }
+        },
+        {
+            "id": "case_zhc_181",
+            "input": "枝枒上新发的绿叶",
+            "expected": {
+                "s2t": "枝枒上新發的綠葉"
+            }
+        },
+        {
+            "id": "case_zhc_182",
+            "input": "全木的沙发脚",
+            "expected": {
+                "s2t": "全木的沙發腳"
+            }
+        },
+        {
+            "id": "case_zhc_183",
+            "input": "基金发布通告",
+            "expected": {
+                "s2t": "基金發布通告"
+            }
+        },
+        {
+            "id": "case_zhc_184",
+            "input": "潮湿发霉",
+            "expected": {
+                "s2t": "潮濕發霉"
+            }
+        },
+        {
+            "id": "case_zhc_185",
+            "input": "钛合金发球杆",
+            "expected": {
+                "s2t": "鈦合金發球桿"
+            }
+        },
+        {
+            "id": "case_zhc_186",
+            "input": "一个温柔的金发表妹",
+            "expected": {
+                "s2t": "一個溫柔的金髮表妹"
+            }
+        },
+        {
+            "id": "case_zhc_187",
+            "input": "散发女性魅力",
+            "expected": {
+                "s2t": "散發女性魅力"
+            }
+        },
+        {
+            "id": "case_zhc_188",
+            "input": "散发的女性魅力",
+            "expected": {
+                "s2t": "散發的女性魅力"
+            }
+        },
+        {
+            "id": "case_zhc_189",
+            "input": "自发形成的社区",
+            "expected": {
+                "s2t": "自發形成的社區"
+            }
+        },
+        {
+            "id": "case_zhc_190",
+            "input": "梦见和发小钓鱼",
+            "expected": {
+                "s2t": "夢見和髮小釣魚"
+            }
+        },
+        {
+            "id": "case_zhc_191",
+            "input": "双颊随之发烫",
+            "expected": {
+                "s2t": "雙頰隨之發燙"
+            }
+        },
+        {
+            "id": "case_zhc_192",
+            "input": "发红后转黑",
+            "expected": {
+                "s2t": "發紅後轉黑"
+            }
+        },
+        {
+            "id": "case_zhc_193",
+            "input": "是作为发小的那种喜欢吧",
+            "expected": {
+                "s2t": "是作為髮小的那種喜歡吧"
+            }
+        },
+        {
+            "id": "case_zhc_194",
+            "input": "因为输掉发这么大脾气的话",
+            "expected": {
+                "s2t": "因為輸掉發這麼大脾氣的話"
+            }
+        },
+        {
+            "id": "case_zhc_195",
+            "input": "可真松呢",
+            "expected": {
+                "s2t": "可真鬆呢"
+            }
+        },
+        {
+            "id": "case_zhc_196",
+            "input": "看过松鼠",
+            "expected": {
+                "s2t": "看過松鼠"
+            }
+        },
+        {
+            "id": "case_zhc_197",
+            "input": "香川县高松租车",
+            "expected": {
+                "s2t": "香川縣高松租車"
+            }
+        },
+        {
+            "id": "case_zhc_198",
+            "input": "松本的义魂丸",
+            "expected": {
+                "s2t": "松本的義魂丸"
+            }
+        },
+        {
+            "id": "case_zhc_199",
+            "input": "放松本来的身体",
+            "expected": {
+                "s2t": "放鬆本來的身體"
+            }
+        },
+        {
+            "id": "case_zhc_200",
+            "input": "在脑后松松挽了个髻",
+            "expected": {
+                "s2t": "在腦後鬆鬆挽了個髻"
+            }
+        },
+        {
+            "id": "case_zhc_201",
+            "input": "“种子成熟的季节，也是松鼠一年中最忙的两个月”",
+            "expected": {
+                "s2t": "“種子成熟的季節，也是松鼠一年中最忙的兩個月”"
+            }
+        },
+        {
+            "id": "case_zhc_202",
+            "input": "我也干",
+            "expected": {
+                "s2t": "我也幹"
+            }
+        },
+        {
+            "id": "case_zhc_203",
+            "input": "被干涉",
+            "expected": {
+                "s2t": "被干涉"
+            }
+        },
+        {
+            "id": "case_zhc_204",
+            "input": "干其他事",
+            "expected": {
+                "s2t": "幹其他事"
+            }
+        },
+        {
+            "id": "case_zhc_205",
+            "input": "若干事物",
+            "expected": {
+                "s2t": "若干事物"
+            }
+        },
+        {
+            "id": "case_zhc_206",
+            "input": "下面是若干例子",
+            "expected": {
+                "s2t": "下面是若干例子"
+            }
+        },
+        {
+            "id": "case_zhc_207",
+            "input": "干戈载戢",
+            "expected": {
+                "s2t": "干戈載戢"
+            }
+        },
+        {
+            "id": "case_zhc_208",
+            "input": "干后变硬",
+            "expected": {
+                "s2t": "乾後變硬"
+            }
+        },
+        {
+            "id": "case_zhc_209",
+            "input": "泥地干了",
+            "expected": {
+                "s2t": "泥地乾了"
+            }
+        },
+        {
+            "id": "case_zhc_210",
+            "input": "高速干道",
+            "expected": {
+                "s2t": "高速幹道"
+            }
+        },
+        {
+            "id": "case_zhc_211",
+            "input": "就要干掉",
+            "expected": {
+                "s2t": "就要乾掉"
+            }
+        },
+        {
+            "id": "case_zhc_212",
+            "input": "僵硬干涩",
+            "expected": {
+                "s2t": "僵硬乾澀"
+            }
+        },
+        {
+            "id": "case_zhc_213",
+            "input": "有些干了",
+            "expected": {
+                "s2t": "有些乾了"
+            }
+        },
+        {
+            "id": "case_zhc_214",
+            "input": "加油干吧",
+            "expected": {
+                "s2t": "加油幹吧"
+            }
+        },
+        {
+            "id": "case_zhc_215",
+            "input": "没事情干的时候",
+            "expected": {
+                "s2t": "沒事情幹的時候"
+            }
+        },
+        {
+            "id": "case_zhc_216",
+            "input": "想干掉的人",
+            "expected": {
+                "s2t": "想幹掉的人"
+            }
+        },
+        {
+            "id": "case_zhc_217",
+            "input": "拭干我的泪",
+            "expected": {
+                "s2t": "拭乾我的淚"
+            }
+        },
+        {
+            "id": "case_zhc_218",
+            "input": "拿饼干过来",
+            "expected": {
+                "s2t": "拿餅乾過來"
+            }
+        },
+        {
+            "id": "case_zhc_219",
+            "input": "无法干掉的种族主义者",
+            "expected": {
+                "s2t": "無法幹掉的種族主義者"
+            }
+        },
+        {
+            "id": "case_zhc_220",
+            "input": "我没有干预我的命运",
+            "expected": {
+                "s2t": "我沒有干預我的命運"
+            }
+        },
+        {
+            "id": "case_zhc_221",
+            "input": "这种事不会干的",
+            "expected": {
+                "s2t": "這種事不會幹的"
+            }
+        },
+        {
+            "id": "case_zhc_222",
+            "input": "三两下干翻敌人",
+            "expected": {
+                "s2t": "三兩下幹翻敵人"
+            }
+        },
+        {
+            "id": "case_zhc_223",
+            "input": "很快干",
+            "expected": {
+                "s2t": "很快乾"
+            }
+        },
+        {
+            "id": "case_zhc_224",
+            "input": "很快就干",
+            "expected": {
+                "s2t": "很快就乾"
+            }
+        },
+        {
+            "id": "case_zhc_225",
+            "input": "放在那怎么会干",
+            "expected": {
+                "s2t": "放在那怎麼會乾"
+            }
+        },
+        {
+            "id": "case_zhc_226",
+            "input": "干了的血迹",
+            "expected": {
+                "s2t": "乾了的血跡"
+            }
+        },
+        {
+            "id": "case_zhc_227",
+            "input": "火鸡非常干",
+            "expected": {
+                "s2t": "火雞非常乾"
+            }
+        },
+        {
+            "id": "case_zhc_228",
+            "input": "哭干了眼泪",
+            "expected": {
+                "s2t": "哭乾了眼淚"
+            }
+        },
+        {
+            "id": "case_zhc_229",
+            "input": "就要干掉了",
+            "expected": {
+                "s2t": "就要幹掉了"
+            }
+        },
+        {
+            "id": "case_zhc_230",
+            "input": "我干掉的",
+            "expected": {
+                "s2t": "我幹掉的"
+            }
+        },
+        {
+            "id": "case_zhc_231",
+            "input": "他那干涩的眼睛",
+            "expected": {
+                "s2t": "他那乾澀的眼睛"
+            }
+        },
+        {
+            "id": "case_zhc_232",
+            "input": "在我面前干这个",
+            "expected": {
+                "s2t": "在我面前幹這個"
+            }
+        },
+        {
+            "id": "case_zhc_233",
+            "input": "这些年也没少干。",
+            "expected": {
+                "s2t": "這些年也沒少幹。"
+            }
+        },
+        {
+            "id": "case_zhc_234",
+            "input": "你要干...",
+            "expected": {
+                "s2t": "你要幹..."
+            }
+        },
+        {
+            "id": "case_zhc_235",
+            "input": "为何干这个",
+            "expected": {
+                "s2t": "為何幹這個"
+            }
+        },
+        {
+            "id": "case_zhc_236",
+            "input": "巴尔干地区",
+            "expected": {
+                "s2t": "巴爾幹地區"
+            }
+        },
+        {
+            "id": "case_zhc_237",
+            "input": "对外面的干涉",
+            "expected": {
+                "s2t": "對外面的干涉"
+            }
+        },
+        {
+            "id": "case_zhc_238",
+            "input": "把他干死了",
+            "expected": {
+                "s2t": "把他幹死了"
+            }
+        },
+        {
+            "id": "case_zhc_239",
+            "input": "干的可真好",
+            "expected": {
+                "s2t": "幹的可真好"
+            }
+        },
+        {
+            "id": "case_zhc_240",
+            "input": "干还是不干",
+            "expected": {
+                "s2t": "幹還是不幹"
+            }
+        },
+        {
+            "id": "case_zhc_241",
+            "input": "他们一干人",
+            "expected": {
+                "s2t": "他們一干人"
+            }
+        },
+        {
+            "id": "case_zhc_242",
+            "input": "会干掉我的",
+            "expected": {
+                "s2t": "會幹掉我的"
+            }
+        },
+        {
+            "id": "case_zhc_243",
+            "input": "干掉的土豆",
+            "expected": {
+                "s2t": "乾掉的土豆"
+            }
+        },
+        {
+            "id": "case_zhc_244",
+            "input": "被干掉的傢伙",
+            "expected": {
+                "s2t": "被幹掉的傢伙"
+            }
+        },
+        {
+            "id": "case_zhc_245",
+            "input": "今天干完活了",
+            "expected": {
+                "s2t": "今天幹完活了"
+            }
+        },
+        {
+            "id": "case_zhc_246",
+            "input": "站在门口干嘛",
+            "expected": {
+                "s2t": "站在門口幹嘛"
+            }
+        },
+        {
+            "id": "case_zhc_247",
+            "input": "我干啥还花时间",
+            "expected": {
+                "s2t": "我幹啥還花時間"
+            }
+        },
+        {
+            "id": "case_zhc_248",
+            "input": "眼泪已经干了",
+            "expected": {
+                "s2t": "眼淚已經乾了"
+            }
+        },
+        {
+            "id": "case_zhc_249",
+            "input": "在干松木篝火堆",
+            "expected": {
+                "s2t": "在乾松木篝火堆"
+            }
+        },
+        {
+            "id": "case_zhc_250",
+            "input": "把那些乾掉的花拿開",
+            "expected": {
+                "s2t": "把那些乾掉的花拿開"
+            }
+        },
+        {
+            "id": "case_zhc_251",
+            "input": "扶住树干站起来",
+            "expected": {
+                "s2t": "扶住樹幹站起來"
+            }
+        },
+        {
+            "id": "case_zhc_252",
+            "input": "我把脸贴近树干",
+            "expected": {
+                "s2t": "我把臉貼近樹幹"
+            }
+        },
+        {
+            "id": "case_zhc_253",
+            "input": "把ＸＸＸ也干掉吧",
+            "expected": {
+                "s2t": "把ＸＸＸ也幹掉吧"
+            }
+        },
+        {
+            "id": "case_zhc_254",
+            "input": "葡萄干又小又干",
+            "expected": {
+                "s2t": "葡萄乾又小又乾"
+            }
+        },
+        {
+            "id": "case_zhc_255",
+            "input": "有生之年干点事",
+            "expected": {
+                "s2t": "有生之年幹點事"
+            }
+        },
+        {
+            "id": "case_zhc_256",
+            "input": "你干过的那些事",
+            "expected": {
+                "s2t": "你幹過的那些事"
+            }
+        },
+        {
+            "id": "case_zhc_257",
+            "input": "人们干的那些事",
+            "expected": {
+                "s2t": "人們幹的那些事"
+            }
+        },
+        {
+            "id": "case_zhc_258",
+            "input": "干下了一系列暴行",
+            "expected": {
+                "s2t": "幹下了一系列暴行"
+            }
+        },
+        {
+            "id": "case_zhc_259",
+            "input": "比医生多干两倍活",
+            "expected": {
+                "s2t": "比醫生多幹兩倍活"
+            }
+        },
+        {
+            "id": "case_zhc_260",
+            "input": "你干什么不干我事",
+            "expected": {
+                "s2t": "你幹什麼不干我事"
+            }
+        },
+        {
+            "id": "case_zhc_261",
+            "input": "黑衣人士干我什么事",
+            "expected": {
+                "s2t": "黑衣人士干我什麼事"
+            }
+        },
+        {
+            "id": "case_zhc_262",
+            "input": "你在外面干的很多事",
+            "expected": {
+                "s2t": "你在外面幹的很多事"
+            }
+        },
+        {
+            "id": "case_zhc_263",
+            "input": "干的什么事",
+            "expected": {
+                "s2t": "幹的什麼事"
+            }
+        },
+        {
+            "id": "case_zhc_264",
+            "input": "干不干你这一票",
+            "expected": {
+                "s2t": "幹不幹你這一票"
+            }
+        },
+        {
+            "id": "case_zhc_265",
+            "input": "照我的意思干吧",
+            "expected": {
+                "s2t": "照我的意思幹吧"
+            }
+        },
+        {
+            "id": "case_zhc_266",
+            "input": "完全干不了工作",
+            "expected": {
+                "s2t": "完全幹不了工作"
+            }
+        },
+        {
+            "id": "case_zhc_267",
+            "input": "漂亮地干掉了你",
+            "expected": {
+                "s2t": "漂亮地幹掉了你"
+            }
+        },
+        {
+            "id": "case_zhc_268",
+            "input": "衣服总是干不了",
+            "expected": {
+                "s2t": "衣服總是乾不了"
+            }
+        },
+        {
+            "id": "case_zhc_269",
+            "input": "这一票 you 干不干",
+            "expected": {
+                "s2t": "這一票你幹不幹"
+            }
+        },
+        {
+            "id": "case_zhc_270",
+            "input": "行走时汗很容易干",
+            "expected": {
+                "s2t": "行走時汗很容易乾"
+            }
+        },
+        {
+            "id": "case_zhc_271",
+            "input": "一脸想干的样子",
+            "expected": {
+                "s2t": "一臉想幹的樣子"
+            }
+        },
+        {
+            "id": "case_zhc_272",
+            "input": "反正很快就会干吧",
+            "expected": {
+                "s2t": "反正很快就會乾吧"
+            }
+        },
+        {
+            "id": "case_zhc_273",
+            "input": "你也没有干",
+            "expected": {
+                "s2t": "你也沒有幹"
+            }
+        },
+        {
+            "id": "case_zhc_274",
+            "input": "高干子弟",
+            "expected": {
+                "s2t": "高幹子弟"
+            }
+        },
+        {
+            "id": "case_zhc_275",
+            "input": "蝮蛇干",
+            "expected": {
+                "s2t": "蝮蛇乾"
+            }
+        },
+        {
+            "id": "case_zhc_276",
+            "input": "蝮蛇干的",
+            "expected": {
+                "s2t": "蝮蛇幹的"
+            }
+        },
+        {
+            "id": "case_zhc_277",
+            "input": "杀手干的",
+            "expected": {
+                "s2t": "殺手幹的"
+            }
+        },
+        {
+            "id": "case_zhc_278",
+            "input": "蝮蛇干的那些蠢事",
+            "expected": {
+                "s2t": "蝮蛇幹的那些蠢事"
+            }
+        },
+        {
+            "id": "case_zhc_279",
+            "input": "好好地干五六年",
+            "expected": {
+                "s2t": "好好地幹五六年"
+            }
+        },
+        {
+            "id": "case_zhc_280",
+            "input": "什么也没有干",
+            "expected": {
+                "s2t": "什麼也沒有幹"
+            }
+        },
+        {
+            "id": "case_zhc_281",
+            "input": "是他的话的确会干",
+            "expected": {
+                "s2t": "是他的話的確會幹"
+            }
+        },
+        {
+            "id": "case_zhc_282",
+            "input": "为什么在干这些事啊",
+            "expected": {
+                "s2t": "為什麼在幹這些事啊"
+            }
+        },
+        {
+            "id": "case_zhc_283",
+            "input": "我受雇来干的这份工作",
+            "expected": {
+                "s2t": "我受僱來幹的這份工作"
+            }
+        },
+        {
+            "id": "case_zhc_284",
+            "input": "能轻易干掉的敌人",
+            "expected": {
+                "s2t": "能輕易幹掉的敵人"
+            }
+        },
+        {
+            "id": "case_zhc_285",
+            "input": "沥干的不仅是热水",
+            "expected": {
+                "s2t": "瀝乾的不僅是熱水"
+            }
+        },
+        {
+            "id": "case_zhc_286",
+            "input": "是那些黑衣人干的吧",
+            "expected": {
+                "s2t": "是那些黑衣人幹的吧"
+            }
+        },
+        {
+            "id": "case_zhc_287",
+            "input": "在里面干掉那些家伙",
+            "expected": {
+                "s2t": "在裡面幹掉那些傢伙"
+            }
+        },
+        {
+            "id": "case_zhc_288",
+            "input": "要干脆地了断这些事情",
+            "expected": {
+                "s2t": "要乾脆地了斷這些事情"
+            }
+        },
+        {
+            "id": "case_zhc_289",
+            "input": "为什么我会干瘪成这样啊",
+            "expected": {
+                "s2t": "為什麼我會乾癟成這樣啊"
+            }
+        },
+        {
+            "id": "case_zhc_290",
+            "input": "他们把德国飞机全干掉了",
+            "expected": {
+                "s2t": "他們把德國飛機全幹掉了"
+            }
+        },
+        {
+            "id": "case_zhc_291",
+            "input": "为了干涉俄罗斯而侵踏法国这件事",
+            "expected": {
+                "s2t": "為了干涉俄羅斯而侵踏法國這件事"
+            }
+        },
+        {
+            "id": "case_zhc_292",
+            "input": "下次一定会干掉尼禄",
+            "expected": {
+                "s2t": "下次一定會幹掉尼祿"
+            }
+        },
+        {
+            "id": "case_zhc_293",
+            "input": "你的任务就是从后面干掉敌机",
+            "expected": {
+                "s2t": "你的任務就是從後面幹掉敵機"
+            }
+        },
+        {
+            "id": "case_zhc_294",
+            "input": "用她的身体干出那种事情",
+            "expected": {
+                "s2t": "用她的身體幹出那種事情"
+            }
+        },
+        {
+            "id": "case_zhc_295",
+            "input": "连内衣小偷都被认为是我们干的",
+            "expected": {
+                "s2t": "連內衣小偷都被認為是我們幹的"
+            }
+        },
+        {
+            "id": "case_zhc_296",
+            "input": "干地的话还能靠轮胎的抓地力",
+            "expected": {
+                "s2t": "乾地的話還能靠輪胎的抓地力"
+            }
+        },
+        {
+            "id": "case_zhc_297",
+            "input": "您干点花园的杂活",
+            "expected": {
+                "s2t": "您幹點花園的雜活"
+            }
+        },
+        {
+            "id": "case_zhc_298",
+            "input": "也只好干望著她罢了",
+            "expected": {
+                "s2t": "也只好乾望著她罷了"
+            }
+        },
+        {
+            "id": "case_zhc_299",
+            "input": "“我們有桃干 杏干...”",
+            "expected": {
+                "s2t": "“我們有桃乾 杏乾...”"
+            }
+        },
+        {
+            "id": "case_zhc_300",
+            "input": "威尼托的干白葡萄酒",
+            "expected": {
+                "s2t": "威尼托的乾白葡萄酒"
+            }
+        },
+        {
+            "id": "case_zhc_301",
+            "input": "“那我要敬你一杯，干吧”",
+            "expected": {
+                "s2t": "“那我要敬 you 一杯，乾吧”"
+            }
+        },
+        {
+            "id": "case_zhc_302",
+            "input": "大家干了自己杯里的酒",
+            "expected": {
+                "s2t": "大家乾了自己杯裡的酒"
+            }
+        },
+        {
+            "id": "case_zhc_303",
+            "input": "合约上印泥还没干就发生这种事",
+            "expected": {
+                "s2t": "合約上印泥還沒乾就發生這種事"
+            }
+        },
+        {
+            "id": "case_zhc_304",
+            "input": "你们挤在那里煮开水干嘛",
+            "expected": {
+                "s2t": "你們擠在那裡煮開水幹嘛"
+            }
+        },
+        {
+            "id": "case_zhc_305",
+            "input": "在十字路口干的那些事",
+            "expected": {
+                "s2t": "在十字路口幹的那些事"
+            }
+        },
+        {
+            "id": "case_zhc_306",
+            "input": "你到底能干好什么事",
+            "expected": {
+                "s2t": "你到底能幹好什麼事"
+            }
+        },
+        {
+            "id": "case_zhc_307",
+            "input": "干嘛什么事都让我做",
+            "expected": {
+                "s2t": "幹嘛什麼事都讓我做"
+            }
+        },
+        {
+            "id": "case_zhc_308",
+            "input": "现在只记得干烧虾仁了啊",
+            "expected": {
+                "s2t": "現在只記得乾燒蝦仁了啊"
+            }
+        },
+        {
+            "id": "case_zhc_309",
+            "input": "整个人干净俐落",
+            "expected": {
+                "s2t": "整個人乾淨俐落"
+            }
+        },
+        {
+            "id": "case_zhc_310",
+            "input": "嗓子都干了",
+            "expected": {
+                "s2t": "嗓子都乾了"
+            }
+        },
+        {
+            "id": "case_zhc_311",
+            "input": "事情都干了",
+            "expected": {
+                "s2t": "事情都幹了"
+            }
+        },
+        {
+            "id": "case_zhc_312",
+            "input": "你淌这趟浑水干嘛",
+            "expected": {
+                "s2t": "你淌這趟渾水幹嘛"
+            }
+        },
+        {
+            "id": "case_zhc_313",
+            "input": "干预这件事",
+            "expected": {
+                "s2t": "干預這件事"
+            }
+        },
+        {
+            "id": "case_zhc_314",
+            "input": "乾到一個不行",
+            "expected": {
+                "s2t": "乾到一個不行"
+            }
+        },
+        {
+            "id": "case_zhc_315",
+            "input": "下面也要抹干",
+            "expected": {
+                "s2t": "下面也要抹乾"
+            }
+        },
+        {
+            "id": "case_zhc_316",
+            "input": "干到一个不行",
+            "expected": {
+                "s2t": "幹到一個不行"
+            }
+        },
+        {
+            "id": "case_zhc_317",
+            "input": "好好干的事情",
+            "expected": {
+                "s2t": "好好幹的事情"
+            }
+        },
+        {
+            "id": "case_zhc_318",
+            "input": "该干的都干了",
+            "expected": {
+                "s2t": "該幹的都幹了"
+            }
+        },
+        {
+            "id": "case_zhc_319",
+            "input": "是干不好的",
+            "expected": {
+                "s2t": "是幹不好的"
+            }
+        },
+        {
+            "id": "case_zhc_320",
+            "input": "太干不好",
+            "expected": {
+                "s2t": "太乾不好"
+            }
+        },
+        {
+            "id": "case_zhc_321",
+            "input": "任何干旱",
+            "expected": {
+                "s2t": "任何乾旱"
+            }
+        },
+        {
+            "id": "case_zhc_322",
+            "input": "一只有",
+            "expected": {
+                "s2t": "一隻有"
+            }
+        },
+        {
+            "id": "case_zhc_323",
+            "input": "只是只",
+            "expected": {
+                "s2t": "只是隻"
+            }
+        },
+        {
+            "id": "case_zhc_324",
+            "input": "这只为",
+            "expected": {
+                "s2t": "這只為"
+            }
+        },
+        {
+            "id": "case_zhc_325",
+            "input": "单单只是",
+            "expected": {
+                "s2t": "單單只是"
+            }
+        },
+        {
+            "id": "case_zhc_326",
+            "input": "多半只有",
+            "expected": {
+                "s2t": "多半只有"
+            }
+        },
+        {
+            "id": "case_zhc_327",
+            "input": "这只和他",
+            "expected": {
+                "s2t": "這只和他"
+            }
+        },
+        {
+            "id": "case_zhc_328",
+            "input": "这只说明",
+            "expected": {
+                "s2t": "這只說明"
+            }
+        },
+        {
+            "id": "case_zhc_329",
+            "input": "那只适用",
+            "expected": {
+                "s2t": "那只適用"
+            }
+        },
+        {
+            "id": "case_zhc_330",
+            "input": "那是只用",
+            "expected": {
+                "s2t": "那是只用"
+            }
+        },
+        {
+            "id": "case_zhc_331",
+            "input": "一支手术队伍",
+            "expected": {
+                "s2t": "一支手術隊伍"
+            }
+        },
+        {
+            "id": "case_zhc_332",
+            "input": "那只花斑鸡",
+            "expected": {
+                "s2t": "那隻花斑雞"
+            }
+        },
+        {
+            "id": "case_zhc_333",
+            "input": "两支手电筒",
+            "expected": {
+                "s2t": "兩支手電筒"
+            }
+        },
+        {
+            "id": "case_zhc_334",
+            "input": "带两只手电筒",
+            "expected": {
+                "s2t": "帶兩只手電筒"
+            }
+        },
+        {
+            "id": "case_zhc_335",
+            "input": "我只喜欢猫",
+            "expected": {
+                "s2t": "我只喜歡貓"
+            }
+        },
+        {
+            "id": "case_zhc_336",
+            "input": "那只是一只",
+            "expected": {
+                "s2t": "那只是一隻"
+            }
+        },
+        {
+            "id": "case_zhc_337",
+            "input": "其中一只有",
+            "expected": {
+                "s2t": "其中一隻有"
+            }
+        },
+        {
+            "id": "case_zhc_338",
+            "input": "一只看不见的手",
+            "expected": {
+                "s2t": "一隻看不見的手"
+            }
+        },
+        {
+            "id": "case_zhc_339",
+            "input": "一只猎狗闻到了野兽",
+            "expected": {
+                "s2t": "一隻獵狗聞到了野獸"
+            }
+        },
+        {
+            "id": "case_zhc_340",
+            "input": "山里只栖息了最低等级的魔物",
+            "expected": {
+                "s2t": "山裡只棲息了最低等級的魔物"
+            }
+        },
+        {
+            "id": "case_zhc_341",
+            "input": "不单只有这理由",
+            "expected": {
+                "s2t": "不單只有這理由"
+            }
+        },
+        {
+            "id": "case_zhc_342",
+            "input": "周六只上半天课",
+            "expected": {
+                "s2t": "週六只上半天課"
+            }
+        },
+        {
+            "id": "case_zhc_343",
+            "input": "每周六只魚",
+            "expected": {
+                "s2t": "每週六隻魚"
+            }
+        },
+        {
+            "id": "case_zhc_344",
+            "input": "4 只狗",
+            "expected": {
+                "s2t": "4 隻狗"
+            }
+        },
+        {
+            "id": "case_zhc_345",
+            "input": "一只箭猪",
+            "expected": {
+                "s2t": "一隻箭豬"
+            }
+        },
+        {
+            "id": "case_zhc_346",
+            "input": "差不多只",
+            "expected": {
+                "s2t": "差不多只"
+            }
+        },
+        {
+            "id": "case_zhc_347",
+            "input": "只养过狗",
+            "expected": {
+                "s2t": "只養過狗"
+            }
+        },
+        {
+            "id": "case_zhc_348",
+            "input": "床单只要稍微打结",
+            "expected": {
+                "s2t": "床單只要稍微打結"
+            }
+        },
+        {
+            "id": "case_zhc_349",
+            "input": "这支马车车队",
+            "expected": {
+                "s2t": "這支馬車車隊"
+            }
+        },
+        {
+            "id": "case_zhc_350",
+            "input": "由六只宝可梦组成的小队",
+            "expected": {
+                "s2t": "由六隻寶可夢組成的小隊"
+            }
+        },
+        {
+            "id": "case_zhc_351",
+            "input": "80只580针",
+            "expected": {
+                "s2t": "80支580針"
+            }
+        },
+        {
+            "id": "case_zhc_352",
+            "input": "80 只 580 针",
+            "expected": {
+                "s2t": "80 支 580 針"
+            }
+        },
+        {
+            "id": "case_zhc_353",
+            "input": "80只紗",
+            "expected": {
+                "s2t": "80支紗"
+            }
+        },
+        {
+            "id": "case_zhc_354",
+            "input": "80只匹马棉",
+            "expected": {
+                "s2t": "80支匹馬棉"
+            }
+        },
+        {
+            "id": "case_zhc_355",
+            "input": "那只德国蟑螂",
+            "expected": {
+                "s2t": "那隻德國蟑螂"
+            }
+        },
+        {
+            "id": "case_zhc_356",
+            "input": "那些只是麻雀",
+            "expected": {
+                "s2t": "那些只是麻雀"
+            }
+        },
+        {
+            "id": "case_zhc_357",
+            "input": "整天只会照顾牛",
+            "expected": {
+                "s2t": "整天只會照顧牛"
+            }
+        },
+        {
+            "id": "case_zhc_358",
+            "input": "现在只能卖卖狗粮",
+            "expected": {
+                "s2t": "現在只能賣賣狗糧"
+            }
+        },
+        {
+            "id": "case_zhc_359",
+            "input": "他倒反而只给我张狗屁优惠券",
+            "expected": {
+                "s2t": "他倒反而只給我張狗屁優惠券"
+            }
+        },
+        {
+            "id": "case_zhc_360",
+            "input": "将变成只配合一个生物体",
+            "expected": {
+                "s2t": "將變成只配合一個生物體"
+            }
+        },
+        {
+            "id": "case_zhc_361",
+            "input": "为什么只对小兔老师",
+            "expected": {
+                "s2t": "為什麼只對小兔老師"
+            }
+        },
+        {
+            "id": "case_zhc_362",
+            "input": "小埋只是想吃鳗鱼",
+            "expected": {
+                "s2t": "小埋只是想吃鰻魚"
+            }
+        },
+        {
+            "id": "case_zhc_363",
+            "input": "有只好厉害的乌贼",
+            "expected": {
+                "s2t": "有隻好厲害的烏賊"
+            }
+        },
+        {
+            "id": "case_zhc_364",
+            "input": "像只要抱窝的母鸡",
+            "expected": {
+                "s2t": "像隻要抱窩的母雞"
+            }
+        },
+        {
+            "id": "case_zhc_365",
+            "input": "这只和那只狗有关系",
+            "expected": {
+                "s2t": "這只和那隻狗有關係"
+            }
+        },
+        {
+            "id": "case_zhc_366",
+            "input": "第五只寄养犬",
+            "expected": {
+                "s2t": "第五隻寄養犬"
+            }
+        },
+        {
+            "id": "case_zhc_367",
+            "input": "我也养只XXX吧",
+            "expected": {
+                "s2t": "我也養隻XXX吧"
+            }
+        },
+        {
+            "id": "case_zhc_368",
+            "input": "外头需要帮助的犬只要怎么办",
+            "expected": {
+                "s2t": "外頭需要幫助的犬隻要怎麼辦"
+            }
+        },
+        {
+            "id": "case_zhc_369",
+            "input": "犬只美容只是让狗变可爱",
+            "expected": {
+                "s2t": "犬隻美容只是讓狗變可愛"
+            }
+        },
+        {
+            "id": "case_zhc_370",
+            "input": "人类 and 犬只有特殊羁绊",
+            "expected": {
+                "s2t": "人類和犬隻有特殊羈絆"
+            }
+        },
+        {
+            "id": "case_zhc_371",
+            "input": "货船只靠岸",
+            "expected": {
+                "s2t": "貨船只靠岸"
+            }
+        },
+        {
+            "id": "case_zhc_372",
+            "input": "船只都有",
+            "expected": {
+                "s2t": "船隻都有"
+            }
+        },
+        {
+            "id": "case_zhc_373",
+            "input": "船只装在箱子里",
+            "expected": {
+                "s2t": "船隻裝在箱子裡"
+            }
+        },
+        {
+            "id": "case_zhc_374",
+            "input": "其他船只都可增援",
+            "expected": {
+                "s2t": "其他船隻都可增援"
+            }
+        },
+        {
+            "id": "case_zhc_375",
+            "input": "船只在那里搜索",
+            "expected": {
+                "s2t": "船隻在那裡搜索"
+            }
+        },
+        {
+            "id": "case_zhc_376",
+            "input": "从船只到飞机",
+            "expected": {
+                "s2t": "從船隻到飛機"
+            }
+        },
+        {
+            "id": "case_zhc_377",
+            "input": "那趟船只到美国",
+            "expected": {
+                "s2t": "那趟船只到美國"
+            }
+        },
+        {
+            "id": "case_zhc_378",
+            "input": "能看透的只是表象吗",
+            "expected": {
+                "s2t": "能看透的只是表象嗎"
+            }
+        },
+        {
+            "id": "case_zhc_379",
+            "input": "其他九只是剪好玩的",
+            "expected": {
+                "s2t": "其他九隻是剪好玩的"
+            }
+        },
+        {
+            "id": "case_zhc_380",
+            "input": "你是只闪耀一天的星星吗",
+            "expected": {
+                "s2t": "你是只閃耀一天的星星嗎"
+            }
+        },
+        {
+            "id": "case_zhc_381",
+            "input": "毫不留情地向之发难",
+            "expected": {
+                "s2t": "毫不留情地向之發難"
+            }
+        },
+        {
+            "id": "case_zhc_382",
+            "input": "这只作为其中的一例",
+            "expected": {
+                "s2t": "這只作為其中的一例"
+            }
+        },
+        {
+            "id": "case_zhc_383",
+            "input": "遇到只会龟缩的对手",
+            "expected": {
+                "s2t": "遇到只會龜縮的對手"
+            }
+        },
+        {
+            "id": "case_zhc_384",
+            "input": "我还是只喜欢你的那张脸",
+            "expected": {
+                "s2t": "我還是只喜歡你的那張臉"
+            }
+        },
+        {
+            "id": "case_zhc_385",
+            "input": "只是小飞象",
+            "expected": {
+                "s2t": "只是小飛象"
+            }
+        },
+        {
+            "id": "case_zhc_386",
+            "input": "只不过是小飞象",
+            "expected": {
+                "s2t": "只不過是小飛象"
+            }
+        },
+        {
+            "id": "case_zhc_387",
+            "input": "这是只为你做的",
+            "expected": {
+                "s2t": "這是只為你做的"
+            }
+        },
+        {
+            "id": "case_zhc_388",
+            "input": "那只好可爱",
+            "expected": {
+                "s2t": "那隻好可愛"
+            }
+        },
+        {
+            "id": "case_zhc_389",
+            "input": "这只是什么颜色",
+            "expected": {
+                "s2t": "這隻是什麼顏色"
+            }
+        },
+        {
+            "id": "case_zhc_390",
+            "input": "刚才只是去除掉一些害虫",
+            "expected": {
+                "s2t": "剛才只是去除掉一些害蟲"
+            }
+        },
+        {
+            "id": "case_zhc_391",
+            "input": "冠宏只抓到一些小鱼",
+            "expected": {
+                "s2t": "冠宏只抓到一些小魚"
+            }
+        },
+        {
+            "id": "case_zhc_392",
+            "input": "眼睛只盯着狗和兔子",
+            "expected": {
+                "s2t": "眼睛只盯著狗和兔子"
+            }
+        },
+        {
+            "id": "case_zhc_393",
+            "input": "我都只能买158元的牛奶",
+            "expected": {
+                "s2t": "我都只能買158元的牛奶"
+            }
+        },
+        {
+            "id": "case_zhc_394",
+            "input": "那只会飞的蟑螂呢",
+            "expected": {
+                "s2t": "那隻會飛的蟑螂呢"
+            }
+        },
+        {
+            "id": "case_zhc_395",
+            "input": "他是只温柔的猫",
+            "expected": {
+                "s2t": "他是隻溫柔的貓"
+            }
+        },
+        {
+            "id": "case_zhc_396",
+            "input": "一只是那个妖怪",
+            "expected": {
+                "s2t": "一隻是那個妖怪"
+            }
+        },
+        {
+            "id": "case_zhc_397",
+            "input": "就像一只只葫芦",
+            "expected": {
+                "s2t": "就像一隻隻葫蘆"
+            }
+        },
+        {
+            "id": "case_zhc_398",
+            "input": "就像一只只在童话里的独角兽",
+            "expected": {
+                "s2t": "就像一隻只在童話裡的獨角獸"
+            }
+        },
+        {
+            "id": "case_zhc_399",
+            "input": "他一只脚登上了马镫",
+            "expected": {
+                "s2t": "他一隻腳登上了馬鐙"
+            }
+        },
+        {
+            "id": "case_zhc_400",
+            "input": "最后一只是在第五层被你解决的",
+            "expected": {
+                "s2t": "最後一隻是在第五層被你解決的"
+            }
+        },
+        {
+            "id": "case_zhc_401",
+            "input": "这一切只是你自己天马行空的想像",
+            "expected": {
+                "s2t": "這一切只是你自己天馬行空的想像"
+            }
+        },
+        {
+            "id": "case_zhc_402",
+            "input": "可我却只会考虑自己作为龙王的尊严",
+            "expected": {
+                "s2t": "可我卻只會考慮自己作為龍王的尊嚴"
+            }
+        },
+        {
+            "id": "case_zhc_403",
+            "input": "肚子是只能给结婚对象看的神圣之处",
+            "expected": {
+                "s2t": "肚子是只能給結婚對象看的神聖之處"
+            }
+        },
+        {
+            "id": "case_zhc_404",
+            "input": "以至于母牛只能每两年或三年养只小牛",
+            "expected": {
+                "s2t": "以至於母牛只能每兩年或三年養隻小牛"
+            }
+        },
+        {
+            "id": "case_zhc_405",
+            "input": "还是只限女性才能参加",
+            "expected": {
+                "s2t": "還是只限女性才能參加"
+            }
+        },
+        {
+            "id": "case_zhc_406",
+            "input": "你是只听了女浴室的故事吧",
+            "expected": {
+                "s2t": "你是只聽了女浴室的故事吧"
+            }
+        },
+        {
+            "id": "case_zhc_407",
+            "input": "我是只要没有实际损害就不管的人",
+            "expected": {
+                "s2t": "我是只要沒有實際損害就不管的人"
+            }
+        },
+        {
+            "id": "case_zhc_408",
+            "input": "这是只有鲨鱼才能做到的场景",
+            "expected": {
+                "s2t": "這是只有鯊魚才能做到的場景"
+            }
+        },
+        {
+            "id": "case_zhc_409",
+            "input": "如果能只消灭魔物就完美了",
+            "expected": {
+                "s2t": "如果能只消滅魔物就完美了"
+            }
+        },
+        {
+            "id": "case_zhc_410",
+            "input": "那样子只会任人鱼肉",
+            "expected": {
+                "s2t": "那樣子只會任人魚肉"
+            }
+        },
+        {
+            "id": "case_zhc_411",
+            "input": "这只是理论",
+            "expected": {
+                "s2t": "這只是理論"
+            }
+        },
+        {
+            "id": "case_zhc_412",
+            "input": "再这样下去只会",
+            "expected": {
+                "s2t": "再這樣下去只會"
+            }
+        },
+        {
+            "id": "case_zhc_413",
+            "input": "那只是强打精神的努力振作",
+            "expected": {
+                "s2t": "那只是強打精神的努力振作"
+            }
+        },
+        {
+            "id": "case_zhc_414",
+            "input": "放到田野里只会被狐狸叼走",
+            "expected": {
+                "s2t": "放到田野裡只會被狐狸叼走"
+            }
+        },
+        {
+            "id": "case_zhc_415",
+            "input": "这只让她一直恐惧的狗",
+            "expected": {
+                "s2t": "這隻讓她一直恐懼的狗"
+            }
+        },
+        {
+            "id": "case_zhc_416",
+            "input": "这只让他更加恼火",
+            "expected": {
+                "s2t": "這只讓他更加惱火"
+            }
+        },
+        {
+            "id": "case_zhc_417",
+            "input": "这首只想让你听到的小情歌",
+            "expected": {
+                "s2t": "這首只想讓你聽到的小情歌"
+            }
+        },
+        {
+            "id": "case_zhc_418",
+            "input": "这只会助长他的野心",
+            "expected": {
+                "s2t": "這只會助長他的野心"
+            }
+        },
+        {
+            "id": "case_zhc_419",
+            "input": "这只会发生一次",
+            "expected": {
+                "s2t": "這只會發生一次"
+            }
+        },
+        {
+            "id": "case_zhc_420",
+            "input": "那只要依靠它就好了",
+            "expected": {
+                "s2t": "那只要依靠它就好了"
+            }
+        },
+        {
+            "id": "case_zhc_421",
+            "input": "或者只是生物偶然性的结果",
+            "expected": {
+                "s2t": "或者只是生物偶然性的結果"
+            }
+        },
+        {
+            "id": "case_zhc_422",
+            "input": "还以为只是只笨兔子",
+            "expected": {
+                "s2t": "還以為只是隻笨兔子"
+            }
+        },
+        {
+            "id": "case_zhc_423",
+            "input": "还是只可爱的生物呢",
+            "expected": {
+                "s2t": "還是隻可愛的生物呢"
+            }
+        },
+        {
+            "id": "case_zhc_424",
+            "input": "别只对猴子和蛇起反应",
+            "expected": {
+                "s2t": "別只對猴子和蛇起反應"
+            }
+        },
+        {
+            "id": "case_zhc_425",
+            "input": "我想养只穿山甲",
+            "expected": {
+                "s2t": "我想養隻穿山甲"
+            }
+        },
+        {
+            "id": "case_zhc_426",
+            "input": "这只够撑一天",
+            "expected": {
+                "s2t": "這只夠撐一天"
+            }
+        },
+        {
+            "id": "case_zhc_427",
+            "input": "那只会一成不变",
+            "expected": {
+                "s2t": "那只會一成不變"
+            }
+        },
+        {
+            "id": "case_zhc_428",
+            "input": "那只开一次哦",
+            "expected": {
+                "s2t": "那只開一次哦"
+            }
+        },
+        {
+            "id": "case_zhc_429",
+            "input": "明明只是在牛棚",
+            "expected": {
+                "s2t": "明明只是在牛棚"
+            }
+        },
+        {
+            "id": "case_zhc_430",
+            "input": "绝无仅有只那么一次",
+            "expected": {
+                "s2t": "絕無僅有只那麼一次"
+            }
+        },
+        {
+            "id": "case_zhc_431",
+            "input": "这是只应天上有的美味",
+            "expected": {
+                "s2t": "這是只應天上有的美味"
+            }
+        },
+        {
+            "id": "case_zhc_432",
+            "input": "那只开始两分钟而已",
+            "expected": {
+                "s2t": "那只開始兩分鐘而已"
+            }
+        },
+        {
+            "id": "case_zhc_433",
+            "input": "那只有让大家跌破眼镜",
+            "expected": {
+                "s2t": "那只有讓大家跌破眼鏡"
+            }
+        },
+        {
+            "id": "case_zhc_434",
+            "input": "只因为动物",
+            "expected": {
+                "s2t": "只因為動物"
+            }
+        },
+        {
+            "id": "case_zhc_435",
+            "input": "你说只针对动物",
+            "expected": {
+                "s2t": "你說只針對動物"
+            }
+        },
+        {
+            "id": "case_zhc_436",
+            "input": "那只开始发狂的狗",
+            "expected": {
+                "s2t": "那隻開始發狂的狗"
+            }
+        },
+        {
+            "id": "case_zhc_437",
+            "input": "当犬只被彻底消灭",
+            "expected": {
+                "s2t": "當犬隻被徹底消滅"
+            }
+        },
+        {
+            "id": "case_zhc_438",
+            "input": "不要只像老鼠那样畏缩",
+            "expected": {
+                "s2t": "不要只像老鼠那樣畏縮"
+            }
+        },
+        {
+            "id": "case_zhc_439",
+            "input": "会长只是戴上了猫耳",
+            "expected": {
+                "s2t": "會長只是戴上了貓耳"
+            }
+        },
+        {
+            "id": "case_zhc_440",
+            "input": "安乐死只能用于动物",
+            "expected": {
+                "s2t": "安樂死只能用於動物"
+            }
+        },
+        {
+            "id": "case_zhc_441",
+            "input": "只能算是蟑螂",
+            "expected": {
+                "s2t": "只能算是蟑螂"
+            }
+        },
+        {
+            "id": "case_zhc_442",
+            "input": "其实阿纲只是不会游蛙式",
+            "expected": {
+                "s2t": "其實阿綱只是不會游蛙式"
+            }
+        },
+        {
+            "id": "case_zhc_443",
+            "input": "即使只是生物的某一部分",
+            "expected": {
+                "s2t": "即使只是生物的某一部分"
+            }
+        },
+        {
+            "id": "case_zhc_444",
+            "input": "还有只凭一球便技惊全场的降谷晓",
+            "expected": {
+                "s2t": "還有只憑一球便技驚全場的降谷曉"
+            }
+        },
+        {
+            "id": "case_zhc_445",
+            "input": "唯一只有",
+            "expected": {
+                "s2t": "唯一只有"
+            }
+        },
+        {
+            "id": "case_zhc_446",
+            "input": "船只爆炸",
+            "expected": {
+                "s2t": "船隻爆炸"
+            }
+        },
+        {
+            "id": "case_zhc_447",
+            "input": "只言身在此山中",
+            "expected": {
+                "s2t": "只言身在此山中"
+            }
+        },
+        {
+            "id": "case_zhc_448",
+            "input": "只是被鱼叉枪贯穿",
+            "expected": {
+                "s2t": "只是被魚叉槍貫穿"
+            }
+        },
+        {
+            "id": "case_zhc_449",
+            "input": "某位只吃蔬菜的兔子",
+            "expected": {
+                "s2t": "某位只吃蔬菜的兔子"
+            }
+        },
+        {
+            "id": "case_zhc_450",
+            "input": "他就像只在反省的小猴子",
+            "expected": {
+                "s2t": "他就像隻在反省的小猴子"
+            }
+        },
+        {
+            "id": "case_zhc_451",
+            "input": "几只有趣的猪",
+            "expected": {
+                "s2t": "幾隻有趣的豬"
+            }
+        },
+        {
+            "id": "case_zhc_452",
+            "input": "乍看之下只是普通的炸猪排",
+            "expected": {
+                "s2t": "乍看之下只是普通的炸豬排"
+            }
+        },
+        {
+            "id": "case_zhc_453",
+            "input": "小二只有学加减乘除",
+            "expected": {
+                "s2t": "小二只有學加減乘除"
+            }
+        },
+        {
+            "id": "case_zhc_454",
+            "input": "每天只吃肉都快变成野兽了",
+            "expected": {
+                "s2t": "毎日只吃肉都快變成野獸了"
+            }
+        },
+        {
+            "id": "case_zhc_455",
+            "input": "那么大一一只",
+            "expected": {
+                "s2t": "那麼大一隻"
+            }
+        },
+        {
+            "id": "case_zhc_456",
+            "input": "八万只要扣8000",
+            "expected": {
+                "s2t": "八萬只要扣8000"
+            }
+        },
+        {
+            "id": "case_zhc_457",
+            "input": "八万只要先给我500",
+            "expected": {
+                "s2t": "八萬只要先給我500"
+            }
+        },
+        {
+            "id": "case_zhc_458",
+            "input": "AN-94只有在两发点放的模式中才有这样的精准度",
+            "expected": {
+                "s2t": "AN-94只有在兩發點放的模式中才有這樣的精準度"
+            }
+        },
+        {
+            "id": "case_zhc_459",
+            "input": "射中这只狐狸上的箭是你的",
+            "expected": {
+                "s2t": "射中這隻狐狸上的箭是你的"
+            }
+        },
+        {
+            "id": "case_zhc_460",
+            "input": "制造出了只属于你一人的雪霞狼",
+            "expected": {
+                "s2t": "製造出了只屬於你一人的雪霞狼"
+            }
+        },
+        {
+            "id": "case_zhc_461",
+            "input": "之前不是只是只普通的猴子吗",
+            "expected": {
+                "s2t": "之前不是只是隻普通的猴子嗎"
+            }
+        },
+        {
+            "id": "case_zhc_462",
+            "input": "你这样只身闯进犯罪现场",
+            "expected": {
+                "s2t": "你這樣隻身闖進犯罪現場"
+            }
+        },
+        {
+            "id": "case_zhc_463",
+            "input": "倘若只身一人",
+            "expected": {
+                "s2t": "倘若隻身一人"
+            }
+        },
+        {
+            "id": "case_zhc_464",
+            "input": "费格斯只会吹牛",
+            "expected": {
+                "s2t": "費格斯只會吹牛"
+            }
+        },
+        {
+            "id": "case_zhc_465",
+            "input": "费格斯只会拍马屁",
+            "expected": {
+                "s2t": "費格斯只會拍馬屁"
+            }
+        },
+        {
+            "id": "case_zhc_466",
+            "input": "这个模组只对生物起作用",
+            "expected": {
+                "s2t": "這個模組只對生物起作用"
+            }
+        },
+        {
+            "id": "case_zhc_467",
+            "input": "只煎一面",
+            "expected": {
+                "s2t": "只煎一面"
+            }
+        },
+        {
+            "id": "case_zhc_468",
+            "input": "上面条件",
+            "expected": {
+                "s2t": "上面條件"
+            }
+        },
+        {
+            "id": "case_zhc_469",
+            "input": "上面皮肤",
+            "expected": {
+                "s2t": "上面皮膚"
+            }
+        },
+        {
+            "id": "case_zhc_470",
+            "input": "冷面校花",
+            "expected": {
+                "s2t": "冷面校花"
+            }
+        },
+        {
+            "id": "case_zhc_471",
+            "input": "外面包上",
+            "expected": {
+                "s2t": "外面包上"
+            }
+        },
+        {
+            "id": "case_zhc_472",
+            "input": "外面糊了纸",
+            "expected": {
+                "s2t": "外面糊了紙"
+            }
+        },
+        {
+            "id": "case_zhc_473",
+            "input": "封面类型",
+            "expected": {
+                "s2t": "封面類型"
+            }
+        },
+        {
+            "id": "case_zhc_474",
+            "input": "当面摊牌",
+            "expected": {
+                "s2t": "當面攤牌"
+            }
+        },
+        {
+            "id": "case_zhc_475",
+            "input": "黏了面镜子",
+            "expected": {
+                "s2t": "黏了面鏡子"
+            }
+        },
+        {
+            "id": "case_zhc_476",
+            "input": "将直面最彪悍的对手",
+            "expected": {
+                "s2t": "將直面最彪悍的對手"
+            }
+        },
+        {
+            "id": "case_zhc_477",
+            "input": "要热一下面吗",
+            "expected": {
+                "s2t": "要熱一下麵嗎"
+            }
+        },
+        {
+            "id": "case_zhc_478",
+            "input": "这家面很好吃",
+            "expected": {
+                "s2t": "這家麵很好吃"
+            }
+        },
+        {
+            "id": "case_zhc_479",
+            "input": "游乐园的面积",
+            "expected": {
+                "s2t": "遊樂園的面積"
+            }
+        },
+        {
+            "id": "case_zhc_480",
+            "input": "在吃饭时见面",
+            "expected": {
+                "s2t": "在吃飯時見面"
+            }
+        },
+        {
+            "id": "case_zhc_481",
+            "input": "他还和我碰了面",
+            "expected": {
+                "s2t": "他還和我碰了面"
+            }
+        },
+        {
+            "id": "case_zhc_482",
+            "input": "连父亲的面都不曾一见",
+            "expected": {
+                "s2t": "連父親的面都不曾一見"
+            }
+        },
+        {
+            "id": "case_zhc_483",
+            "input": "吃相很不体面哦",
+            "expected": {
+                "s2t": "吃相很不體面哦"
+            }
+        },
+        {
+            "id": "case_zhc_484",
+            "input": "谈谈吃喝方面的事",
+            "expected": {
+                "s2t": "談談吃喝方面的事"
+            }
+        },
+        {
+            "id": "case_zhc_485",
+            "input": "当著朋友的面翻脸",
+            "expected": {
+                "s2t": "當著朋友的面翻臉"
+            }
+        },
+        {
+            "id": "case_zhc_486",
+            "input": "因为三个人面对着面",
+            "expected": {
+                "s2t": "因為三個人面對著面"
+            }
+        },
+        {
+            "id": "case_zhc_487",
+            "input": "你别打我的拉面皮",
+            "expected": {
+                "s2t": "你別打我的拉面皮"
+            }
+        },
+        {
+            "id": "case_zhc_488",
+            "input": "装满了面值不同的邮票",
+            "expected": {
+                "s2t": "裝滿了面值不同的郵票"
+            }
+        },
+        {
+            "id": "case_zhc_489",
+            "input": "即互相吃掉对面的角行",
+            "expected": {
+                "s2t": "即互相吃掉對面的角行"
+            }
+        },
+        {
+            "id": "case_zhc_490",
+            "input": "如果那小子当著面跟你告白",
+            "expected": {
+                "s2t": "如果那小子當著面跟你告白"
+            }
+        },
+        {
+            "id": "case_zhc_491",
+            "input": "看不清面部",
+            "expected": {
+                "s2t": "看不清面部",
+                "s2twp": "看不清臉部"
+            }
+        },
+        {
+            "id": "case_zhc_492",
+            "input": "-请去车里等",
+            "expected": {
+                "s2t": "-請去車裡等"
+            }
+        },
+        {
+            "id": "case_zhc_493",
+            "input": "用烫金皮革封面装订",
+            "expected": {
+                "s2t": "用燙金皮革封面裝訂"
+            }
+        },
+        {
+            "id": "case_zhc_494",
+            "input": "烘托出整幅画面",
+            "expected": {
+                "s2t": "烘托出整幅畫面"
+            }
+        },
+        {
+            "id": "case_zhc_495",
+            "input": "确认骰子的面",
+            "expected": {
+                "s2t": "確認骰子的面"
+            }
+        },
+        {
+            "id": "case_zhc_496",
+            "input": "义大利面相关的",
+            "expected": {
+                "s2t": "義大利麵相關的"
+            }
+        },
+        {
+            "id": "case_zhc_497",
+            "input": "猪肝面",
+            "expected": {
+                "s2t": "豬肝麵"
+            }
+        },
+        {
+            "id": "case_zhc_498",
+            "input": "“白面孔 生面孔 熟面孔 老面孔”",
+            "expected": {
+                "s2t": "“白面孔 生面孔 熟面孔 老面孔”"
+            }
+        },
+        {
+            "id": "case_zhc_499",
+            "input": "见一下面",
+            "expected": {
+                "s2t": "見一下面"
+            }
+        },
+        {
+            "id": "case_zhc_500",
+            "input": "里面面包",
+            "expected": {
+                "s2t": "裡面麵包"
+            }
+        },
+        {
+            "id": "case_zhc_501",
+            "input": "梦见面包",
+            "expected": {
+                "s2t": "夢見麵包"
+            }
+        },
+        {
+            "id": "case_zhc_502",
+            "input": "下面包",
+            "expected": {
+                "s2t": "下麵包"
+            }
+        },
+        {
+            "id": "case_zhc_503",
+            "input": "下面包了",
+            "expected": {
+                "s2t": "下麵包了"
+            }
+        },
+        {
+            "id": "case_zhc_504",
+            "input": "剩下面包",
+            "expected": {
+                "s2t": "剩下麵包"
+            }
+        },
+        {
+            "id": "case_zhc_505",
+            "input": "剩下面包了",
+            "expected": {
+                "s2t": "剩下麵包了"
+            }
+        },
+        {
+            "id": "case_zhc_506",
+            "input": "剩下面包了啊",
+            "expected": {
+                "s2t": "剩下麵包了啊"
+            }
+        },
+        {
+            "id": "case_zhc_507",
+            "input": "剩下面包了一块尿布",
+            "expected": {
+                "s2t": "剩下面包了一塊尿布"
+            }
+        },
+        {
+            "id": "case_zhc_508",
+            "input": "我看小明见面包准会吵架",
+            "expected": {
+                "s2t": "我看小明見面包準會吵架"
+            }
+        },
+        {
+            "id": "case_zhc_509",
+            "input": "我看小明见到面包准会吵架",
+            "expected": {
+                "s2t": "我看小明見到面包準會吵架"
+            }
+        },
+        {
+            "id": "case_zhc_510",
+            "input": "眼见面包准备完成",
+            "expected": {
+                "s2t": "眼見麵包準備完成"
+            }
+        },
+        {
+            "id": "case_zhc_511",
+            "input": "和面里的茴香搭配",
+            "expected": {
+                "s2t": "和麵裡的茴香搭配"
+            }
+        },
+        {
+            "id": "case_zhc_512",
+            "input": "这种面的口感很独特",
+            "expected": {
+                "s2t": "這種麵的口感很獨特"
+            }
+        },
+        {
+            "id": "case_zhc_513",
+            "input": "面很好吃的样子",
+            "expected": {
+                "s2t": "麵很好吃的樣子"
+            }
+        },
+        {
+            "id": "case_zhc_514",
+            "input": "把面分成三碗",
+            "expected": {
+                "s2t": "把麵分成三碗"
+            }
+        },
+        {
+            "id": "case_zhc_515",
+            "input": "麦子磨成面",
+            "expected": {
+                "s2t": "麥子磨成麵"
+            }
+        },
+        {
+            "id": "case_zhc_516",
+            "input": "王子面色难看",
+            "expected": {
+                "s2t": "王子面色難看"
+            }
+        },
+        {
+            "id": "case_zhc_517",
+            "input": "洒上面粉",
+            "expected": {
+                "s2t": "灑上麵粉"
+            }
+        },
+        {
+            "id": "case_zhc_518",
+            "input": "洒上面粉状",
+            "expected": {
+                "s2t": "灑上麵粉狀"
+            }
+        },
+        {
+            "id": "case_zhc_519",
+            "input": "洒上面粉状的",
+            "expected": {
+                "s2t": "灑上麵粉狀的"
+            }
+        },
+        {
+            "id": "case_zhc_520",
+            "input": "上面粉状的",
+            "expected": {
+                "s2t": "上面粉狀的"
+            }
+        },
+        {
+            "id": "case_zhc_521",
+            "input": "中华冷面",
+            "expected": {
+                "s2t": "中華冷麵"
+            }
+        },
+        {
+            "id": "case_zhc_522",
+            "input": "吃人的人面兽",
+            "expected": {
+                "s2t": "吃人的人面獸"
+            }
+        },
+        {
+            "id": "case_zhc_523",
+            "input": "面皮很好吃",
+            "expected": {
+                "s2t": "麵皮很好吃"
+            }
+        },
+        {
+            "id": "case_zhc_524",
+            "input": "上海冷面之面的处理方法",
+            "expected": {
+                "s2t": "上海冷麵之麵的處理方法"
+            }
+        },
+        {
+            "id": "case_zhc_525",
+            "input": "放著的面容易干掉",
+            "expected": {
+                "s2t": "放著的麵容易乾掉"
+            }
+        },
+        {
+            "id": "case_zhc_526",
+            "input": "见到小明的面",
+            "expected": {
+                "s2t": "見到小明的面"
+            }
+        },
+        {
+            "id": "case_zhc_527",
+            "input": "见到小明的面包",
+            "expected": {
+                "s2t": "見到小明的麵包"
+            }
+        },
+        {
+            "id": "case_zhc_528",
+            "input": "上帝的面包",
+            "expected": {
+                "s2t": "上帝的麵包"
+            }
+        },
+        {
+            "id": "case_zhc_529",
+            "input": "各方面条件",
+            "expected": {
+                "s2t": "各方面條件"
+            }
+        },
+        {
+            "id": "case_zhc_530",
+            "input": "看在上帝的面上",
+            "expected": {
+                "s2t": "看在上帝的面上"
+            }
+        },
+        {
+            "id": "case_zhc_531",
+            "input": "如果不看儿子的面上",
+            "expected": {
+                "s2t": "如果不看兒子的面上"
+            }
+        },
+        {
+            "id": "case_zhc_532",
+            "input": "舍大求小",
+            "expected": {
+                "s2t": "捨大求小"
+            }
+        },
+        {
+            "id": "case_zhc_533",
+            "input": "舍不舍得",
+            "expected": {
+                "s2t": "捨不捨得"
+            }
+        },
+        {
+            "id": "case_zhc_534",
+            "input": "舍监去哪了",
+            "expected": {
+                "s2t": "舍監去哪了"
+            }
+        },
+        {
+            "id": "case_zhc_535",
+            "input": "没有舍监阿姨",
+            "expected": {
+                "s2t": "沒有舍監阿姨"
+            }
+        },
+        {
+            "id": "case_zhc_536",
+            "input": "有舍就有得",
+            "expected": {
+                "s2t": "有捨就有得"
+            }
+        },
+        {
+            "id": "case_zhc_537",
+            "input": "住在农舍里",
+            "expected": {
+                "s2t": "住在農舍裡"
+            }
+        },
+        {
+            "id": "case_zhc_538",
+            "input": "朝宿舍去了",
+            "expected": {
+                "s2t": "朝宿舍去了"
+            }
+        },
+        {
+            "id": "case_zhc_539",
+            "input": "宿舍要关门了",
+            "expected": {
+                "s2t": "宿舍要關門了"
+            }
+        },
+        {
+            "id": "case_zhc_540",
+            "input": "舍露美嘉年华",
+            "expected": {
+                "s2t": "舍露美嘉年華"
+            }
+        },
+        {
+            "id": "case_zhc_541",
+            "input": "尤其你是宿舍生",
+            "expected": {
+                "s2t": "尤其你是宿舍生"
+            }
+        },
+        {
+            "id": "case_zhc_542",
+            "input": "享受宿舍生活",
+            "expected": {
+                "s2t": "享受宿舍生活"
+            }
+        },
+        {
+            "id": "case_zhc_543",
+            "input": "咱们打家劫舍去",
+            "expected": {
+                "s2t": "咱們打家劫舍去"
+            }
+        },
+        {
+            "id": "case_zhc_544",
+            "input": "火箭队舍去尊严",
+            "expected": {
+                "s2t": "火箭隊捨去尊嚴"
+            }
+        },
+        {
+            "id": "case_zhc_545",
+            "input": "火箭队舍去了尊严",
+            "expected": {
+                "s2t": "火箭隊捨去了尊嚴"
+            }
+        },
+        {
+            "id": "case_zhc_546",
+            "input": "跑到别人的队舍去",
+            "expected": {
+                "s2t": "跑到別人的隊舍去"
+            }
+        },
+        {
+            "id": "case_zhc_547",
+            "input": "跑到别人的队舍去了",
+            "expected": {
+                "s2t": "跑到別人的隊舍去了"
+            }
+        },
+        {
+            "id": "case_zhc_548",
+            "input": "阿婆卢吉低舍婆罗",
+            "expected": {
+                "s2t": "阿婆盧吉低舍婆羅"
+            }
+        },
+        {
+            "id": "case_zhc_549",
+            "input": "到时候就算得舍去一切",
+            "expected": {
+                "s2t": "到時候就算得捨去一切"
+            }
+        },
+        {
+            "id": "case_zhc_550",
+            "input": "改用五舍六入的计算方式",
+            "expected": {
+                "s2t": "改用五捨六入的計算方式"
+            }
+        },
+        {
+            "id": "case_zhc_551",
+            "input": "问准主人家",
+            "expected": {
+                "s2t": "問准主人家"
+            }
+        },
+        {
+            "id": "case_zhc_552",
+            "input": "不准没大没小",
+            "expected": {
+                "s2t": "不准沒大沒小"
+            }
+        },
+        {
+            "id": "case_zhc_553",
+            "input": "明明说不准买",
+            "expected": {
+                "s2t": "明明說不准買"
+            }
+        },
+        {
+            "id": "case_zhc_554",
+            "input": "槍打的准",
+            "expected": {
+                "s2t": "槍打的準"
+            }
+        },
+        {
+            "id": "case_zhc_555",
+            "input": "都不准了",
+            "expected": {
+                "s2t": "都不準了"
+            }
+        },
+        {
+            "id": "case_zhc_556",
+            "input": "谁都不准",
+            "expected": {
+                "s2t": "誰都不准"
+            }
+        },
+        {
+            "id": "case_zhc_557",
+            "input": "特别准许",
+            "expected": {
+                "s2t": "特別准許"
+            }
+        },
+        {
+            "id": "case_zhc_558",
+            "input": "超不准",
+            "expected": {
+                "s2t": "超不準"
+            }
+        },
+        {
+            "id": "case_zhc_559",
+            "input": "如果神父准的话",
+            "expected": {
+                "s2t": "如果神父准的話"
+            }
+        },
+        {
+            "id": "case_zhc_560",
+            "input": "这不准那不准的",
+            "expected": {
+                "s2t": "這不准那不准的"
+            }
+        },
+        {
+            "id": "case_zhc_561",
+            "input": "系统核准确认",
+            "expected": {
+                "s2t": "系統核准確認"
+            }
+        },
+        {
+            "id": "case_zhc_562",
+            "input": "如果射的准的话",
+            "expected": {
+                "s2t": "如果射的準的話"
+            }
+        },
+        {
+            "id": "case_zhc_563",
+            "input": "我瞄不准它",
+            "expected": {
+                "s2t": "我瞄不準它"
+            }
+        },
+        {
+            "id": "case_zhc_564",
+            "input": "那个钟准不准？",
+            "expected": {
+                "s2t": "那個鐘準不準？"
+            }
+        },
+        {
+            "id": "case_zhc_565",
+            "input": "这钟准吗？",
+            "expected": {
+                "s2t": "這鐘準嗎？"
+            }
+        },
+        {
+            "id": "case_zhc_566",
+            "input": "他对准士兵",
+            "expected": {
+                "s2t": "他對準士兵"
+            }
+        },
+        {
+            "id": "case_zhc_567",
+            "input": "只准医护人员进入",
+            "expected": {
+                "s2t": "只准醫護人員進入"
+            }
+        },
+        {
+            "id": "case_zhc_568",
+            "input": "这一招准行",
+            "expected": {
+                "s2t": "這一招準行"
+            }
+        },
+        {
+            "id": "case_zhc_569",
+            "input": "一抓一个准",
+            "expected": {
+                "s2t": "一抓一個準"
+            }
+        },
+        {
+            "id": "case_zhc_570",
+            "input": "不准点咖啡",
+            "expected": {
+                "s2t": "不准點咖啡"
+            }
+        },
+        {
+            "id": "case_zhc_571",
+            "input": "照著做准行",
+            "expected": {
+                "s2t": "照著做準行"
+            }
+        },
+        {
+            "id": "case_zhc_572",
+            "input": "你的准考证呢",
+            "expected": {
+                "s2t": "你的准考證呢"
+            }
+        },
+        {
+            "id": "case_zhc_573",
+            "input": "请假是否一定要准假",
+            "expected": {
+                "s2t": "請假是否一定要准假"
+            }
+        },
+        {
+            "id": "case_zhc_574",
+            "input": "你穿黑色准没错的",
+            "expected": {
+                "s2t": "你穿黑色準沒錯的"
+            }
+        },
+        {
+            "id": "case_zhc_575",
+            "input": "恶狠狠的对准教授",
+            "expected": {
+                "s2t": "惡狠狠的對準教授"
+            }
+        },
+        {
+            "id": "case_zhc_576",
+            "input": "我说不准就是了",
+            "expected": {
+                "s2t": "我說不準就是了"
+            }
+        },
+        {
+            "id": "case_zhc_577",
+            "input": "怎么也说不准他的岁数",
+            "expected": {
+                "s2t": "怎麼也說不準他的歲數"
+            }
+        },
+        {
+            "id": "case_zhc_578",
+            "input": "说不准对方有个单身父亲嘛",
+            "expected": {
+                "s2t": "說不準對方有個單身父親嘛"
+            }
+        },
+        {
+            "id": "case_zhc_579",
+            "input": "要是我做了你就批准是吧",
+            "expected": {
+                "s2t": "要是我做了你就批准是吧"
+            }
+        },
+        {
+            "id": "case_zhc_580",
+            "input": "如果只打得出这种水准的话",
+            "expected": {
+                "s2t": "如果只打得出這種水準的話"
+            }
+        },
+        {
+            "id": "case_zhc_581",
+            "input": "其他的打者也都抓不准出棒时机",
+            "expected": {
+                "s2t": "其他的打者也都抓不準出棒時機"
+            }
+        },
+        {
+            "id": "case_zhc_582",
+            "input": "蜜蜂采蜜",
+            "expected": {
+                "s2t": "蜜蜂採蜜"
+            }
+        },
+        {
+            "id": "case_zhc_583",
+            "input": "中文采访",
+            "expected": {
+                "s2t": "中文採訪"
+            }
+        },
+        {
+            "id": "case_zhc_584",
+            "input": "機製造成",
+            "expected": {
+                "s2t": "機制造成"
+            }
+        },
+        {
+            "id": "case_zhc_585",
+            "input": "人体制造",
+            "expected": {
+                "s2t": "人體製造"
+            }
+        },
+        {
+            "id": "case_zhc_586",
+            "input": "体制造成",
+            "expected": {
+                "s2t": "體制造成"
+            }
+        },
+        {
+            "id": "case_zhc_587",
+            "input": "抑制氧化",
+            "expected": {
+                "s2t": "抑制氧化"
+            }
+        },
+        {
+            "id": "case_zhc_588",
+            "input": "徒手制伏",
+            "expected": {
+                "s2t": "徒手制伏"
+            }
+        },
+        {
+            "id": "case_zhc_589",
+            "input": "道德制高点",
+            "expected": {
+                "s2t": "道德制高點"
+            }
+        },
+        {
+            "id": "case_zhc_590",
+            "input": "他拘谨自制",
+            "expected": {
+                "s2t": "他拘謹自制"
+            }
+        },
+        {
+            "id": "case_zhc_591",
+            "input": "他很自制",
+            "expected": {
+                "s2t": "他很自制"
+            }
+        },
+        {
+            "id": "case_zhc_592",
+            "input": "“自律、自制和克己能力”",
+            "expected": {
+                "s2t": "“自律、自制和克己能力”"
+            }
+        },
+        {
+            "id": "case_zhc_593",
+            "input": "公制与英制",
+            "expected": {
+                "s2t": "公制與英制"
+            }
+        },
+        {
+            "id": "case_zhc_594",
+            "input": "英制长度单位",
+            "expected": {
+                "s2t": "英制長度單位"
+            }
+        },
+        {
+            "id": "case_zhc_595",
+            "input": "24小時制",
+            "expected": {
+                "s2t": "24小時制"
+            }
+        },
+        {
+            "id": "case_zhc_596",
+            "input": "24小時制作",
+            "expected": {
+                "s2t": "24小時製作"
+            }
+        },
+        {
+            "id": "case_zhc_597",
+            "input": "24小時制作為",
+            "expected": {
+                "s2t": "24小時制作為"
+            }
+        },
+        {
+            "id": "case_zhc_598",
+            "input": "打开制氧机",
+            "expected": {
+                "s2t": "打開製氧機"
+            }
+        },
+        {
+            "id": "case_zhc_599",
+            "input": "谁还管制造商",
+            "expected": {
+                "s2t": "誰還管製造商"
+            }
+        },
+        {
+            "id": "case_zhc_600",
+            "input": "美国制裁缝机",
+            "expected": {
+                "s2t": "美國製裁縫機"
+            }
+        },
+        {
+            "id": "case_zhc_601",
+            "input": "超强制作人",
+            "expected": {
+                "s2t": "超強製作人"
+            }
+        },
+        {
+            "id": "case_zhc_602",
+            "input": "压制得很好",
+            "expected": {
+                "s2t": "壓制得很好"
+            }
+        },
+        {
+            "id": "case_zhc_603",
+            "input": "压制住了",
+            "expected": {
+                "s2t": "壓制住了"
+            }
+        },
+        {
+            "id": "case_zhc_604",
+            "input": "能够克制药师的强打",
+            "expected": {
+                "s2t": "能夠克制藥師的強打"
+            }
+        },
+        {
+            "id": "case_zhc_605",
+            "input": "和法令限制做比较",
+            "expected": {
+                "s2t": "和法令限制做比較"
+            }
+        },
+        {
+            "id": "case_zhc_606",
+            "input": "带着自制力享受自由的时光",
+            "expected": {
+                "s2t": "帶著自制力享受自由的時光"
+            }
+        },
+        {
+            "id": "case_zhc_607",
+            "input": "农民们会酿制伏特加卖给我们",
+            "expected": {
+                "s2t": "農民們會釀製伏特加賣給我們"
+            }
+        },
+        {
+            "id": "case_zhc_608",
+            "input": "使用蜥蜴人尸体制造出的不死者",
+            "expected": {
+                "s2t": "使用蜥蜴人屍體製造出的不死者"
+            }
+        },
+        {
+            "id": "case_zhc_609",
+            "input": "糗呆了",
+            "expected": {
+                "s2t": "糗呆了"
+            }
+        },
+        {
+            "id": "case_zhc_610",
+            "input": "呆好别动",
+            "expected": {
+                "s2t": "待好別動"
+            }
+        },
+        {
+            "id": "case_zhc_611",
+            "input": "呆了很久",
+            "expected": {
+                "s2t": "待了很久"
+            }
+        },
+        {
+            "id": "case_zhc_612",
+            "input": "不能呆太久",
+            "expected": {
+                "s2t": "不能待太久"
+            }
+        },
+        {
+            "id": "case_zhc_613",
+            "input": "呆个几分钟",
+            "expected": {
+                "s2t": "待個幾分鐘"
+            }
+        },
+        {
+            "id": "case_zhc_614",
+            "input": "多呆一秒钟",
+            "expected": {
+                "s2t": "多待一秒鐘"
+            }
+        },
+        {
+            "id": "case_zhc_615",
+            "input": "一定樂呆了",
+            "expected": {
+                "s2t": "一定樂呆了"
+            }
+        },
+        {
+            "id": "case_zhc_616",
+            "input": "看着看着就呆了",
+            "expected": {
+                "s2t": "看著看著就呆了"
+            }
+        },
+        {
+            "id": "case_zhc_617",
+            "input": "你怎么呆了",
+            "expected": {
+                "s2t": "你怎麼呆了"
+            }
+        },
+        {
+            "id": "case_zhc_618",
+            "input": "当作成年人看呆了",
+            "expected": {
+                "s2t": "當作成年人看待了"
+            }
+        },
+        {
+            "id": "case_zhc_619",
+            "input": "这么残酷呆我的兄弟",
+            "expected": {
+                "s2t": "這麼殘酷待我的兄弟"
+            }
+        },
+        {
+            "id": "case_zhc_620",
+            "input": "离蛮美呆的地方很近",
+            "expected": {
+                "s2t": "離蠻美待的地方很近"
+            }
+        },
+        {
+            "id": "case_zhc_621",
+            "input": "别在超市里呆得太晚",
+            "expected": {
+                "s2t": "別在超市裡待得太晚"
+            }
+        },
+        {
+            "id": "case_zhc_622",
+            "input": "众人云集",
+            "expected": {
+                "s2t": "眾人雲集"
+            }
+        },
+        {
+            "id": "case_zhc_623",
+            "input": "天气以多云为主",
+            "expected": {
+                "s2t": "天氣以多雲為主"
+            }
+        },
+        {
+            "id": "case_zhc_624",
+            "input": "游一游",
+            "expected": {
+                "s2t": "游一游"
+            }
+        },
+        {
+            "id": "case_zhc_625",
+            "input": "往回游",
+            "expected": {
+                "s2t": "往回游"
+            }
+        },
+        {
+            "id": "case_zhc_626",
+            "input": "游刃有余",
+            "expected": {
+                "s2t": "游刃有餘"
+            }
+        },
+        {
+            "id": "case_zhc_627",
+            "input": "遊刃有余",
+            "expected": {
+                "s2t": "遊刃有餘"
+            }
+        },
+        {
+            "id": "case_zhc_628",
+            "input": "玩桌游了",
+            "expected": {
+                "s2t": "玩桌遊了"
+            }
+        },
+        {
+            "id": "case_zhc_629",
+            "input": "鱼在游动呢",
+            "expected": {
+                "s2t": "魚在游動呢"
+            }
+        },
+        {
+            "id": "case_zhc_630",
+            "input": "影响下游河道",
+            "expected": {
+                "s2t": "影響下游河道"
+            }
+        },
+        {
+            "id": "case_zhc_631",
+            "input": "我们着手游击战",
+            "expected": {
+                "s2t": "我們著手游擊戰"
+            }
+        },
+        {
+            "id": "case_zhc_632",
+            "input": "达尔文周游了世界",
+            "expected": {
+                "s2t": "達爾文周遊了世界"
+            }
+        },
+        {
+            "id": "case_zhc_633",
+            "input": "沿着图奥勒米河的上游到达其源头",
+            "expected": {
+                "s2t": "沿著圖奧勒米河的上游到達其源頭"
+            }
+        },
+        {
+            "id": "case_zhc_634",
+            "input": "小鸟游在邮局的斜对面",
+            "expected": {
+                "s2t": "小鳥遊在郵局的斜對面"
+            }
+        },
+        {
+            "id": "case_zhc_635",
+            "input": "犹太历新年",
+            "expected": {
+                "s2t": "猶太曆新年"
+            }
+        },
+        {
+            "id": "case_zhc_636",
+            "input": "犹太历险记",
+            "expected": {
+                "s2t": "猶太歷險記"
+            }
+        },
+        {
+            "id": "case_zhc_637",
+            "input": "当我在看我的行事历时",
+            "expected": {
+                "s2t": "當我在看我的行事曆時"
+            }
+        },
+        {
+            "id": "case_zhc_638",
+            "input": "象牙签",
+            "expected": {
+                "s2t": "像牙籤"
+            }
+        },
+        {
+            "id": "case_zhc_639",
+            "input": "发现象牙",
+            "expected": {
+                "s2t": "發現象牙"
+            }
+        },
+        {
+            "id": "case_zhc_640",
+            "input": "地表现象",
+            "expected": {
+                "s2t": "地表現象"
+            }
+        },
+        {
+            "id": "case_zhc_641",
+            "input": "视象形式",
+            "expected": {
+                "s2t": "視像形式"
+            }
+        },
+        {
+            "id": "case_zhc_642",
+            "input": "象征人民",
+            "expected": {
+                "s2t": "象徵人民"
+            }
+        },
+        {
+            "id": "case_zhc_643",
+            "input": "会面对象",
+            "expected": {
+                "s2t": "會面對象"
+            }
+        },
+        {
+            "id": "case_zhc_644",
+            "input": "第一印象我就决定了",
+            "expected": {
+                "s2t": "第一印象我就決定了"
+            }
+        },
+        {
+            "id": "case_zhc_645",
+            "input": "有对象我就可以学习",
+            "expected": {
+                "s2t": "有對象我就可以學習"
+            }
+        },
+        {
+            "id": "case_zhc_646",
+            "input": "印度教的偶象形象",
+            "expected": {
+                "s2t": "印度教的偶像形象"
+            }
+        },
+        {
+            "id": "case_zhc_647",
+            "input": "印象中景象很优美",
+            "expected": {
+                "s2t": "印象中景象很優美"
+            }
+        },
+        {
+            "id": "case_zhc_648",
+            "input": "中景象另一台相机",
+            "expected": {
+                "s2t": "中景象另一台相機"
+            }
+        },
+        {
+            "id": "case_zhc_649",
+            "input": "最感人的景像之一",
+            "expected": {
+                "s2t": "最感人的景象之一"
+            }
+        },
+        {
+            "id": "case_zhc_650",
+            "input": "她的广大象洪水般",
+            "expected": {
+                "s2t": "她的廣大像洪水般"
+            }
+        },
+        {
+            "id": "case_zhc_651",
+            "input": "表现象个罪犯",
+            "expected": {
+                "s2t": "表現像個罪犯"
+            }
+        },
+        {
+            "id": "case_zhc_652",
+            "input": "展现像上一场那样",
+            "expected": {
+                "s2t": "展現像上一場那樣"
+            }
+        },
+        {
+            "id": "case_zhc_653",
+            "input": "听访谈对象自己说",
+            "expected": {
+                "s2t": "聽訪談對象自己說"
+            }
+        },
+        {
+            "id": "case_zhc_654",
+            "input": "未能发现象是孔明那样的人才",
+            "expected": {
+                "s2t": "未能發現像是孔明那樣的人才"
+            }
+        },
+        {
+            "id": "case_zhc_655",
+            "input": "你看这陈年旧迹像是刚写上去的吗",
+            "expected": {
+                "s2t": "你看這陳年舊跡像是剛寫上去的嗎"
+            }
+        },
+        {
+            "id": "case_zhc_656",
+            "input": "看到拍摄对象我就情不自禁",
+            "expected": {
+                "s2t": "看到拍攝對象我就情不自禁"
+            }
+        },
+        {
+            "id": "case_zhc_657",
+            "input": "米克死了",
+            "expected": {
+                "s2t": "米克死了"
+            }
+        },
+        {
+            "id": "case_zhc_658",
+            "input": "水克死了火",
+            "expected": {
+                "s2t": "水剋死了火"
+            }
+        },
+        {
+            "id": "case_zhc_659",
+            "input": "克拉克死了",
+            "expected": {
+                "s2t": "克拉克死了"
+            }
+        },
+        {
+            "id": "case_zhc_660",
+            "input": "浩雷克死定了",
+            "expected": {
+                "s2t": "浩雷克死定了"
+            }
+        },
+        {
+            "id": "case_zhc_661",
+            "input": "她被克萊伯殺害",
+            "expected": {
+                "s2t": "她被克萊伯殺害"
+            }
+        },
+        {
+            "id": "case_zhc_662",
+            "input": "总是在一旁注视著你",
+            "expected": {
+                "s2t": "總是在一旁注視著你"
+            }
+        },
+        {
+            "id": "case_zhc_663",
+            "input": "加注五十万",
+            "expected": {
+                "s2t": "加注五十萬"
+            }
+        },
+        {
+            "id": "case_zhc_664",
+            "input": "赌注记录",
+            "expected": {
+                "s2t": "賭注記錄"
+            }
+        },
+        {
+            "id": "case_zhc_665",
+            "input": "多別扭啊",
+            "expected": {
+                "s2t": "彆扭啊"
+            }
+        },
+        {
+            "id": "case_zhc_666",
+            "input": "小心别扭伤",
+            "expected": {
+                "s2t": "小心別扭傷"
+            }
+        },
+        {
+            "id": "case_zhc_667",
+            "input": "快回防御手洗",
+            "expected": {
+                "s2t": "快回防御手洗"
+            }
+        },
+        {
+            "id": "case_zhc_668",
+            "input": "御手洗红豆",
+            "expected": {
+                "s2t": "御手洗紅豆"
+            }
+        },
+        {
+            "id": "case_zhc_669",
+            "input": "防御驾驶",
+            "expected": {
+                "s2t": "防禦駕駛"
+            }
+        },
+        {
+            "id": "case_zhc_670",
+            "input": "你去看下卷帘门",
+            "expected": {
+                "s2t": "你去看下卷簾門"
+            }
+        },
+        {
+            "id": "case_zhc_671",
+            "input": "海浪能卷多高",
+            "expected": {
+                "s2t": "海浪能捲多高"
+            }
+        },
+        {
+            "id": "case_zhc_672",
+            "input": "腰上扎了一条她的黑色宽腰带",
+            "expected": {
+                "s2t": "腰上紮了一條她的黑色寬腰帶"
+            }
+        },
+        {
+            "id": "case_zhc_673",
+            "input": "你系过红领巾",
+            "expected": {
+                "s2t": "繫過紅領巾"
+            }
+        },
+        {
+            "id": "case_zhc_674",
+            "input": "系上学长金振慕",
+            "expected": {
+                "s2t": "系上學長金振慕"
+            }
+        },
+        {
+            "id": "case_zhc_675",
+            "input": "系上学长的围巾",
+            "expected": {
+                "s2t": "繫上學長的圍巾"
+            }
+        },
+        {
+            "id": "case_zhc_676",
+            "input": "冷色系的布料",
+            "expected": {
+                "s2t": "冷色系的布料"
+            }
+        },
+        {
+            "id": "case_zhc_677",
+            "input": "承受冲击系数",
+            "expected": {
+                "s2t": "承受衝擊係數"
+            }
+        },
+        {
+            "id": "case_zhc_678",
+            "input": "核心系统",
+            "expected": {
+                "s2t": "核心系統"
+            }
+        },
+        {
+            "id": "case_zhc_679",
+            "input": "红色系线",
+            "expected": {
+                "s2t": "紅色繫線"
+            }
+        },
+        {
+            "id": "case_zhc_680",
+            "input": "安心系列",
+            "expected": {
+                "s2t": "安心系列"
+            }
+        },
+        {
+            "id": "case_zhc_681",
+            "input": "新书签名会",
+            "expected": {
+                "s2t": "新書簽名會"
+            }
+        },
+        {
+            "id": "case_zhc_682",
+            "input": "帮我的书签个名",
+            "expected": {
+                "s2t": "幫我的書簽個名"
+            }
+        },
+        {
+            "id": "case_zhc_683",
+            "input": "我的小腿像牙签一样",
+            "expected": {
+                "s2t": "我的小腿像牙籤一樣"
+            }
+        },
+        {
+            "id": "case_zhc_684",
+            "input": "他们真的签在机器上面",
+            "expected": {
+                "s2t": "他們真的簽在機器上面"
+            }
+        },
+        {
+            "id": "case_zhc_685",
+            "input": "在考卷上签我的名字",
+            "expected": {
+                "s2t": "在考卷上簽我的名字"
+            }
+        },
+        {
+            "id": "case_zhc_686",
+            "input": "在考卷上签了我的名字",
+            "expected": {
+                "s2t": "在考卷上簽了我的名字"
+            }
+        },
+        {
+            "id": "case_zhc_687",
+            "input": "在登记簿上签下了名字",
+            "expected": {
+                "s2t": "在登記簿上簽下了名字"
+            }
+        },
+        {
+            "id": "case_zhc_688",
+            "input": "他桌上的竹签上串着三张纸",
+            "expected": {
+                "s2t": "他桌上的竹籤上串著三張紙"
+            }
+        },
+        {
+            "id": "case_zhc_689",
+            "input": "一出戏",
+            "expected": {
+                "s2t": "一齣戲"
+            }
+        },
+        {
+            "id": "case_zhc_690",
+            "input": "很出戏",
+            "expected": {
+                "s2t": "很出戲"
+            }
+        },
+        {
+            "id": "case_zhc_691",
+            "input": "很多出戏",
+            "expected": {
+                "s2t": "很多齣戲"
+            }
+        },
+        {
+            "id": "case_zhc_692",
+            "input": "这一出出重复的剧目",
+            "expected": {
+                "s2t": "這一齣齣重複的劇目"
+            }
+        },
+        {
+            "id": "case_zhc_693",
+            "input": "万一出了什么差错",
+            "expected": {
+                "s2t": "萬一出了什麼差錯"
+            }
+        },
+        {
+            "id": "case_zhc_694",
+            "input": "接着是这出吧",
+            "expected": {
+                "s2t": "接著是這齣吧"
+            }
+        },
+        {
+            "id": "case_zhc_695",
+            "input": "“大師一出手，便知有沒有”",
+            "expected": {
+                "s2t": "“大師一出手，便知有沒有”"
+            }
+        },
+        {
+            "id": "case_zhc_696",
+            "input": "15:30出发",
+            "expected": {
+                "s2t": "15:30出發"
+            }
+        },
+        {
+            "id": "case_zhc_697",
+            "input": "划着水",
+            "expected": {
+                "s2t": "划著水"
+            }
+        },
+        {
+            "id": "case_zhc_698",
+            "input": "规划龙舟比賽",
+            "expected": {
+                "s2t": "規劃龍舟比賽"
+            }
+        },
+        {
+            "id": "case_zhc_699",
+            "input": "比划龙舟更好玩",
+            "expected": {
+                "s2t": "比划龍舟更好玩"
+            }
+        },
+        {
+            "id": "case_zhc_700",
+            "input": "小船好像是情侣们在划呢",
+            "expected": {
+                "s2t": "小船好像是情侶們在划呢"
+            }
+        },
+        {
+            "id": "case_zhc_701",
+            "input": "划 船首对著那些船",
+            "expected": {
+                "s2t": "划 船首對著那些船"
+            }
+        },
+        {
+            "id": "case_zhc_702",
+            "input": "不然你永远当不了水手 划！",
+            "expected": {
+                "s2t": "不然 you 永遠當不了水手 划！"
+            }
+        },
+        {
+            "id": "case_zhc_703",
+            "input": "让船首往这边 往前划",
+            "expected": {
+                "s2t": "讓船首往這邊 往前划"
+            }
+        },
+        {
+            "id": "case_zhc_704",
+            "input": "“手里握着一根长桨，不停地划着，划啊划。”",
+            "expected": {
+                "s2t": "“手裡握著一根長槳，不停地劃著，劃啊劃。”"
+            }
+        },
+        {
+            "id": "case_zhc_705",
+            "input": "星星会划了天花板",
+            "expected": {
+                "s2t": "星星會劃了天花板"
+            }
+        },
+        {
+            "id": "case_zhc_706",
+            "input": "被刀子划到",
+            "expected": {
+                "s2t": "被刀子劃到"
+            }
+        },
+        {
+            "id": "case_zhc_707",
+            "input": "被美工刀划到",
+            "expected": {
+                "s2t": "被美工刀劃到"
+            }
+        },
+        {
+            "id": "case_zhc_708",
+            "input": "“划开、划火柴、划了一刀”",
+            "expected": {
+                "s2t": "“劃開、劃火柴、劃了一刀”"
+            }
+        },
+        {
+            "id": "case_zhc_709",
+            "input": "嵌入谜题中的碎片",
+            "expected": {
+                "s2t": "嵌入謎題中的碎片"
+            }
+        },
+        {
+            "id": "case_zhc_710",
+            "input": "是个迷宫",
+            "expected": {
+                "s2t": "是個迷宮"
+            }
+        },
+        {
+            "id": "case_zhc_711",
+            "input": "神罗天征",
+            "expected": {
+                "s2t": "神羅天征"
+            }
+        },
+        {
+            "id": "case_zhc_712",
+            "input": "应征战沙场",
+            "expected": {
+                "s2t": "應征戰沙場"
+            }
+        },
+        {
+            "id": "case_zhc_713",
+            "input": "应征丸川文学奖",
+            "expected": {
+                "s2t": "應徵丸川文學獎"
+            }
+        },
+        {
+            "id": "case_zhc_714",
+            "input": "凶多吉少",
+            "expected": {
+                "s2t": "凶多吉少"
+            }
+        },
+        {
+            "id": "case_zhc_715",
+            "input": "兇蛇連臀",
+            "expected": {
+                "s2t": "兇蛇連臀"
+            }
+        },
+        {
+            "id": "case_zhc_716",
+            "input": "赞赞赞",
+            "expected": {
+                "s2t": "讚讚讚"
+            }
+        },
+        {
+            "id": "case_zhc_717",
+            "input": "赞 赞 赞",
+            "expected": {
+                "s2t": "讚 讚 讚"
+            }
+        },
+        {
+            "id": "case_zhc_718",
+            "input": "（赞了）",
+            "expected": {
+                "s2t": "（讚了）"
+            }
+        },
+        {
+            "id": "case_zhc_719",
+            "input": "很赞是吧",
+            "expected": {
+                "s2t": "很讚是吧"
+            }
+        },
+        {
+            "id": "case_zhc_720",
+            "input": "我去点个赞",
+            "expected": {
+                "s2t": "我去點個讚"
+            }
+        },
+        {
+            "id": "case_zhc_721",
+            "input": "以千计的赞",
+            "expected": {
+                "s2t": "以千計的讚"
+            }
+        },
+        {
+            "id": "case_zhc_722",
+            "input": "我去点个赞成",
+            "expected": {
+                "s2t": "我去點個贊成"
+            }
+        },
+        {
+            "id": "case_zhc_723",
+            "input": "卡赞",
+            "expected": {
+                "s2t": "卡贊"
+            }
+        },
+        {
+            "id": "case_zhc_724",
+            "input": "卡讚",
+            "expected": {
+                "s2t": "卡讚"
+            }
+        },
+        {
+            "id": "case_zhc_725",
+            "input": "印卡赞",
+            "expected": {
+                "s2t": "印卡讚"
+            }
+        },
+        {
+            "id": "case_zhc_726",
+            "input": "阿赞库尔",
+            "expected": {
+                "s2t": "阿贊庫爾"
+            }
+        },
+        {
+            "id": "case_zhc_727",
+            "input": "简单明了",
+            "expected": {
+                "s2t": "簡單明瞭"
+            }
+        },
+        {
+            "id": "case_zhc_728",
+            "input": "被证明了的理论",
+            "expected": {
+                "s2t": "被證明了的理論"
+            }
+        },
+        {
+            "id": "case_zhc_729",
+            "input": "掷碎了望远镜",
+            "expected": {
+                "s2t": "擲碎了望遠鏡"
+            }
+        },
+        {
+            "id": "case_zhc_730",
+            "input": "复制了望实斩魄刀",
+            "expected": {
+                "s2t": "複製了望實斬魄刀"
+            }
+        },
+        {
+            "id": "case_zhc_731",
+            "input": "由于姓人士",
+            "expected": {
+                "s2t": "由于姓人士"
+            }
+        },
+        {
+            "id": "case_zhc_732",
+            "input": "由于姓氏",
+            "expected": {
+                "s2t": "由於姓氏"
+            }
+        },
+        {
+            "id": "case_zhc_733",
+            "input": "搜刮来的衣物",
+            "expected": {
+                "s2t": "搜刮來的衣物"
+            }
+        },
+        {
+            "id": "case_zhc_734",
+            "input": "脸刚刮了一半",
+            "expected": {
+                "s2t": "臉剛刮了一半"
+            }
+        },
+        {
+            "id": "case_zhc_735",
+            "input": "风越刮越猛",
+            "expected": {
+                "s2t": "風越颳越猛"
+            }
+        },
+        {
+            "id": "case_zhc_736",
+            "input": "三足香几",
+            "expected": {
+                "s2t": "三足香几"
+            }
+        },
+        {
+            "id": "case_zhc_737",
+            "input": "把辞呈往茶几一放",
+            "expected": {
+                "s2t": "把辭呈往茶几一放"
+            }
+        },
+        {
+            "id": "case_zhc_738",
+            "input": "甲和乙合并",
+            "expected": {
+                "s2t": "甲和乙合併"
+            }
+        },
+        {
+            "id": "case_zhc_739",
+            "input": "这种结合并不新鲜",
+            "expected": {
+                "s2t": "這種結合並不新鮮"
+            }
+        },
+        {
+            "id": "case_zhc_740",
+            "input": "在这里会合并在明天出发",
+            "expected": {
+                "s2t": "在這裡會合並在明天出發"
+            }
+        },
+        {
+            "id": "case_zhc_741",
+            "input": "让大自然平复他们的创伤",
+            "expected": {
+                "s2t": "讓大自然平復他們的創傷"
+            }
+        },
+        {
+            "id": "case_zhc_742",
+            "input": "恶魔的回复能力",
+            "expected": {
+                "s2t": "惡魔的回復能力"
+            }
+        },
+        {
+            "id": "case_zhc_743",
+            "input": "体力的回復状况",
+            "expected": {
+                "s2t": "體力的回復狀況"
+            }
+        },
+        {
+            "id": "case_zhc_744",
+            "input": "政府晚间回复称",
+            "expected": {
+                "s2t": "政府晚間回覆稱"
+            }
+        },
+        {
+            "id": "case_zhc_745",
+            "input": "我便提议为他们做向导",
+            "expected": {
+                "s2t": "我便提議為他們做嚮導"
+            }
+        },
+        {
+            "id": "case_zhc_746",
+            "input": "向导向导演致敬",
+            "expected": {
+                "s2t": "嚮導向導演致敬"
+            }
+        },
+        {
+            "id": "case_zhc_747",
+            "input": "父亲看了一眼钟",
+            "expected": {
+                "s2t": "父親看了一眼鐘"
+            }
+        },
+        {
+            "id": "case_zhc_748",
+            "input": "糖果鸽子钟",
+            "expected": {
+                "s2t": "糖果鴿子鐘"
+            }
+        },
+        {
+            "id": "case_zhc_749",
+            "input": "当时钟意",
+            "expected": {
+                "s2t": "當時鍾意"
+            }
+        },
+        {
+            "id": "case_zhc_750",
+            "input": "如此钟意我",
+            "expected": {
+                "s2t": "如此鍾意我"
+            }
+        },
+        {
+            "id": "case_zhc_751",
+            "input": "个中高手",
+            "expected": {
+                "s2t": "箇中高手"
+            }
+        },
+        {
+            "id": "case_zhc_752",
+            "input": "每个中国人",
+            "expected": {
+                "s2t": "每個中國人"
+            }
+        },
+        {
+            "id": "case_zhc_753",
+            "input": "这个中乐趣",
+            "expected": {
+                "s2t": "這箇中樂趣"
+            }
+        },
+        {
+            "id": "case_zhc_754",
+            "input": "密码表",
+            "expected": {
+                "s2t": "密碼表"
+            }
+        },
+        {
+            "id": "case_zhc_755",
+            "input": "轮回转世",
+            "expected": {
+                "s2t": "輪迴轉世"
+            }
+        },
+        {
+            "id": "case_zhc_756",
+            "input": "超渡轮回",
+            "expected": {
+                "s2t": "超渡輪迴"
+            }
+        },
+        {
+            "id": "case_zhc_757",
+            "input": "渡轮回去",
+            "expected": {
+                "s2t": "渡輪回去"
+            }
+        },
+        {
+            "id": "case_zhc_758",
+            "input": "我家这只好斗",
+            "expected": {
+                "s2t": "我家這隻好鬥"
+            }
+        },
+        {
+            "id": "case_zhc_759",
+            "input": "千人共斗",
+            "expected": {
+                "s2t": "千人共鬥"
+            }
+        },
+        {
+            "id": "case_zhc_760",
+            "input": "恩辛丑闻案",
+            "expected": {
+                "s2t": "恩辛醜聞案"
+            }
+        },
+        {
+            "id": "case_zhc_761",
+            "input": "啰啰唆唆",
+            "expected": {
+                "s2t": "囉囉唆唆"
+            }
+        },
+        {
+            "id": "case_zhc_762",
+            "input": "请问奏鸣曲酒吧几时开门",
+            "expected": {
+                "s2t": "請問奏鳴曲酒吧幾時開門"
+            }
+        },
+        {
+            "id": "case_zhc_763",
+            "input": "环顾了四周一圈",
+            "expected": {
+                "s2t": "環顧了四周一圈"
+            }
+        },
+        {
+            "id": "case_zhc_764",
+            "input": "你们遭了不少罪",
+            "expected": {
+                "s2t": "你們遭了不少罪"
+            }
+        },
+        {
+            "id": "case_zhc_765",
+            "input": "數位影片",
+            "expected": {
+                "tw2sp": "数字视频",
+                "s2hk": "數碼影片"
+            }
+        },
+        {
+            "id": "case_zhc_766",
+            "input": "最終影片獲得四億多的票房",
+            "expected": {
+                "tw2sp": "最终电影获得四亿多的票房"
+            }
+        },
+        {
+            "id": "case_zhc_767",
+            "input": "我会安排前往里昂",
+            "expected": {
+                "s2hk": "我會安排前往里昂"
+            }
+        },
+        {
+            "id": "case_zhc_768",
+            "input": "西西里海峽",
+            "expected": {
+                "s2hk": "西西里海峽"
+            }
+        },
+        {
+            "id": "case_zhc_769",
+            "input": "航空里程數",
+            "expected": {
+                "s2hk": "航空里程數"
+            }
+        },
+        {
+            "id": "case_zhc_770",
+            "input": "货车被里奇破坏",
+            "expected": {
+                "s2hk": "貨車被里奇破壞"
+            }
+        },
+        {
+            "id": "case_zhc_771",
+            "input": "撞球台",
+            "expected": {
+                "s2hk": "桌球枱"
+            }
+        },
+        {
+            "id": "case_zhc_772",
+            "input": "特别来宾士兵",
+            "expected": {
+                "s2hk": "特別來賓士兵"
+            }
+        },
+        {
+            "id": "case_zhc_773",
+            "input": "保安保护你",
+            "expected": {
+                "s2hk": "保安保護你"
+            }
+        },
+        {
+            "id": "case_zhc_774",
+            "input": "要占士同意",
+            "expected": {
+                "s2hk": "要占士同意"
+            }
+        },
+        {
+            "id": "case_zhc_775",
+            "input": "疑聲四起",
+            "expected": {
+                "s2hk": "疑聲四起"
+            }
+        },
+        {
+            "id": "case_zhc_776",
+            "input": "蜀國中的諸葛亮",
+            "expected": {
+                "s2hk": "蜀國中的諸葛亮"
+            }
+        },
+        {
+            "id": "case_zhc_777",
+            "input": "我不",
+            "expected": {
+                "s2twp": "我不"
+            }
+        },
+        {
+            "id": "case_zhc_778",
+            "input": "我說了不",
+            "expected": {
+                "s2twp": "我說了不"
+            }
+        },
+        {
+            "id": "case_zhc_779",
+            "input": "為什麼不",
+            "expected": {
+                "s2twp": "為什麼不"
+            }
+        },
+        {
+            "id": "case_zhc_780",
+            "input": "-為什麼不",
+            "expected": {
+                "s2twp": "-為什麼不"
+            }
+        },
+        {
+            "id": "case_zhc_781",
+            "input": "憑什麼不？",
+            "expected": {
+                "s2twp": "憑什麼不？"
+            }
+        },
+        {
+            "id": "case_zhc_782",
+            "input": "知道為什麼不",
+            "expected": {
+                "s2twp": "知道為什麼嗎"
+            }
+        },
+        {
+            "id": "case_zhc_783",
+            "input": "不",
+            "expected": {
+                "s2twp": "不"
+            }
+        },
+        {
+            "id": "case_zhc_784",
+            "input": "–不",
+            "expected": {
+                "s2twp": "–不"
+            }
+        },
+        {
+            "id": "case_zhc_785",
+            "input": "你是什麼？",
+            "expected": {
+                "s2twp": "你是什麼？"
+            }
+        },
+        {
+            "id": "case_zhc_786",
+            "input": "有很多么",
+            "expected": {
+                "s2twp": "有很多嗎"
+            }
+        },
+        {
+            "id": "case_zhc_787",
+            "input": "叫我的名字…么",
+            "expected": {
+                "s2twp": "叫我的名字…嗎"
+            }
+        },
+        {
+            "id": "case_zhc_788",
+            "input": "我有多么...多么...想你",
+            "expected": {
+                "s2twp": "我有多麼...多麼...想你"
+            }
+        },
+        {
+            "id": "case_zhc_789",
+            "input": "你前面明明问另一个人，我干吗回你？",
+            "expected": {
+                "s2twp": "你前面明明問另一個人，我幹嘛回你？"
+            }
+        },
+        {
+            "id": "case_zhc_790",
+            "input": "你还要干吗",
+            "expected": {
+                "s2twp": "你還要幹嗎"
+            }
+        },
+        {
+            "id": "case_zhc_791",
+            "input": "你干吗",
+            "expected": {
+                "s2twp": "你幹嘛"
+            }
+        },
+        {
+            "id": "case_zhc_792",
+            "input": "这一票你干吗",
+            "expected": {
+                "s2twp": "這一票你幹嗎"
+            }
+        },
+        {
+            "id": "case_zhc_793",
+            "input": "你还干吗",
+            "expected": {
+                "s2twp": "你還幹嗎"
+            }
+        },
+        {
+            "id": "case_zhc_794",
+            "input": "你干吗去",
+            "expected": {
+                "s2twp": "你幹嘛去"
+            }
+        },
+        {
+            "id": "case_zhc_795",
+            "input": "哈 下期封面不是已經事先通知佐佐原老師了嗎",
+            "expected": {
+                "s2twp": "蛤 下期封面不是已經事先通知佐佐原老師了嗎"
+            }
+        },
+        {
+            "id": "case_zhc_796",
+            "input": "勞哈阿姨來了",
+            "expected": {
+                "s2twp": "勞哈阿姨來了"
+            }
+        },
+        {
+            "id": "case_zhc_797",
+            "input": "你说啥",
+            "expected": {
+                "s2twp": "你說什麼"
+            }
+        },
+        {
+            "id": "case_zhc_798",
+            "input": "现在都啥时间了",
+            "expected": {
+                "s2twp": "現在都什麼時間了"
+            }
+        },
+        {
+            "id": "case_zhc_799",
+            "input": "这是啥时弄的",
+            "expected": {
+                "s2twp": "這是什麼時候弄的"
+            }
+        },
+        {
+            "id": "case_zhc_800",
+            "input": "是你丫才對",
+            "expected": {
+                "s2twp": "是你這傢伙才對"
+            }
+        },
+        {
+            "id": "case_zhc_801",
+            "input": "打死你丫的",
+            "expected": {
+                "s2twp": "他媽打死你"
+            }
+        },
+        {
+            "id": "case_zhc_802",
+            "input": "住进后爹家",
+            "expected": {
+                "s2twp": "住進繼父家"
+            }
+        },
+        {
+            "id": "case_zhc_803",
+            "input": "以后爹再给你糖果吃",
+            "expected": {
+                "s2twp": "以後爹再給你糖果吃"
+            }
+        },
+        {
+            "id": "case_zhc_804",
+            "input": "雙臂保持水平",
+            "expected": {
+                "s2twp": "雙臂保持水平"
+            }
+        },
+        {
+            "id": "case_zhc_805",
+            "input": "水平面很高",
+            "expected": {
+                "s2twp": "水平面很高"
+            }
+        },
+        {
+            "id": "case_zhc_806",
+            "input": "池塘的水平面",
+            "expected": {
+                "s2twp": "池塘的水平面"
+            }
+        },
+        {
+            "id": "case_zhc_807",
+            "input": "水平很高",
+            "expected": {
+                "s2twp": "水準很高"
+            }
+        },
+        {
+            "id": "case_zhc_808",
+            "input": "最佳水平",
+            "expected": {
+                "s2twp": "最佳水準"
+            }
+        },
+        {
+            "id": "case_zhc_809",
+            "input": "更好的水平",
+            "expected": {
+                "s2twp": "更好的水準"
+            }
+        },
+        {
+            "id": "case_zhc_810",
+            "input": "生活的水平",
+            "expected": {
+                "s2twp": "生活的水準"
+            }
+        },
+        {
+            "id": "case_zhc_811",
+            "input": "这些礼物还挺沉的",
+            "expected": {
+                "s2twp": "這些禮物還挺重的"
+            }
+        },
+        {
+            "id": "case_zhc_812",
+            "input": "太沉溺",
+            "expected": {
+                "s2twp": "太沉溺"
+            }
+        },
+        {
+            "id": "case_zhc_813",
+            "input": "又沉吟了一会",
+            "expected": {
+                "s2twp": "又沉吟了一會"
+            }
+        },
+        {
+            "id": "case_zhc_814",
+            "input": "那我倒說不準",
+            "expected": {
+                "s2twp": "那我倒不知道"
+            }
+        },
+        {
+            "id": "case_zhc_815",
+            "input": "誰也說不準",
+            "expected": {
+                "s2twp": "誰也不知道"
+            }
+        },
+        {
+            "id": "case_zhc_816",
+            "input": "物體質量",
+            "expected": {
+                "s2twp": "物體質量"
+            }
+        },
+        {
+            "id": "case_zhc_817",
+            "input": "物體的質量",
+            "expected": {
+                "s2twp": "物體的質量"
+            }
+        },
+        {
+            "id": "case_zhc_818",
+            "input": "質量過硬",
+            "expected": {
+                "s2twp": "品質優良"
+            }
+        },
+        {
+            "id": "case_zhc_819",
+            "input": "質量夠硬",
+            "expected": {
+                "s2twp": "品質夠好"
+            }
+        },
+        {
+            "id": "case_zhc_820",
+            "input": "質量令人滿意",
+            "expected": {
+                "s2twp": "品質令人滿意"
+            }
+        },
+        {
+            "id": "case_zhc_821",
+            "input": "令人滿意的質量",
+            "expected": {
+                "s2twp": "令人滿意的品質"
+            }
+        },
+        {
+            "id": "case_zhc_822",
+            "input": "估计他会一直投下去的吧",
+            "expected": {
+                "s2twp": "大概他會一直投下去的吧"
+            }
+        },
+        {
+            "id": "case_zhc_823",
+            "input": "保守估计也就200万",
+            "expected": {
+                "s2twp": "保守估計也就200萬"
+            }
+        },
+        {
+            "id": "case_zhc_824",
+            "input": "这货纯么",
+            "expected": {
+                "s2twp": "這貨純嗎"
+            }
+        },
+        {
+            "id": "case_zhc_825",
+            "input": "这货纯粹捣乱",
+            "expected": {
+                "s2twp": "這傢伙純粹搗亂"
+            }
+        },
+        {
+            "id": "case_zhc_826",
+            "input": "就这货色",
+            "expected": {
+                "s2twp": "就這貨色"
+            }
+        },
+        {
+            "id": "case_zhc_827",
+            "input": "音视频流媒体",
+            "expected": {
+                "s2twp": "影音串流媒體"
+            }
+        },
+        {
+            "id": "case_zhc_828",
+            "input": "音视频流",
+            "expected": {
+                "s2twp": "影音串流"
+            }
+        },
+        {
+            "id": "case_zhc_829",
+            "input": "音频流",
+            "expected": {
+                "s2twp": "音訊串流"
+            }
+        },
+        {
+            "id": "case_zhc_830",
+            "input": "音频流媒",
+            "expected": {
+                "s2twp": "音訊串流媒體"
+            }
+        },
+        {
+            "id": "case_zhc_831",
+            "input": "音频流媒体",
+            "expected": {
+                "s2twp": "音訊串流媒體"
+            }
+        },
+        {
+            "id": "case_zhc_832",
+            "input": "音频媒体",
+            "expected": {
+                "s2twp": "音訊媒體"
+            }
+        },
+        {
+            "id": "case_zhc_833",
+            "input": "橙子",
+            "expected": {
+                "s2twp": "橙子"
+            }
+        },
+        {
+            "id": "case_zhc_834",
+            "input": "蒼崎柳丁",
+            "expected": {
+                "s2twp": "蒼崎橙子"
+            }
+        },
+        {
+            "id": "case_zhc_835",
+            "input": "一周内存够30万",
+            "expected": {
+                "s2twp": "一週內存夠30萬"
+            }
+        },
+        {
+            "id": "case_zhc_836",
+            "input": "我那儿时的梦",
+            "expected": {
+                "s2twp": "我那兒時的夢"
+            }
+        },
+        {
+            "id": "case_zhc_837",
+            "input": "科技节点解锁",
+            "expected": {
+                "s2twp": "科技節點解鎖"
+            }
+        },
+        {
+            "id": "case_zhc_838",
+            "input": "高端疫苗",
+            "expected": {
+                "s2twp": "高端疫苗"
+            }
+        },
+        {
+            "id": "case_zhc_839",
+            "input": "秋衣",
+            "expected": {
+                "s2twp": "衛生衣"
+            }
+        },
+        {
+            "id": "case_zhc_840",
+            "input": "竈門",
+            "expected": {
+                "s2twp": "竈門"
+            }
+        },
+        {
+            "id": "case_zhc_841",
+            "input": "司法程序",
+            "expected": {
+                "s2twp": "司法程序"
+            }
+        },
+        {
+            "id": "case_zhc_842",
+            "input": "入秋衣物",
+            "expected": {
+                "s2twp": "入秋衣物"
+            }
+        },
+        {
+            "id": "case_zhc_843",
+            "input": "意大利落後於人",
+            "expected": {
+                "s2twp": "義大利落後於人"
+            }
+        },
+        {
+            "id": "case_zhc_844",
+            "input": "錄像出租店",
+            "expected": {
+                "s2twp": "影片出租店"
+            }
+        },
+        {
+            "id": "case_zhc_845",
+            "input": "好用的錄像監控",
+            "expected": {
+                "s2twp": "好用的錄影監控"
+            }
+        },
+        {
+            "id": "case_zhc_846",
+            "input": "自動停止錄像",
+            "expected": {
+                "s2twp": "自動停止錄影"
+            }
+        },
+        {
+            "id": "case_zhc_847",
+            "input": "最後一茬",
+            "expected": {
+                "s2twp": "最後一茬"
+            }
+        },
+        {
+            "id": "case_zhc_848",
+            "input": "後面左邊",
+            "expected": {
+                "s2twp": "後面左邊"
+            }
+        },
+        {
+            "id": "case_zhc_849",
+            "input": "沒有好好地道別過呢",
+            "expected": {
+                "s2twp": "沒有好好地道別過呢"
+            }
+        },
+        {
+            "id": "case_zhc_850",
+            "input": "奔馳的士兵",
+            "expected": {
+                "s2twp": "奔馳的士兵"
+            }
+        },
+        {
+            "id": "case_zhc_851",
+            "input": "想要不",
+            "expected": {
+                "s2twp": "想要嗎"
+            }
+        },
+        {
+            "id": "case_zhc_852",
+            "input": "解手刀",
+            "expected": {
+                "s2twp": "解手刀"
+            }
+        },
+        {
+            "id": "case_zhc_853",
+            "input": "納米比亞",
+            "expected": {
+                "s2twp": "納米比亞"
+            }
+        },
+        {
+            "id": "case_zhc_854",
+            "input": "早上好多了 下午好多了",
+            "expected": {
+                "s2twp": "早上好多了 下午好多了"
+            }
+        },
+        {
+            "id": "case_zhc_855",
+            "input": "弄黑客人的衣服",
+            "expected": {
+                "s2twp": "弄黑客人的衣服"
+            }
+        },
+        {
+            "id": "case_zhc_856",
+            "input": "通過特定方式",
+            "expected": {
+                "s2twp": "透過特定方式"
+            }
+        },
+        {
+            "id": "case_zhc_857",
+            "input": "設計能通過我很開心",
+            "expected": {
+                "s2twp": "設計能通過我很開心"
+            }
+        },
+        {
+            "id": "case_zhc_858",
+            "input": "已經上頭了",
+            "expected": {
+                "s2twp": "已經上癮了"
+            }
+        },
+        {
+            "id": "case_zhc_859",
+            "input": "方便她玩上头的橘色小猴子",
+            "expected": {
+                "s2twp": "方便她玩上頭的橘色小猴子"
+            }
+        },
+        {
+            "id": "case_zhc_860",
+            "input": "适时加一些水粉以方便面团成型",
+            "expected": {
+                "s2twp": "適時加一些水粉以方便麵團成型"
+            }
+        },
+        {
+            "id": "case_zhc_861",
+            "input": "平凡的數字",
+            "expected": {
+                "s2twp": "平凡的數字"
+            }
+        },
+        {
+            "id": "case_zhc_862",
+            "input": "正面部位",
+            "expected": {
+                "s2twp": "正面部位"
+            }
+        },
+        {
+            "id": "case_zhc_863",
+            "input": "網上鄰居",
+            "expected": {
+                "s2twp": "網路上的芳鄰"
+            }
+        },
+        {
+            "id": "case_zhc_864",
+            "input": "一個坎巴拉",
+            "expected": {
+                "s2twp": "一個坎巴拉"
+            }
+        },
+        {
+            "id": "case_zhc_865",
+            "input": "提高清晰度",
+            "expected": {
+                "s2twp": "提高清晰度"
+            }
+        },
+        {
+            "id": "case_zhc_866",
+            "input": "兩個都很糟，難選",
+            "expected": {
+                "s2twp": "兩個都很糟，難選"
+            }
+        },
+        {
+            "id": "case_zhc_867",
+            "input": "一會兒就好 再一小會兒就好 只要再一小會兒",
+            "expected": {
+                "s2twp": "一會就好 再一小會就好 只要再一小會"
+            }
+        },
+        {
+            "id": "case_zhc_868",
+            "input": "今周刊",
+            "expected": {
+                "s2twp": "今周刊"
+            }
+        },
+        {
+            "id": "case_zhc_869",
+            "input": "有回放嗎",
+            "expected": {
+                "s2twp": "有重播嗎"
+            }
+        },
+        {
+            "id": "case_zhc_870",
+            "input": "有回放學晚了",
+            "expected": {
+                "s2twp": "有回放學晚了"
+            }
+        },
+        {
+            "id": "case_zhc_871",
+            "input": "有一回放學晚了",
+            "expected": {
+                "s2twp": "有一回放學晚了"
+            }
+        },
+        {
+            "id": "case_zhc_872",
+            "input": "速度一点点",
+            "expected": {
+                "s2twp": "速度一點點"
+            }
+        }
+    ]
+}
