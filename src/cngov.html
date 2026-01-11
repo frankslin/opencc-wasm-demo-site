@@ -55,6 +55,10 @@
                 <div class="pane-header">
                     <span>「通用規範漢字表」繁體中文</span>
                     <div style="display: flex; align-items: center; gap: 12px;">
+                        <label class="diff-toggle" for="keepSimp">
+                            <input type="checkbox" id="keepSimp">
+                            <span>保留輸入簡體字不變</span>
+                        </label>
                         <label class="diff-toggle" for="showDiff">
                             <input type="checkbox" id="showDiff">
                             <span>顯示差異</span>
@@ -108,8 +112,11 @@
         const iconConvert = document.getElementById('icon-convert');
         const iconLoading = document.getElementById('icon-loading');
         const showDiffCheckbox = document.getElementById("showDiff");
+        const keepSimpCheckbox = document.getElementById("keepSimp");
 
         let converter = null;
+        let t2cngov = null;
+        let t2cngov_keep_simp = null;
         let lastInput = "";
         let lastOutput = "";
         let inputDebounceTimer = null;
@@ -264,7 +271,12 @@
         async function init() {
             try {
                 updateStatus('正在載入 opencc-wasm...');
-                converter = OpenCC.Converter({ config: "t2cngov.json" });
+                t2cngov = OpenCC.Converter({ config: "t2cngov.json" });
+                t2cngov_keep_simp = OpenCC.Converter({ config: "t2cngov_keep_simp.json" });
+
+                // Set default
+                converter = t2cngov;
+
                 updateStatus('預熱詞典...');
                 await converter("預熱");
                 updateStatus('準備就緒', 'success');
@@ -291,6 +303,11 @@
         });
 
         showDiffCheckbox.addEventListener('change', updateOutputDisplay);
+
+        keepSimpCheckbox.addEventListener('change', () => {
+            converter = keepSimpCheckbox.checked ? t2cngov_keep_simp : t2cngov;
+            doConvert();
+        });
 
         init();
     </script>
