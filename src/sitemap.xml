@@ -6,37 +6,37 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/converter.html</loc>
+    <loc>https://opencc-wasm.com/converter</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/compare.html</loc>
+    <loc>https://opencc-wasm.com/compare</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/wasm.html</loc>
+    <loc>https://opencc-wasm.com/wasm</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/benchmark.html</loc>
+    <loc>https://opencc-wasm.com/benchmark</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/cdn.html</loc>
+    <loc>https://opencc-wasm.com/cdn</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/cngov.html</loc>
+    <loc>https://opencc-wasm.com/cngov</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opencc-wasm.com/form-submission.html</loc>
+    <loc>https://opencc-wasm.com/form-submission</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
