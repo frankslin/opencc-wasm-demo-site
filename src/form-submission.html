@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenCC WASM - 表單自動轉換測試</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .demo-section {
+            padding: 30px;
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .demo-section h2 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .content-editable-box {
+            min-height: 100px;
+            padding: 16px;
+            border: 1px dashed var(--border);
+            border-radius: 8px;
+            background: #fafafa;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .content-editable-box:focus {
+            outline: none;
+            border-style: solid;
+            border-color: var(--primary);
+            background: #fff;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="brand">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152">
+                    <path fill="currentColor"
+                        d="M64.7 9.7c-.4.3.3 1.7 1.5 3 1.9 2 2.3 3.6 2.3 8.6v6.2L53 29.7c-8.5 1.3-17.4 2.7-19.7 3.1-3.8.8-4.3.7-6.6-1.9-3.1-3.6-6.2-4-5-.7 1.5 4.2.6 10.7-2.3 16.4-2.6 5.2-2.7 5.8-1.3 8.2.8 1.5 2.1 2.7 2.9 2.7 2 0 4.7-5.8 6.3-13.5l1.3-6.4L39 35.8c18.6-3.1 45.1-5.8 61-6 17.9-.3 18.7.2 12.4 7.2-2 2.2-3.5 4.3-3.2 4.5.3.3 3-.6 6.2-2.1 3.9-1.8 6.9-2.5 9.8-2.2 5.9.4 6.3-2.1 1.1-7.4-5.3-5.5-8.3-6.9-12.4-5.8-1.9.4-9.5 1.1-16.9 1.5-7.4.3-15.4.8-17.7 1.2l-4.3.5.6-3.3c.4-1.9 1.3-4.7 2.1-6.2 1.1-2.3 1.2-3.1.2-4.3-2.5-3.1-11.4-5.5-13.2-3.7z" />
+                    <path fill="currentColor"
+                        d="M87 43.5c-1.4.8-3.4 1.4-4.5 1.4s-9.3 1.5-18.3 3.3c-13.9 2.7-16.7 3-19.4 2-5-1.9-5.7.1-1.4 4.4 4.1 4.1 3.7 4.1 16.6-.4 9.1-3.3 26-6.5 27.3-5.3.7.7-7.9 11.8-12.1 15.4-1.9 1.8-2.2 1.8-4.4.3-4.9-3.5-5-1.4-.3 5.5 5.2 7.6 4.9 8.6-3.2 9.4-3.8.4-16.1 2-27.6 3.6-15.1 2.2-21.2 2.7-22.6 1.9-5.2-2.7-6.8.1-2.4 4.2 5.1 4.6 6.1 4.8 13.2 2.1C34 89 55.2 85 68.7 83.6l6.2-.7.7 3.7c1 5.5-.3 25.2-2.1 31.2-.9 2.9-2.3 5.6-3.2 5.9-1.4.6-8.4-.5-15-2.3-4.5-1.2-2.3 1.6 3.3 4.3 3.8 1.8 6.3 3.8 8 6.5 1.3 2.1 3.1 3.8 4 3.8 2.9 0 6.3-4.8 8.6-12.1 2-6.5 2.3-9.4 2.3-24.2V83l3.4-.6c3.6-.7 28.3.1 40.4 1.2 6.4.7 6.7.6 6.7-1.5 0-1.7-1.3-2.8-5.5-4.7-5-2.3-6-2.4-10.7-1.5-2.9.6-12.1 1.3-20.4 1.7l-15.1.7-2.3-4.7-2.2-4.7 6.8-6.4c3.8-3.5 9.3-7.7 12.1-9.2 2.9-1.5 5.3-3.4 5.3-4 0-1.4-7.7-7.3-9.4-7.3-.6.1-2.2.7-3.6 1.5z" />
+                </svg>
+                <div>
+                    <h1>OpenCC 轉換工具</h1>
+                    <span>表單自動轉換</span>
+                </div>
+            </div>
+            <div id="status" class="status-badge">
+                <div class="status-dot"></div>
+                <span id="status-text">初始化中...</span>
+            </div>
+        </header>
+
+        <section class="demo-section">
+            <h2>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                提交時自動轉換表單
+            </h2>
+            <p style="margin-bottom: 20px; color: var(--text-sub); font-size: 0.9rem;">
+                只需添加一段 JS 原始碼，在提交 HTML 表單時，標有 <code>opencc-s2tw</code> class 的控制項（包括 input, textarea 和
+                contenteditable）會自動將簡體字轉換為繁體字。非常適合後端只能處理繁體字的場景，例如搜索框。
+            </p>
+            <form id="demo-form">
+                <div class="form-group">
+                    <label for="title">標題 (Input)</label>
+                    <input type="text" id="title" name="title" class="form-control opencc-s2tw"
+                        value="欢迎使用在线版开放中文转换工具（本输入框带有 opencc-s2tw class）" placeholder="請輸入簡體中文...">
+                </div>
+                <div class="form-group">
+                    <label for="content">內容 (Textarea)</label>
+                    <textarea id="content" name="content" class="form-control opencc-s2tw"
+                        placeholder="請輸入簡體中文...">汉字转换测试，这段文字在提交时会自动变成繁体。此文本框带有 opencc-s2tw class。</textarea>
+                </div>
+
+                <div class="form-group" style="background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px;">
+                    <label for="no-class-input">對照組 (普通 Input，無 class)</label>
+                    <input type="text" id="no-class-input" name="no-class" class="form-control"
+                        value="这个 input 框没有 opencc-s2tw class，所以不会转换" placeholder="请输入一些简体字...">
+                    <small style="color: var(--text-sub); display: block; margin-top: 4px;">本輸入框沒有
+                        <code>opencc-s2tw</code> class，提交時不會被轉換。</small>
+                </div>
+
+                <div class="form-group">
+                    <label>也支援 Contenteditable</label>
+                    <div id="editable-area" class="content-editable-box opencc-s2tw" contenteditable="true">
+                        这也是一个多行文本编辑区，支持 <b>HTML 格式</b>。它也带有 <code>opencc-s2tw</code> class，提交时会一并转换。不会丢失格式。
+                    </div>
+                </div>
+
+                <div class="btn-row">
+                    <button type="submit" class="btn btn-primary">提交並自動轉換</button>
+                    <button type="button" id="reset-btn" class="btn btn-secondary">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                            <path d="M3 3v5h5"></path>
+                        </svg>
+                        恢復原始簡體內容
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <div class="footer">
+            <p class="chips">
+                <a href="index.html" class="chip" style="text-decoration:none;">首頁 Home</a>
+                <a href="cdn.html" class="chip" style="text-decoration:none;">CDN 展示</a>
+                <a href="https://github.com/frankslin/OpenCC/tree/master/wasm-lib" class="chip" target="_blank">OpenCC
+                    WASM</a>
+            </p>
+            <p>本頁面演示了如何集成 OpenCC-WASM 進行靜態頁面的自動繁簡轉換。</p>
+        </div>
+    </div>
+
+    <script type="module">
+        import OpenCC from "https://cdn.jsdelivr.net/npm/opencc-wasm@__OPENCC_WASM_VERSION__/dist/esm/index.js";
+
+        // UI Elements
+        const statusBadge = document.getElementById('status');
+        const statusText = document.getElementById('status-text');
+        const resetBtn = document.getElementById('reset-btn');
+        const demoForm = document.getElementById('demo-form');
+
+        // Store initial values for reset
+        const initialValues = new Map();
+        function saveInitialState() {
+            demoForm.querySelectorAll('input, textarea, .content-editable-box').forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    initialValues.set(el, el.value);
+                } else {
+                    initialValues.set(el, el.innerHTML);
+                }
+            });
+        }
+        saveInitialState();
+
+        function updateStatus(msg, type = 'normal') {
+            statusText.textContent = msg;
+            statusBadge.className = 'status-badge ' + (type === 'success' ? 'ready' : type === 'error' ? 'error' : '');
+        }
+
+        // 1. 初始化 converter（只做一次）
+        const converterPromise = OpenCC.Converter({ config: "s2tw" });
+
+        async function init() {
+            try {
+                updateStatus('正在載入 opencc-wasm...');
+                const converter = await converterPromise;
+                // 預熱
+                await converter("預熱");
+                updateStatus('準備就緒', 'success');
+            } catch (err) {
+                console.error(err);
+                updateStatus('初始化失敗: ' + err.message, 'error');
+            }
+        }
+
+        // Helper to recursively convert text nodes while preserving HTML structure
+        async function convertNodes(node, converter) {
+            if (node.nodeType === Node.TEXT_NODE) {
+                if (node.nodeValue.trim() !== "") {
+                    node.nodeValue = await converter(node.nodeValue);
+                }
+            } else {
+                for (const child of node.childNodes) {
+                    await convertNodes(child, converter);
+                }
+            }
+        }
+
+        // 2. 統一處理 submit
+        demoForm.addEventListener("submit", async (event) => {
+            event.preventDefault(); // 暫停提交
+
+            updateStatus('正在轉換內容...', 'normal');
+            const converter = await converterPromise;
+
+            // Process all fields in the form
+            let alertMsg = "即將提交的內容：\n\n";
+            const allElements = demoForm.querySelectorAll("input, textarea, .content-editable-box");
+
+            for (const el of allElements) {
+                const label = el.labels && el.labels[0] ? el.labels[0].innerText : (el.id || el.tagName);
+                let textValue = "";
+                let isConverted = false;
+
+                if (el.classList.contains("opencc-s2tw")) {
+                    isConverted = true;
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        if (typeof el.value === "string" && el.value.trim() !== "") {
+                            el.value = await converter(el.value);
+                            textValue = el.value;
+                        }
+                    } else {
+                        // Contenteditable or other elements
+                        // Preserve HTML by converting only text nodes
+                        await convertNodes(el, converter);
+                        textValue = el.innerText;
+                    }
+                } else {
+                    textValue = (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') ? el.value : el.innerText;
+                }
+
+                alertMsg += `${isConverted ? '✅ [已轉換] ' : '❌ [未轉換] '} ${label}: ${textValue}\n`;
+            }
+
+            alert(alertMsg);
+            updateStatus('轉換完成，表單已模擬提交', 'success');
+
+            // 3. 轉換內容後，為了演示方便，我們這裡不再進行真正的跳轉提交
+            // 如果需要真正提交，請取消註釋以下程式碼：
+            // demoForm.submit();
+        });
+
+        // Reset functionality
+        resetBtn.onclick = () => {
+            initialValues.forEach((val, el) => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.value = val;
+                } else {
+                    el.innerHTML = val;
+                }
+            });
+            updateStatus('內容已恢復原始簡體', 'success');
+        };
+
+        init();
+    </script>
+</body>
+
+</html>
