@@ -24,7 +24,7 @@
                 </svg>
                 <div>
                     <h1>OpenCC 轉換工具</h1>
-                    <span>通用規範漢字表繁體轉換</span>
+                    <span>「通用規範漢字表」標準繁體轉換</span>
                 </div>
             </div>
             <div id="status" class="status-badge">
@@ -33,12 +33,24 @@
             </div>
         </header>
 
+        <div class="options-bar"
+            style="padding: 12px 30px; background: #f8fafc; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 24px;">
+            <label class="diff-toggle" for="keepSimp">
+                <input type="checkbox" id="keepSimp">
+                <span>保留輸入簡體字不變</span>
+            </label>
+            <label class="diff-toggle" for="showDiff">
+                <input type="checkbox" id="showDiff">
+                <span>顯示差異</span>
+            </label>
+        </div>
+
         <div class="editor-area">
             <div class="pane">
                 <div class="pane-header">
                     <span>繁體中文</span>
                 </div>
-                <textarea id="input" placeholder="請輸入要轉換的文本...">欢迎使用在线版开放中文转换工具</textarea>
+                <textarea id="input" placeholder="請輸入要轉換的文本...">欢迎使用在线版开放中文转换工具 歡迎使用在線版開放中文轉換工具</textarea>
             </div>
 
             <div class="divider">
@@ -53,26 +65,15 @@
 
             <div class="pane">
                 <div class="pane-header">
-                    <span>「通用規範漢字表」繁體中文</span>
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <label class="diff-toggle" for="keepSimp">
-                            <input type="checkbox" id="keepSimp">
-                            <span>保留輸入簡體字不變</span>
-                        </label>
-                        <label class="diff-toggle" for="showDiff">
-                            <input type="checkbox" id="showDiff">
-                            <span>顯示差異</span>
-                        </label>
-                        <button class="copy-btn" id="copy-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            複製結果
-                        </button>
-                    </div>
+                    <span>「通用規範漢字表」標準繁體中文</span>
+                    <button class="copy-btn" id="copy-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        複製結果
+                    </button>
                 </div>
                 <div id="output" class="output-box" style="flex: 1; min-height: 120px; overflow-y: auto;">轉換結果將顯示在這裡...
                 </div>
@@ -117,6 +118,27 @@
         let converter = null;
         let t2cngov = null;
         let t2cngov_keep_simp = null;
+        let isSyncingParams = false;
+
+        function updateUrlParams() {
+            if (isSyncingParams) return;
+            const params = new URLSearchParams(window.location.search);
+
+            if (keepSimpCheckbox.checked) {
+                params.set('config', 't2cngov_keep_simp');
+            } else {
+                params.set('config', 't2cngov');
+            }
+
+            if (showDiffCheckbox.checked) {
+                params.set('diff', '1');
+            } else {
+                params.delete('diff');
+            }
+
+            const newUrl = window.location.pathname + '?' + params.toString();
+            window.history.replaceState({ path: newUrl }, '', newUrl);
+        }
         let lastInput = "";
         let lastOutput = "";
         let inputDebounceTimer = null;
@@ -274,8 +296,26 @@
                 t2cngov = OpenCC.Converter({ config: "t2cngov.json" });
                 t2cngov_keep_simp = OpenCC.Converter({ config: "t2cngov_keep_simp.json" });
 
-                // Set default
-                converter = t2cngov;
+                // Read URL parameters
+                isSyncingParams = true;
+                const params = new URLSearchParams(window.location.search);
+                const configParam = params.get('config');
+                const diffParam = params.get('diff');
+
+                if (configParam === 't2cngov_keep_simp') {
+                    keepSimpCheckbox.checked = true;
+                    converter = t2cngov_keep_simp;
+                } else {
+                    keepSimpCheckbox.checked = false;
+                    converter = t2cngov;
+                }
+
+                if (diffParam === '1') {
+                    showDiffCheckbox.checked = true;
+                } else {
+                    showDiffCheckbox.checked = false;
+                }
+                isSyncingParams = false;
 
                 updateStatus('預熱詞典...');
                 await converter("預熱");
@@ -286,6 +326,11 @@
                 if (input.value.trim()) {
                     doConvert();
                 }
+
+                // Focus input so user can type immediately
+                input.focus();
+                // Move cursor to end of text
+                input.setSelectionRange(input.value.length, input.value.length);
             } catch (err) {
                 console.error(err);
                 updateStatus('初始化失敗: ' + err.message, 'error');
@@ -302,11 +347,15 @@
             }
         });
 
-        showDiffCheckbox.addEventListener('change', updateOutputDisplay);
+        showDiffCheckbox.addEventListener('change', () => {
+            updateOutputDisplay();
+            updateUrlParams();
+        });
 
         keepSimpCheckbox.addEventListener('change', () => {
             converter = keepSimpCheckbox.checked ? t2cngov_keep_simp : t2cngov;
             doConvert();
+            updateUrlParams();
         });
 
         init();
